@@ -27,7 +27,7 @@ assort <- function(g, ...) UseMethod("assort")
 
 
 
-#' Method for tables
+#' @details Method for tables
 #'
 #' @method assort table
 #' @export
@@ -44,7 +44,7 @@ assort.table <- function(g, ...)
     rval
 }
 
-#' Method for igraph
+#' @details Method for igraph
 #'
 #' @param vattr character, name of the vertex attribute for which the measure
 #' is to be calculated

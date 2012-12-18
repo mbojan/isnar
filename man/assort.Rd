@@ -29,10 +29,6 @@
   Assortativity coefficient is a measure of segregation for
   social networks due to Mark Newman (2002).
 
-  Method for tables
-
-  Method for igraph
-
   Default method
 }
 \details{
@@ -43,6 +39,10 @@
   Takes the value of 1 if all ties are within-group. The
   minimum can be negative and depends on the distribution
   of ties in the network.
+
+  Method for tables
+
+  Method for igraph
 }
 \examples{
 data(Wnet)
