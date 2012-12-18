@@ -1,10 +1,11 @@
 Package: isnar
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Author: michal
-Version: 1.0
+Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
+Author: Michal Bojanowski
+Version: 0.0-1
 License: GPL-3
-Title: 
-Description: 
+Title: Companion package to Introduction to Social Network Analysis with R
+Description: Functions and datasets accompanying the book "Introduction to
+    Social Network Analysis with R"
 Suggests:
     testthat,
     roxygen2
