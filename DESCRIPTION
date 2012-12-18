@@ -9,4 +9,5 @@ Suggests:
     testthat,
     roxygen2
 Collate:
-    'isnar-package.r'
+    'assort.R'
+    'isnar-package.R'

@@ -2,8 +2,9 @@
 \name{isnar}
 \alias{isnar}
 \alias{isnar-package}
-\title{isnar}
+\title{Introduction to Social Network Analysis with R}
 \description{
-  isnar
+  Functions and data accompanying the book "Introduction to
+  Social Network Analysis with R"
 }
 

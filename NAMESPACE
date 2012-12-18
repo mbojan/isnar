@@ -1,0 +1,4 @@
+S3method(assort,default)
+S3method(assort,igraph)
+S3method(assort,table)
+export(assort)
