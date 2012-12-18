@@ -1,0 +1,95 @@
+#' Calculate network mixing matrix
+#'
+#' Given a network and vertex attribute calculate two or three-dimensional
+#' mixing matrix.
+#'
+#'
+#' Mixing matrix is, traditionaly, a two-dimensional cross-classification of
+#' network ties depeding on the values of given vertex attribute of tie sender
+#' and tie receiver. A "generalized" mixing matrix is a three-dimensional array
+#' which cross-classifies \emph{all} network dyads depending on the values of
+#' the attribute for tie sender and tie reciever, and whether the dyad is
+#' connected or not. The two-dimensional version is a layer, so-called contact
+#' layer, of the three-dimensional version.  Be default, when \code{full} is
+#' \code{FALSE} the two-dimesional version is computed.
+#' 
+#' If \code{vattr} is a character scalar it is interpreted as a name of the
+#' vertex attribute in \code{g}. Otherwise it can be a vector of length equal
+#' to \code{vcount(g)} containing the attribute.
+#' 
+#' If the \code{full} is \code{TRUE} then \code{loops} determines whether to
+#' take loops into account when calculating the number of dyads in \code{g}.
+#'
+#' @param g object of class "igraph", network to be analyzed
+#'
+#' @param vattr  character scalar or vector of length equal to the size of
+#' \code{g}, vertex attribute for which mixing matrix is to be computed
+#'
+#' @param full logical, should a three-dimensional mixing array be returned
+#' instead of only the contact layer
+#'
+#' @param loops logical, are loops (self edges) admissible in \code{g},
+#' defaults to the presence of loops in \code{g}
+#'
+#' @param ... other arguments passed to/from other methods, currently passed to
+#' \code{\link{fold}}
+#'
+#' @return
+#' If \code{full} is \code{FALSE}, the default, a two-dimensional square
+#' table network ties cross-classified. If it is \code{TRUE} a three
+#' dimensional array with dimensions "ego", "alter", and "tie".
+#'
+#' For undirected network the matrix is folded onto the upper triangle.
+#'
+#' @example examples/mixingm.R
+#' @export
+mixingm <- function(g, vattr, full=FALSE, loops=any(is.loop(g)), ...)
+{
+    # get attribute
+    if(is.character(vattr) & length(vattr) == 1)
+    {
+        a <- igraph::get.vertex.attribute(g, vattr)
+    } else
+    {
+        stopifnot( length(vattr) == vcount(g) )
+        a <- vattr
+    }
+    # contact layer based on edgelist
+    el <- igraph::get.edgelist(g, names=FALSE) + 1
+    u <- sort(unique(a))
+    ego <- factor(a[ el[,1] ], levels=u)
+    alter <- factor(a[ el[,2] ], levels=u)
+    con <- table(ego=ego, alter=alter)
+    # fold for undirected
+    if(!igraph::is.directed(g))
+        con <- fold(con, ...)
+    # return contact layer if not full
+    if(!full)  return(con)
+    # ego-alter margin
+    sums <- table(a)
+    o <- outer(sums, sums, "*")
+    if(igraph::is.directed(g))
+    {
+        mar <- o
+        if(!loops)
+        {
+            diag(mar) <- diag(o) - sums
+        }
+    } else {
+            mar <- o
+            mar[ lower.tri(mar) ] <- 0
+        if(loops)
+        {
+            diag(mar) <- (diag(o) + sums) / 2
+        } else {
+            diag(mar) <- (diag(o) - sums) / 2
+        }
+    }
+    # build the result
+    rval <- array(NA, dim=c(length(u), length(u), 2))
+    dimnames(rval) <- list(ego=u, alter=u, tie=c(FALSE, TRUE))
+    rval[,,2] <- con
+    rval[,,1] <- mar - con
+    rval
+}
+

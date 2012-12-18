@@ -12,3 +12,5 @@ Suggests:
 Collate:
     'assort.R'
     'isnar-package.R'
+    'mixingm.R'
+    'symmetrize.R'
