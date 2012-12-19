@@ -74,4 +74,8 @@ plot(x, y, type="o",
   Newman, M. J. (2003) "Mixing patterns in networks"
   arXiv:cond-mat/0209450v2
 }
+\seealso{
+  Other segregation.measures: \code{\link{coleman}},
+  \code{\link{freeman}}
+}
 

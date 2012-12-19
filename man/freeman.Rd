@@ -77,8 +77,10 @@ freeman(Wnet, "gender", more=TRUE)
   \bold{6}(4):411--429
 }
 \seealso{
-  Other segregation indices: \code{\link{ssi}}.
-  \code{\link{mixingm}} which this function uses.
+  Other segregation.measures: \code{\link{assort}},
+  \code{\link{assort.default}},
+  \code{\link{assort.igraph}}, \code{\link{assort.table}},
+  \code{\link{coleman}}
 }
 \keyword{graphs}
 

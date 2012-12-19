@@ -7,4 +7,7 @@
   Functions and data accompanying the book "Introduction to
   Social Network Analysis with R"
 }
+\details{
+  Among other things, it includes
+}
 

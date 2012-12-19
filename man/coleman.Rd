@@ -30,6 +30,9 @@ coleman(EFnet, "type")
   Organization 17:28--36.
 }
 \seealso{
-  Other measures of segregation.  \code{\link{mixingm}}
+  Other segregation.measures: \code{\link{assort}},
+  \code{\link{assort.default}},
+  \code{\link{assort.igraph}}, \code{\link{assort.table}},
+  \code{\link{freeman}}
 }
 
