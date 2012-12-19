@@ -19,3 +19,4 @@ Collate:
     'Wnet.R'
     'fold.R'
     'EFnet.R'
+    'coleman.R'
