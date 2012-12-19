@@ -28,7 +28,6 @@ data(Catania)
 ep <- sum(Catania \\\%*\\\% Catania)
 ( sum(diag(Catania)) - ep ) / ( 1 - ep )
 }
-}
 \references{
   Newman, M. (2003) "Mixing patterns in networks"
   Arxiv:cond-mat/0209450 v2
