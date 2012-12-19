@@ -20,3 +20,4 @@ Collate:
     'fold.R'
     'EFnet.R'
     'coleman.R'
+    'freeman.R'
