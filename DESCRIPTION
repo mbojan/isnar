@@ -17,3 +17,4 @@ Collate:
     'mixingm.R'
     'symmetrize.R'
     'Wnet.R'
+    'fold.R'
