@@ -18,3 +18,4 @@ Collate:
     'symmetrize.R'
     'Wnet.R'
     'fold.R'
+    'EFnet.R'
