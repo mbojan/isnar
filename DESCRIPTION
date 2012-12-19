@@ -16,3 +16,4 @@ Collate:
     'isnar-package.R'
     'mixingm.R'
     'symmetrize.R'
+    'Wnet.R'
