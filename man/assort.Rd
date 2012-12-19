@@ -76,6 +76,7 @@ plot(x, y, type="o",
 }
 \seealso{
   Other segregation.measures: \code{\link{coleman}},
-  \code{\link{freeman}}, \code{\link{gamix}}
+  \code{\link{freeman}}, \code{\link{gamix}},
+  \code{\link{moody}}
 }
 
