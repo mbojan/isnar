@@ -33,6 +33,6 @@ coleman(EFnet, "type")
   Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
   \code{\link{assort.igraph}}, \code{\link{assort.table}},
-  \code{\link{freeman}}
+  \code{\link{freeman}}, \code{\link{gamix}}
 }
 
