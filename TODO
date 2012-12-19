@@ -1,0 +1,2 @@
+Test failure for freeman() seem to be because mixingm() gives strange results
+for full graphs.
