@@ -36,6 +36,6 @@ moody(Wnet, "gender")
   \code{\link{assort.default}},
   \code{\link{assort.igraph}}, \code{\link{assort.table}},
   \code{\link{coleman}}, \code{\link{freeman}},
-  \code{\link{gamix}}
+  \code{\link{gamix}}, \code{\link{ssi}}
 }
 

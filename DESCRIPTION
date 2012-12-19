@@ -10,7 +10,8 @@ Depends:
     igraph
 Suggests:
     testthat,
-    roxygen2
+    roxygen2,
+    mbtools
 Collate:
     'assort.R'
     'isnar-package.R'
@@ -24,3 +25,4 @@ Collate:
     'Catania.R'
     'gamix.R'
     'moody.R'
+    'ssi.R'

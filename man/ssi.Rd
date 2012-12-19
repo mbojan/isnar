@@ -1,0 +1,85 @@
+\name{ssi}
+\alias{ssi}
+\title{Spectral Segregation Index for Social Networks}
+\usage{
+  ssi(g, vattr)
+}
+\arguments{
+  \item{g}{object of class "igraph" representing a network}
+
+  \item{vattr}{character, name of the vertex attribute}
+}
+\value{
+  Named vector of individual level values of SSI. Names
+  correspond to vertex ids in \code{g}.
+}
+\description{
+  These functions implement Spectral Segregation Index as
+  proposed by Echenique & Fryer (2006). This index is a
+  node-level measure of segregation in a given network.
+}
+\details{
+  For a full description and axiomatization see Echenique &
+  Fryer (2006).
+
+  The network \code{g} is converted to adjacency matrix and
+  normalized so that all rows sum-up to 1.
+
+  The procedure essentially consists of creating a
+  submatrix, say, \eqn{B} of the adjacency matrix, say
+  \eqn{A}. This submatrix \eqn{B} contains only vertices of
+  the given type. It may be viewed as a type-homogeneous
+  subnetwork of \code{A}. This subnetwork is further
+  decomposed into connected components.  Then, for every
+  component, an eigenvalue decomposition is applied.  The
+  value of the index for the component is simply the
+  largest eigenvalue, and the individual-level indices are
+  obtained by distributing it according to the
+  corresponding eigenvector.
+}
+\examples{
+# artificial EF data
+if( require(mbtools) )
+{
+data(EFnet)
+x <- ssi(EFnet, "type")
+x
+# show it on picture
+a <- V(EFnet)$type
+k <- rescale(x, .9, .1)
+plot( EFnet, layout=layout.fruchterman.reingold,
+    vertex.color= gray(k),
+    vertex.label.family="",
+    vertex.shape=c("circle", "square")[a],
+    vertex.label.color=gray( (1-k) > .4 ) )
+
+# For White's kinship data
+data(Wnet)
+x <- ssi(Wnet, "gender")
+x
+# plot it
+a <- V(Wnet)$gender
+k <- rescale(x, .9, .5)
+set.seed(1234)
+plot( Wnet, layout=layout.fruchterman.reingold,
+    main="Node segregation in White's kinship data",
+    vertex.label.family="",
+    vertex.label=V(Wnet)$name,
+    vertex.color= gray(k),
+    vertex.shape=c("circle", "csquare")[a],
+    vertex.label.color="black")
+legend( "topleft", legend=c("Men", "Women"), pch=c(0,1), col=1)
+}
+}
+\references{
+  Echenique, Federico and Roland G. Fryer, Jr. (2006) A
+  Measure of Segregation Based On Social Interactions
+}
+\seealso{
+  Other segregation.measures: \code{\link{assort}},
+  \code{\link{assort.default}},
+  \code{\link{assort.igraph}}, \code{\link{assort.table}},
+  \code{\link{coleman}}, \code{\link{freeman}},
+  \code{\link{gamix}}, \code{\link{moody}}
+}
+

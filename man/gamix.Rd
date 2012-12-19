@@ -41,6 +41,6 @@ gamix(EFnet, "type")
   \code{\link{assort.default}},
   \code{\link{assort.igraph}}, \code{\link{assort.table}},
   \code{\link{coleman}}, \code{\link{freeman}},
-  \code{\link{moody}}
+  \code{\link{moody}}, \code{\link{ssi}}
 }
 
