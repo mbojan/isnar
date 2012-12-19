@@ -23,6 +23,7 @@
 #' Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 #'
 #' @example examples/assort.R
+#' @family segregation measures
 assort <- function(g, ...) UseMethod("assort")
 
 

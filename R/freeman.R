@@ -50,12 +50,10 @@
 #' Freeman, Linton C. (1978) Segregation in Social Networks, \emph{Sociological
 #' Methods & Research} \bold{6}(4):411--429
 #'
-#' @seealso Other segregation indices: \code{\link{ssi}}.
-#' \code{\link{mixingm}} which this function uses.
-#'
 #' @example examples/freeman.R
 #' @keywords graphs
 #' @export
+#' @family segregation measures
 freeman <- function(g, vattr, dis=NULL, more=FALSE)
 {
     stopifnot(inherits(g, "igraph"))

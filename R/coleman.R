@@ -14,10 +14,9 @@
 #' Coleman, J. (1958) "Relational analysis: The study of social organizations
 #' with survey methods", Human Organization 17:28--36.
 #'
-#' @seealso Other measures of segregation.  \code{\link{mixingm}}
-#'
 #' @example examples/coleman.R
 #' @export
+#' @family segregation measures
 coleman <- function(g, vattr)
 {
     stopifnot(inherits(g, "igraph"))
