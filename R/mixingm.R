@@ -55,7 +55,7 @@ mixingm <- function(g, vattr, full=FALSE, loops=any(is.loop(g)), ...)
         a <- vattr
     }
     # contact layer based on edgelist
-    el <- igraph::get.edgelist(g, names=FALSE) + 1
+    el <- igraph::get.edgelist(g, names=FALSE)
     u <- sort(unique(a))
     ego <- factor(a[ el[,1] ], levels=u)
     alter <- factor(a[ el[,2] ], levels=u)
