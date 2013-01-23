@@ -90,6 +90,25 @@ mixingm <- function(g, vattr, full=FALSE, loops=any(is.loop(g)), ...)
     dimnames(rval) <- list(ego=u, alter=u, tie=c(FALSE, TRUE))
     rval[,,2] <- con
     rval[,,1] <- mar - con
+    attr(rval, "size") <- vcount(g)
+    attr(rval, "group.sizes") <- table(a, dnn=NULL)
+    class(rval) <- c("mixingm", "array")
     rval
+}
+
+#' Printing method
+#'
+#' @method print mixingm
+#' @export
+#' @rdname mixingm
+print.mixingm <- function(x, ...)
+{
+  z <- structure(as.numeric(x), dim=dim(x), dimnames=dimnames(x))
+  cat("Mixing matrix\n")
+  cat("Network size:", attr(x, "size"), "\n")
+  tab <- attr(x, "group.sizes")
+  names(dimnames(tab)) <- "Groups and their sizes"
+  print(tab)
+  print(z)
 }
 

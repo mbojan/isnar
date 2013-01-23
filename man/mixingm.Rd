@@ -1,9 +1,12 @@
 \name{mixingm}
 \alias{mixingm}
+\alias{print.mixingm}
 \title{Calculate network mixing matrix}
 \usage{
   mixingm(g, vattr, full = FALSE, loops = any(is.loop(g)),
     ...)
+
+  \method{print}{mixingm} (x, ...)
 }
 \arguments{
   \item{g}{object of class "igraph", network to be
@@ -36,6 +39,8 @@
 \description{
   Given a network and vertex attribute calculate two or
   three-dimensional mixing matrix.
+
+  Printing method
 }
 \details{
   Mixing matrix is, traditionaly, a two-dimensional
