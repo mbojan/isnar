@@ -6,7 +6,7 @@
 #' specifies time of first prescription of the new drug.
 #'
 #' @docType data
-#' @name Galesburg2
+#' @name galesburg2
 #'
 #' @format
 #' Directed network (class 'igraph') with edge attributes:
