@@ -20,7 +20,7 @@
 #' If the \code{full} is \code{TRUE} then \code{loops} determines whether to
 #' take loops into account when calculating the number of dyads in \code{g}.
 #'
-#' @param g object of class "igraph", network to be analyzed
+#' @param g,x object of class "igraph", network to be analyzed
 #'
 #' @param vattr  character scalar or vector of length equal to the size of
 #' \code{g}, vertex attribute for which mixing matrix is to be computed
