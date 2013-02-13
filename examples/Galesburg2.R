@@ -1,3 +1,2 @@
-data(galesburg2)
-
-plot(galesburg2, edge.arrow.size=.3)
+data(Galesburg2)
+plot(Galesburg2, edge.arrow.size=.3)

@@ -1,6 +1,6 @@
 \docType{data}
-\name{galesburg2}
-\alias{galesburg2}
+\name{Galesburg2}
+\alias{Galesburg2}
 \title{Columbia University Drug Study data 2}
 \format{Directed network (class 'igraph') with edge attributes:
 \describe{
@@ -24,7 +24,8 @@ and vertex attributes:
   new drug.
 }
 \examples{
-examples/Galesburg2.R
+data(Galesburg2)
+plot(Galesburg2, edge.arrow.size=.3)
 }
 \references{
   Coleman, J.S., E. Katz, H. Menzel (1966) "Medical

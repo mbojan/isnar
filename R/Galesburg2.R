@@ -6,7 +6,7 @@
 #' specifies time of first prescription of the new drug.
 #'
 #' @docType data
-#' @name galesburg2
+#' @name Galesburg2
 #'
 #' @format
 #' Directed network (class 'igraph') with edge attributes:
@@ -27,6 +27,6 @@
 #' Coleman, J.S., E. Katz, H. Menzel (1966) "Medical Innovation. A Diffusion
 #' Study", Indianapolis: Bobbs-Merrill
 #'
-#' @examples examples/Galesburg2.R
+#' @example examples/Galesburg2.R
 #'
 NULL
