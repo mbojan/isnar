@@ -26,4 +26,7 @@
 #' @references
 #' Coleman, J.S., E. Katz, H. Menzel (1966) "Medical Innovation. A Diffusion
 #' Study", Indianapolis: Bobbs-Merrill
+#'
+#' @examples examples/Galesburg2.R
+#'
 NULL

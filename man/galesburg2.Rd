@@ -23,6 +23,9 @@ and vertex attributes:
   "adoption" specifies time of first prescription of the
   new drug.
 }
+\examples{
+examples/Galesburg2.R
+}
 \references{
   Coleman, J.S., E. Katz, H. Menzel (1966) "Medical
   Innovation. A Diffusion Study", Indianapolis:
