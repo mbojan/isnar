@@ -35,14 +35,14 @@ assort <- function(g, ...) UseMethod("assort")
 #' @rdname assort
 assort.table <- function(g, ...)
 {
-    if( length(dim(g)) == 3 )
-      m <- g[,,2]
-    else m <- g
-    m <- symmetrize(m, "div")
-    p <- m / sum(m)
-    s <- sum( p %*% p ) # || e^2 ||
-    rval <- ( sum(diag(p)) - s ) / (1 - s)
-    rval
+  if( length(dim(g)) != 2 )
+    m <- g[,,2]
+  else m <- g
+  m <- symmetrize(m, "div")
+  p <- m / sum(m)
+  s <- sum(colSums(p) * rowSums(p))
+  rval <- ( sum(diag(p)) - s ) / (1 - s)
+  rval
 }
 
 #' @details Method for igraph
