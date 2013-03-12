@@ -61,9 +61,9 @@ ssib <- function(g, vattr, b)
     # compute eigen-decomposition
     e <- lapply(comps, function(k) eigen( get.adjacency(k, attr="weight")))
     # component SSIs (largest eigenvalue)
-    cssi <- sapply(e, function(x) max(as.real(x$values)) )
+    cssi <- sapply(e, function(x) max(as.double(x$values)) )
     # eigenvectors of largest eigenvalue
-    ev <- lapply(e, function(x) as.real(x$vectors[, which.max(as.real(x$values))] ))
+    ev <- lapply(e, function(x) as.double(x$vectors[, which.max(as.double(x$values))] ))
     issi <- unlist( lapply( seq(1, length(e)),
         function(i)
         {
