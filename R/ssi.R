@@ -55,7 +55,7 @@ ssib <- function(g, vattr, b)
 {
     # take subgraph of b-nodes
     ids <- get.vertex.attribute(g, vattr)
-    sub <- subgraph(g, which(ids == b) - 1)
+    sub <- induced.subgraph(g, which(ids == b))
     # get components
     comps <- decompose.graph(sub)
     # compute eigen-decomposition
