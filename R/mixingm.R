@@ -112,3 +112,38 @@ print.mixingm <- function(x, ...)
   print(z)
 }
 
+
+
+
+
+# Mixing matrix, ver2
+# Creating mixing matrix given two vertex attributes
+mixingm2 <- function(g, ...) UseMethod("mixingm2")
+
+mixingm2.igraph <- function(g, rattr, cattr=rattr, full=FALSE,
+                            loops=any(is.loop(g)), ...)
+{
+  # get attributes
+  if( is.character(rattr) && length(rattr)==1 )
+  {
+    ra <- igraph::get.vertex.attribute(g, rattr)
+  } else
+  {
+    stopifnot( length(rattr) == vcount(g))
+    ra <- rattr
+  }
+  if( is.character(cattr) && length(cattr)==1 )
+  {
+    ca <- igraph::get.vertex.attribute(g, cattr)
+  } else
+  {
+    stopifnot( length(cattr) == vcount(g))
+    ca <- cattr
+  }
+  # compute contact layer based on edge list
+  el <- igraph::get.edgelist(g, names=FALSE)
+  ego <- factor( ra[ el[,1] ], levels=sort(unique(ra)))
+  alter <- factor(ca[ el[,2] ], levels=sort(unique(ca)))
+  con <- table(ego=ego, alter=alter)
+  con
+}
