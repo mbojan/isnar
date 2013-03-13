@@ -1,2 +1,3 @@
-Test failure for freeman() seem to be because mixingm() gives strange results
-for full graphs.
+Segregation measures have methods for mixing matrices.
+
+Creating mixing matrices from any two vertex attributes.
