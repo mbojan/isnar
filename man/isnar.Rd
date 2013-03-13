@@ -8,6 +8,6 @@
   Social Network Analysis with R"
 }
 \details{
-  Among other things, it includes
+  Among other things, it includes a lot of things.
 }
 

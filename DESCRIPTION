@@ -6,6 +6,8 @@ License: GPL-3
 Title: Companion package to Introduction to Social Network Analysis with R
 Description: Functions and datasets accompanying the book "Introduction to
     Social Network Analysis with R"
+LazyLoad: yes
+LazyData: yes
 Depends:
     igraph (>= 0.6-0)
 Suggests:
@@ -28,3 +30,4 @@ Collate:
     'ssi.R'
     'smi.R'
     'Galesburg2.R'
+    'ei.R'
