@@ -1,6 +1,7 @@
 S3method(assort,default)
 S3method(assort,igraph)
 S3method(assort,table)
+S3method(coleman,igraph)
 S3method(mixingm,igraph)
 S3method(print,mixingm)
 export(assort)

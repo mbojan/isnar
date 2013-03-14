@@ -1,21 +1,25 @@
 \name{coleman}
 \alias{coleman}
+\alias{coleman.igraph}
 \title{Coleman's index of network segregation}
 \usage{
-  coleman(g, vattr)
+  coleman(object, ...)
+
+  \method{coleman}{igraph} (object, vattr)
 }
 \arguments{
-  \item{g}{object of class "igraph", the network}
+  \item{object,}{R object, see available methods}
 
   \item{vattr}{character, vertex attribute}
 }
 \value{
-  Numeric value of the measure.
+  Numeric values of the measure.
 }
 \description{
-  Colemans's measure for segregation in networks. Designed
-  in principle for directed networks, but no formal
-  obstacles for using it in undirected context.
+  Colemans's measure for segregation in directed networks.
+}
+\details{
+  Method for "igraph"
 }
 \examples{
 data(Wnet)

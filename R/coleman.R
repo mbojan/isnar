@@ -2,7 +2,9 @@
 #'
 #' Colemans's measure for segregation in directed networks.
 #'
-#' @param object, R object, see available methods
+#' @param object R object, see available methods
+#'
+#' @param ... other arguments
 #'
 #' @return Numeric values of the measure.
 #'
@@ -20,7 +22,7 @@ coleman <- function(object, ...) UseMethod("coleman")
 #' @method coleman igraph
 #' @export
 #' @rdname coleman
-coleman.igraph <- function(object, vattr)
+coleman.igraph <- function(object, vattr, ...)
 {
   stopifnot(inherits(object, "igraph"))
   stopifnot(is.directed(object))

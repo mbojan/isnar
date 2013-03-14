@@ -47,8 +47,9 @@ smi( as.directed(Wnet, "mutual"), "gender")
   Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
   \code{\link{assort.igraph}}, \code{\link{assort.table}},
-  \code{\link{coleman}}, \code{\link{ei}},
-  \code{\link{freeman}}, \code{\link{gamix}},
-  \code{\link{moody}}, \code{\link{ssi}}
+  \code{\link{coleman}}, \code{\link{coleman.igraph}},
+  \code{\link{ei}}, \code{\link{freeman}},
+  \code{\link{gamix}}, \code{\link{moody}},
+  \code{\link{ssi}}
 }
 
