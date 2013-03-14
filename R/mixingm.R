@@ -35,11 +35,13 @@
 #' \code{\link{fold}}
 #'
 #' @return
-#' If \code{full} is \code{FALSE}, the default, a two-dimensional square
-#' table network ties cross-classified. If it is \code{TRUE} a three
-#' dimensional array with dimensions "ego", "alter", and "tie".
+#' An object of class "mixingm" extending class "table" (S3).  If \code{full}
+#' is \code{FALSE}, the default, a two-dimensional square table with
+#' cross-classification of network ties. If \code{full} is \code{TRUE}, a three
+#' dimensional table with dimensions "ego", "alter", and "tie".
 #'
-#' For undirected network the matrix is folded onto the upper triangle.
+#' For undirected network the matrix is folded onto the upper triangle (entries
+#' in lower triangle are 0).
 #'
 #' @example examples/mixingm.R
 #' @export
@@ -92,7 +94,7 @@ mixingm <- function(g, vattr, full=FALSE, loops=any(is.loop(g)), ...)
     rval[,,1] <- mar - con
     attr(rval, "size") <- vcount(g)
     attr(rval, "group.sizes") <- table(a, dnn=NULL)
-    class(rval) <- c("mixingm", "array")
+    class(rval) <- c("mixingm", "table")
     rval
 }
 
