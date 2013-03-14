@@ -1,5 +1,5 @@
 data(Wnet)
-coleman(Wnet, "gender")
+coleman(as.directed(Wnet, "mutual"), "gender")
 
 data(EFnet)
-coleman(EFnet, "type")
+coleman( as.directed(EFnet, "mutual"), "type")
