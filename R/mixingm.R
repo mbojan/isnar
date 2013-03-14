@@ -76,7 +76,14 @@ mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(object))
     if(!igraph::is.directed(object))
         con <- fold(con, ...)
     # return contact layer if not full
-    if(!full)  return(con)
+    if(!full)
+    {
+      rval <- con
+      attr(rval, "size") <- vcount(object)
+      attr(rval, "group.sizes") <- table(a, dnn=NULL)
+      class(rval) <- c("mixingm", "table")
+      return(rval)
+    }
     # ego-alter margin
     sums <- table(a)
     o <- outer(sums, sums, "*")
