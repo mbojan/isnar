@@ -81,6 +81,7 @@ mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(object))
       rval <- con
       attr(rval, "size") <- vcount(object)
       attr(rval, "group.sizes") <- table(a, dnn=NULL)
+      attr(rval, "directed") <- is.directed(object)
       class(rval) <- c("mixingm", "table")
       return(rval)
     }
@@ -111,6 +112,7 @@ mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(object))
     rval[,,1] <- mar - con
     attr(rval, "size") <- vcount(object)
     attr(rval, "group.sizes") <- table(a, dnn=NULL)
+    attr(rval, "directed") <- is.directed(object)
     class(rval) <- c("mixingm", "table")
     rval
 }
@@ -135,6 +137,15 @@ print.mixingm <- function(x, ...)
 
 
 
+
+
+
+
+
+
+
+
+#============================================================================ 
 # Mixing matrix, ver2
 # Creating mixing matrix given two vertex attributes
 mixingm2 <- function(g, ...) UseMethod("mixingm2")
