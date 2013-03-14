@@ -129,12 +129,10 @@ print.mixingm <- function(x, ...)
   cat("Is directed:", attr(x, "directed"), "\n")
   cat("Network size:", attr(x, "size"), "\n")
   tab <- attr(x, "group.sizes")
-  names(dimnames(tab)) <- "Groups and their sizes"
+  cat("Group sizes:\n")
   print(tab)
   print(z)
 }
-
-
 
 
 
