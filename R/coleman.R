@@ -2,11 +2,9 @@
 #'
 #' Colemans's measure for segregation in directed networks.
 #'
-#' @param g object of class "igraph", the network
+#' @param object, R object, see available methods
 #'
-#' @param vattr character, vertex attribute
-#'
-#' @return Numeric value of the measure.
+#' @return Numeric values of the measure.
 #'
 #' @references
 #' Coleman, J. (1958) "Relational analysis: The study of social organizations
@@ -15,26 +13,37 @@
 #' @example examples/coleman.R
 #' @export
 #' @family segregation measures
-coleman <- function(g, vattr)
+coleman <- function(object, ...) UseMethod("coleman")
+
+#' @details Method for "igraph"
+#' @param vattr character, vertex attribute
+#' @method coleman igraph
+#' @export
+#' @rdname coleman
+coleman.igraph <- function(object, vattr)
 {
-  stopifnot(inherits(g, "igraph"))
-  stopifnot(is.directed(g))
-  a <- get.vertex.attribute(g, vattr)
-  m <- mixingm(g, vattr)
-  # expected number of WG choices
-  # NOTE should the degree be "out" for the directed networks?
-  if( is.directed(g) )
-  {
-    degsums <- tapply( degree(g, mode="out"), a, sum )
-  } else {
-    degsums <- tapply( degree(g, mode="all"), a, sum )
-  }
-  gsize <- table(a)
-  ewg <- degsums * (gsize - 1) / (vcount(g) - 1)
+  stopifnot(inherits(object, "igraph"))
+  stopifnot(is.directed(object))
+  m <- mixingm(object, vattr, full=TRUE)
+  # group out-degrees
+  degsums <- rowSums(m[,,2])
+  # group sizes
+  gsizes <- table(igraph::get.vertex.attribute(object, vattr))
+  # expected number of within-group ties for each group
+  ewg <- degsums * (gsizes - 1) / (vcount(object) - 1)
   # rval
-  r <- (diag(m) - ewg) / (degsums - ewg)
-  i <- diag(m) <= ewg
-  repl <- (diag(m) - ewg) / ewg
+  r <- (diag(m[,,2]) - ewg) / (degsums - ewg)
+  i <- diag(m[,,2]) <= ewg
+  repl <- (diag(m[,,2]) - ewg) / ewg
   r[i] <- repl[i]
-  structure(as.numeric(r), names=names(gsize))
+  structure(as.numeric(r), names=names(gsizes))
+}
+
+# method for mixing matrices
+# TODO probably not tables
+coleman.table <- function(object, ...)
+{
+  if( length(dim(object)) != 2 )
+    m <- object[,,2]
+  else m <- object
 }
