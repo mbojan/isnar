@@ -36,7 +36,7 @@ smi <- function(g, vattr, normalize=TRUE)
   if( length(unique(get.vertex.attribute(g, vattr))) > 2 )
       stop("currently 'smi' supports two groups")
   # mixing matrix
-  mm <- mixingm(g=g, vattr=vattr, full=TRUE)
+  mm <- mixingm(object=g, vattr=vattr, full=TRUE)
   pmm <- prop.table(mm, c(1,2))
   r <- diag( pmm[,,2] ) / pmm[1,2,2]
   if( normalize )
