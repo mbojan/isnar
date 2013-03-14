@@ -5,10 +5,12 @@
 \usage{
   coleman(object, ...)
 
-  \method{coleman}{igraph} (object, vattr)
+  \method{coleman}{igraph} (object, vattr, ...)
 }
 \arguments{
-  \item{object,}{R object, see available methods}
+  \item{object}{R object, see available methods}
+
+  \item{...}{other arguments}
 
   \item{vattr}{character, vertex attribute}
 }
@@ -23,10 +25,10 @@
 }
 \examples{
 data(Wnet)
-coleman(Wnet, "gender")
+coleman(as.directed(Wnet, "mutual"), "gender")
 
 data(EFnet)
-coleman(EFnet, "type")
+coleman( as.directed(EFnet, "mutual"), "type")
 }
 \references{
   Coleman, J. (1958) "Relational analysis: The study of
