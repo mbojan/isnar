@@ -6,10 +6,12 @@
 #' The measure evaluates the relative prevalence of within-group ties. It is
 #' based on the contact layer of the mixing matrix.
 #'
-#' Takes the value of 1 if all ties are within-group. The minimum can be
-#' negative and depends on the distribution of ties in the network.
+#' Assortativity coefficient is 1 if all ties are within-group.
+#' The minimum can be negative, but not less than -1, and depends on the
+#' relative number of ties of nodes in different groups. If the network
+#' conforms to "proportionate mixing", the coefficient is 0.
 #'
-#' @param g object of class "igraph", the network
+#' @param g R object, see available methods
 #'
 #' @param ... other arguments to/from other methods, currently ignored
 #'
@@ -28,7 +30,12 @@ assort <- function(g, ...) UseMethod("assort")
 
 
 
-#' @details Method for tables
+#' @details If 'g' is a table it is treated as a mixing matrix. Two-dimensional
+#' table is interpreted as a contact layer. Three-dimensional table is
+#' interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ijt]} cross-classyfying
+#' all dyads, in which 'i' and 'j' correspond to group membership of ego and
+#' alter respectively. Layers t=1 and t=2 are assumed to be contact and
+#' noncontact layers respectively.
 #'
 #' @method assort table
 #' @export
@@ -45,7 +52,8 @@ assort.table <- function(g, ...)
   rval
 }
 
-#' @details Method for igraph
+#' @details If \code{g} is an object of class "igraph" the measure is
+#' calculated for the vertex attribute specified with \code{vattr}.
 #'
 #' @param vattr character, name of the vertex attribute for which the measure
 #' is to be calculated
@@ -60,7 +68,8 @@ assort.igraph <- function(g, vattr, ...)
     NextMethod("assort")
 }
 
-#' Default method
+#' @details Any other objects passed as \code{g} are coerced to a table and the
+#' table method is called.
 #'
 #' @method assort default
 #' @export
