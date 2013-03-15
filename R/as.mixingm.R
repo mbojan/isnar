@@ -55,11 +55,11 @@ as.mixingm <- function(object, ...) UseMethod("as.mixingm")
 #' sets the attributes for network size, group sizes, and directed/undirected
 #' characte of the network based on supplied arguments.
 #'
-#' @param full
-#' @param gsizes
-#' @param directed
-#' @param loops
-#' @param size
+#' @param full logical, whether to return full 3-dimensional mixing matrix
+#' @param gsizes numerical vector of group sizes
+#' @param directed logical, whether the network is directed
+#' @param loops logical, whether the network contains loops (self-ties)
+#' @param size numeric network size, computed from group sizes by default
 #'
 #' @method as.mixingm table
 #' @rdname as.mixingm
@@ -152,14 +152,13 @@ as_mm_table2d <- function(object, gsizes=NULL,
 
 
 # @details
-# The default S3 method tries to coerce \code{object} to table
-# and call the table method.
+# The default S3 method tries to coerce \code{object} to a table and call the
+# table method.
 #
 # @export
 # @rdname as.mixingm
 # @method as.mixingm default
 as.mixingm.default <- function(object, ...)
 {
-  object <- as.table(object)
-  NextMethod("as.mixingm", object, ...)
+  as.mixingm( as.table(object), ...)
 }

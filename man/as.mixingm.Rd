@@ -14,15 +14,18 @@
 
   \item{...}{other arguments passed to/from other methods}
 
-  \item{full}{}
+  \item{full}{logical, whether to return full 3-dimensional
+  mixing matrix}
 
-  \item{gsizes}{}
+  \item{gsizes}{numerical vector of group sizes}
 
-  \item{directed}{}
+  \item{directed}{logical, whether the network is directed}
 
-  \item{loops}{}
+  \item{loops}{logical, whether the network contains loops
+  (self-ties)}
 
-  \item{size}{}
+  \item{size}{numeric network size, computed from group
+  sizes by default}
 }
 \value{
   An object of S3 class "mixingm" extending class "table".
