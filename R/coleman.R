@@ -1,12 +1,16 @@
-#' Coleman's index of network segregation
+#' Coleman's homophily index
 #'
-#' Colemans's measure for segregation in directed networks.
+#' Colemans's homphily index for directed networks.
 #'
 #' @param object R object, see available methods
 #'
 #' @param ... other arguments
 #'
-#' @return Numeric values of the measure.
+#' @details
+#' Coleman's homophily index computes homophily scores for each group
+#' defined by a vertex attribute.
+#'
+#' @return Vector of numeric values of the index.
 #'
 #' @references
 #' Coleman, J. (1958) "Relational analysis: The study of social organizations
@@ -42,10 +46,36 @@ coleman.igraph <- function(object, vattr, ...)
 }
 
 # method for mixing matrices
+# needs contact-layer and group sizes, so complete 3d mixing matrix
 # TODO probably not tables
-coleman.table <- function(object, ...)
+coleman.mixingm <- function(object, ...)
 {
+  stopifnot(attr(object, "directed"))
+  # take contact layer
   if( length(dim(object)) != 2 )
     m <- object[,,2]
   else m <- object
+  # take group sizes
+  stopifnot(!is.null(attr(object, "group.sizes")))
+  gsizes <- attr(object, "group.sizes")
+  # group outdegrees
+  degsums <- rowSums(m)
+  # expected number of within-group ties for each group
+  ewg <- degsums * (gsizes - 1) / (sum(gsizes) - 1)
+  # rval
+  r <- (diag(m) - ewg) / (degsums - ewg)
+  i <- diag(m) <= ewg
+  repl <- (diag(m) - ewg) / ewg
+  r[i] <- repl[i]
+  structure(as.numeric(r), names=names(gsizes))
+}
+
+# coleman example matrix
+if(FALSE)
+{
+  load_all()
+mat <- matrix(c(45, 20, 15, 20), 2, 2)
+mmat <- as.mixingm(mat, full=TRUE, directed=TRUE, gsizes=c(60, 40))
+# debug(coleman)
+coleman(mmat)
 }

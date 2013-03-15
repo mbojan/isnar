@@ -1,7 +1,7 @@
 \name{coleman}
 \alias{coleman}
 \alias{coleman.igraph}
-\title{Coleman's index of network segregation}
+\title{Coleman's homophily index}
 \usage{
   coleman(object, ...)
 
@@ -15,12 +15,15 @@
   \item{vattr}{character, vertex attribute}
 }
 \value{
-  Numeric values of the measure.
+  Vector of numeric values of the index.
 }
 \description{
-  Colemans's measure for segregation in directed networks.
+  Colemans's homphily index for directed networks.
 }
 \details{
+  Coleman's homophily index computes homophily scores for
+  each group defined by a vertex attribute.
+
   Method for "igraph"
 }
 \examples{
