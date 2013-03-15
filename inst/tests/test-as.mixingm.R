@@ -1,16 +1,26 @@
 context("Coercing tables to mixing matrices with as.mixingm")
 
-# test three dimensional table
-
-test_that("3d mixing matrix for Wnet is properly reconstructed",
+test_that("reconstructing 3d mm from 2d matrix undirected network",
           {
-            m <- mixingm(Wnet, "gender", full=TRUE)
-            r <- as.mixingm(m[,,2], full=TRUE, directed=TRUE)
-            test_true(all( m == r ))
-} )
+            # undirected network (based on Wnet)
+            m <- matrix(c(6, 0, 9, 7), 2, 2)
+            er <- array(c(4, 0, 16, 3, 6, 0, 9, 7), dim=c(2,2,2))
+            r <- as.mixingm(m, gsizes=c(5,5), directed=FALSE, full=TRUE)
+            expect_true(all(r == er))
+          } )
 
-# test two dimensional table
+test_that("reconstructing 3d mm from 2d matrix directed network",
+          {
+            # directed network (based on Wnet)
+            m <- matrix(c(6, 0, 9, 7), 2, 2)
+            er <- array(c(14, 25, 16, 13, 6, 0, 9, 7), dim=c(2,2,2))
+            r <- as.mixingm(m, gsizes=c(5,5), directed=TRUE, full=TRUE)
+            expect_true(all(r == er))
+          } )
 
 
-# context("Coercing arrays and matrices to mixing matrices with as.mixingm")
-# 2- and 3-dimensional arrays
+# TODO
+# using as.matrix on
+# 1. mixingm objects
+# 2. igraph networks
+# 3. other objects
