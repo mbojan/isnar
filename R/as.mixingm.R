@@ -27,6 +27,8 @@
 #' network \code{size}, \code{group.sizes}, and whether the network is
 #' \code{directed}.
 #'
+#' @seealso \code{\link{mixingm}}
+#'
 #' @export
 as.mixingm <- function(object, ...) UseMethod("as.mixingm")
 
@@ -149,6 +151,17 @@ as_mm_table2d <- function(object, gsizes=NULL,
     structure(rval, size=size, group.sizes=gsizes, directed=directed,
               class=c("mixingm", "table"))
 }
+
+
+
+
+#' @details
+#' Method for objects of class "igraph" calls \code{\link{mixingm}}.
+#'
+#' @method as.mixingm igraph
+#' @rdname as.mixingm
+#' @export
+as.mixingm.igraph <- function(object, ...) mixingm(object, ...)
 
 
 # @details

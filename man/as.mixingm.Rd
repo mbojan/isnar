@@ -1,5 +1,6 @@
 \name{as.mixingm}
 \alias{as.mixingm}
+\alias{as.mixingm.igraph}
 \alias{as.mixingm.table}
 \title{Coerce to mixing matrix}
 \usage{
@@ -8,6 +9,8 @@
   \method{as.mixingm}{table} (object, full = FALSE,
     gsizes = NULL, directed = TRUE, loops = FALSE,
     size = ifelse(is.null(gsizes), NULL, sum(gsizes)), ...)
+
+  \method{as.mixingm}{igraph} (object, ...)
 }
 \arguments{
   \item{object}{R object}
@@ -80,5 +83,11 @@
   FALSE the function sets the attributes for network size,
   group sizes, and directed/undirected characte of the
   network based on supplied arguments.
+
+  Method for objects of class "igraph" calls
+  \code{\link{mixingm}}.
+}
+\seealso{
+  \code{\link{mixingm}}
 }
 
