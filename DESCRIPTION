@@ -4,8 +4,8 @@ Author: Michal Bojanowski
 Version: 0.0-1
 License: GPL-3
 Title: Companion package to Introduction to Social Network Analysis with R
-Description: Functions and datasets accompanying the book "Introduction to
-    Social Network Analysis with R"
+Description: Functions and datasets accompanying the workshop "Introduction to
+    Social Network Analysis with R" on annual INSNA Sunbelt conferences.
 LazyLoad: yes
 LazyData: yes
 Depends:
