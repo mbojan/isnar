@@ -7,7 +7,7 @@
 
   \method{as.mixingm}{table} (object, full = FALSE,
     gsizes = NULL, directed = TRUE, loops = FALSE,
-    size = ifelse(is.null(gsizes), NULL, sum(gsizes)))
+    size = ifelse(is.null(gsizes), NULL, sum(gsizes)), ...)
 }
 \arguments{
   \item{object}{R object}
