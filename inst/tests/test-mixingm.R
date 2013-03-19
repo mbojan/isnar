@@ -1,21 +1,33 @@
-context("Mixing matrices")
+context("Creating mixing matrices")
 
-test_that("Created mixing matrix is of proper class", {
-          m2 <- mixingm(Wnet, "gender")
-          m3 <- mixingm(Wnet, "gender", full=TRUE)
-          expect_equal( class(m2), c("mixingm", "table"))
-          expect_equal( class(m3), c("mixingm", "table"))
-} )
-
-
-
-
-context("Created mixing matrices have proper attributes")
-
-test_that("2d mixing matrix for White data has all attributes",
+test_that("creating 2d undirected mm from matrix sets proper attributes",
           {
-            m <- mixingm(Wnet, "gender", full=FALSE)
-            expect_equal( as.numeric(attr(m, "group.sizes")), c(5,5))
-            expect_equal( attr(m, "size"), 10 )
-            expect_equal( attr(m, "directed"), FALSE)
+            # undirected network (based on Wnet)
+            x <- matrix(c(6, 0, 9, 7), 2, 2)
+            m <- mixingm(x, directed=FALSE, foldit=FALSE, gsizes=c(5,5))
+            expect_equal(as.numeric(x), as.numeric(m))
+            expect_false(attr(m, "directed"))
+            expect_equal(attr(m, "size"), 10)
+            expect_equal(attr(m, "gsizes"), c(5,5))
           } )
+
+test_that("folding 2d matrix for undirected network works",
+          {
+            x <- matrix(c(6, 4, 5, 7), 2, 2)
+            m <- mixingm(x, directed=FALSE, foldit=TRUE, gsizes=c(5,5))
+            xfolded <- matrix(c(6, 0, 9, 7), 2, 2)
+            expect_equal(as.numeric(xfolded), as.numeric(m))
+          } )
+
+test_that("folding 3d matrix for undirected networks works",
+          {
+            # unfolded contact- and non-contact layers
+            cl <- matrix(c(6, 4, 5, 7), 2, 2)
+            ncl <- matrix(c(4, 10, 6, 3), 2, 2)
+            a <- array( c(ncl, cl), dim=c(2,2,2))
+            m <- mixingm(a, directed=FALSE, foldit=TRUE, gsizes=c(5,5))
+            # expected result
+            er <- array(c(4, 0, 16, 3, 6, 0, 9, 7), dim=c(2,2,2))
+            expect_equal( as.numeric(m), as.numeric(er))
+          } )
+
