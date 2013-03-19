@@ -69,13 +69,3 @@ coleman.mixingm <- function(object, ...)
   r[i] <- repl[i]
   structure(as.numeric(r), names=names(gsizes))
 }
-
-# coleman example matrix
-if(FALSE)
-{
-  load_all()
-mat <- matrix(c(45, 20, 15, 20), 2, 2)
-mmat <- as.mixingm(mat, full=TRUE, directed=TRUE, gsizes=c(60, 40))
-# debug(coleman)
-coleman(mmat)
-}
