@@ -37,10 +37,10 @@ assort <- function(g, ...) UseMethod("assort")
 #' alter respectively. Layers t=1 and t=2 are assumed to be contact and
 #' noncontact layers respectively.
 #'
-#' @method assort table
+#' @method assort mixingm
 #' @export
 #' @rdname assort
-assort.table <- function(g, ...)
+assort.mixingm <- function(g, ...)
 {
   if( length(dim(g)) != 2 )
     m <- g[,,2]
@@ -65,7 +65,7 @@ assort.igraph <- function(g, vattr, ...)
 {
     # missing matrix
     g <- mixingm(g, vattr)
-    NextMethod("assort")
+    NextMethod("assort", ...)
 }
 
 #' @details Any other objects passed as \code{g} are coerced to a table and the
@@ -76,6 +76,6 @@ assort.igraph <- function(g, vattr, ...)
 #' @rdname assort
 assort.default <- function(g, ...)
 {
-  g <- as.table(g)
-  assort.table(g, ...)
+  m <- as.mixingm(g)
+  assort.mixingm(m, ...)
 }
