@@ -67,8 +67,7 @@ as.mixingm <- function(object, ...) UseMethod("as.mixingm")
 #' @rdname as.mixingm
 #' @export
 as.mixingm.table <- function(object, full=FALSE, gsizes=NULL, directed=TRUE,
-                             loops=FALSE,
-                             size=ifelse(is.null(gsizes), NULL, sum(gsizes)), ...)
+                             loops=FALSE, size=NULL)
 {
   ndim <- length(dim(object))
   stopifnot(ndim %in% 2:3)
@@ -85,7 +84,9 @@ as.mixingm.table <- function(object, full=FALSE, gsizes=NULL, directed=TRUE,
 # three dimensional table
 as_mm_table3d <- function(object, directed=TRUE, loops=FALSE)
 {
+  # get ego-alter margin
   eamargin <- apply(object, 1:2, sum)
+  # compute group sizes
   if(directed)
   {
     if(loops)
@@ -106,13 +107,15 @@ as_mm_table3d <- function(object, directed=TRUE, loops=FALSE)
 
 
 # two-dimensional table
-as_mm_table2d <- function(object, gsizes=NULL,
-                      size=ifelse(is.null(gsizes), NULL, sum(gsizes)),
-                      full=FALSE, directed=TRUE, loops=FALSE)
+as_mm_table2d <- function(object, gsizes=NULL, size=NULL, full=FALSE,
+                          directed=TRUE, loops=FALSE)
 {
+  # if 'full', reconstruct non-contact layer
   if(full)
   {
+    # we need group sizes
     stopifnot(!is.null(gsizes))
+    if(is.null(size)) size <- sum(gsizes)
     # compute ego-alter margin 'mar'
     o <- outer(gsizes, gsizes, "*")
     if(directed)
