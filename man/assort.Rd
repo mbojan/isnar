@@ -2,12 +2,12 @@
 \alias{assort}
 \alias{assort.default}
 \alias{assort.igraph}
-\alias{assort.table}
+\alias{assort.mixingm}
 \title{Assortativity Coefficient}
 \usage{
   assort(g, ...)
 
-  \method{assort}{table} (g, ...)
+  \method{assort}{mixingm} (g, ...)
 
   \method{assort}{igraph} (g, vattr, ...)
 

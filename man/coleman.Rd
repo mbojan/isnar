@@ -41,9 +41,9 @@ coleman( as.directed(EFnet, "mutual"), "type")
 \seealso{
   Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
-  \code{\link{assort.igraph}}, \code{\link{assort.table}},
-  \code{\link{ei}}, \code{\link{freeman}},
-  \code{\link{gamix}}, \code{\link{moody}},
-  \code{\link{smi}}, \code{\link{ssi}}
+  \code{\link{assort.igraph}},
+  \code{\link{assort.mixingm}}, \code{\link{ei}},
+  \code{\link{freeman}}, \code{\link{gamix}},
+  \code{\link{moody}}, \code{\link{smi}}, \code{\link{ssi}}
 }
 

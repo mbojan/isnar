@@ -79,10 +79,11 @@ freeman(Wnet, "gender", more=TRUE)
 \seealso{
   Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
-  \code{\link{assort.igraph}}, \code{\link{assort.table}},
-  \code{\link{coleman}}, \code{\link{coleman.igraph}},
-  \code{\link{ei}}, \code{\link{gamix}},
-  \code{\link{moody}}, \code{\link{smi}}, \code{\link{ssi}}
+  \code{\link{assort.igraph}},
+  \code{\link{assort.mixingm}}, \code{\link{coleman}},
+  \code{\link{coleman.igraph}}, \code{\link{ei}},
+  \code{\link{gamix}}, \code{\link{moody}},
+  \code{\link{smi}}, \code{\link{ssi}}
 }
 \keyword{graphs}
 

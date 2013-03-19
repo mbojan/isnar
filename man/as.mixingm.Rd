@@ -8,12 +8,14 @@
 
   \method{as.mixingm}{table} (object, full = FALSE,
     gsizes = NULL, directed = TRUE, loops = FALSE,
-    size = ifelse(is.null(gsizes), NULL, sum(gsizes)), ...)
+    size = NULL)
 
-  \method{as.mixingm}{igraph} (object, ...)
+  \method{as.mixingm}{igraph} (object, vattr, full = FALSE,
+    loops = any(is.loop(object)), ...)
 }
 \arguments{
-  \item{object}{R object}
+  \item{object}{R object, see Details for available
+  methods}
 
   \item{...}{other arguments passed to/from other methods}
 
@@ -29,38 +31,32 @@
 
   \item{size}{numeric network size, computed from group
   sizes by default}
+
+  \item{vattr}{character scalar or vector of length equal
+  to the size of \code{g}, vertex attribute for which
+  mixing matrix is to be computed}
+
+  \item{full}{logical, should a three-dimensional mixing
+  array be returned instead of only the contact layer}
+
+  \item{loops}{logical, are loops (self edges) admissible
+  in \code{g}, defaults to the presence of loops in
+  \code{g}}
 }
 \value{
   An object of S3 class "mixingm" extending class "table".
-  If \code{full} is \code{FALSE}, the default, a
-  two-dimensional square table with cross-classification of
-  network ties. If \code{full} is \code{TRUE}, a three
-  dimensional table with dimensions "ego", "alter", and
-  "tie".
-
-  For undirected network the matrix is folded onto the
-  upper triangle (entries in lower triangle are 0).
 
   There are additional attributes storing extra information
-  about the network: network \code{size},
-  \code{group.sizes}, and whether the network is
-  \code{directed}.
+  about the network: network \code{size}, \code{gsizes},
+  and whether the network is \code{directed}.
 }
 \description{
-  Functions checking if object is a mixing matrix, or
-  coerce it if possible.
+  Functions for creating mixing matrices from other
+  objects.
 }
 \details{
-  Mixing matrix is, traditionaly, a two-dimensional
-  cross-classification of network ties depeding on the
-  values of given vertex attribute of tie sender and tie
-  receiver. A full mixing matrix is a three-dimensional
-  array which cross-classifies \emph{all} network
-  \emph{dyads} depending on the values of the attribute for
-  tie sender and tie reciever, and whether the dyad is
-  connected or not. The two-dimensional version is a
-  so-called "contact layer" of the three-dimensional mixing
-  matrix.
+  Consult \code{\link{mixingm}} for more information on
+  mixing matrices.
 
   If \code{object} is of class "table" it is expected to be
   either a two-dimensional contact layer of the mixing
@@ -84,8 +80,31 @@
   group sizes, and directed/undirected characte of the
   network based on supplied arguments.
 
-  Method for objects of class "igraph" calls
-  \code{\link{mixingm}}.
+  In the method for "igraph" objects: \itemize{ \item Be
+  default, when \code{full} is \code{FALSE} the
+  two-dimesional version is computed.
+
+  \item If \code{vattr} is a character scalar it is
+  interpreted as a name of the vertex attribute in
+  \code{g}. Otherwise it can be a vector of length equal to
+  \code{vcount(g)} containing the attribute.
+
+  \item If the \code{full} is \code{TRUE} then \code{loops}
+  determines whether to take loops into account when
+  calculating the number of dyads in \code{g}. }
+}
+\examples{
+# some directed network
+net <- graph(c(1,2, 1,3, 2,3,  4,5,  1,4, 1,5, 4,2, 5,3))
+V(net)$type <- c(1,1,1, 2,2)
+
+as.mixingm(net, "type")
+as.mixingm(net, "type", full=TRUE)
+
+# as undirected
+as.mixingm( as.undirected(net), "type")
+as.mixingm(net, "type")
+as.mixingm(net, "type", full=TRUE)
 }
 \seealso{
   \code{\link{mixingm}}
