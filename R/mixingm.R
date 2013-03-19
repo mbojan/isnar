@@ -5,117 +5,67 @@
 #'
 #' Mixing matrix is, traditionaly, a two-dimensional cross-classification of
 #' network ties depeding on the values of given vertex attribute of tie sender
-#' and tie receiver. A full mixing matrix is a three-dimensional array which
-#' cross-classifies \emph{all} network \emph{dyads} depending on the values of
-#' the attribute for tie sender and tie reciever, and whether the dyad is
-#' connected or not. The two-dimensional version is a so-called "contact layer"
-#' of the three-dimensional version.
+#' (or "ego") and tie receiver (or "alter"). A full mixing matrix is a
+#' three-dimensional array that cross-classifies \emph{all} network
+#' \emph{dyads} depending on the values of the attribute for tie sender, tie
+#' reciever, and whether the dyad is connected or not. The two-dimensional
+#' version is a so-called "contact layer" of the three-dimensional version.
 #'
 #'
-#' @param object R object
+#' @param x numeric square (say \eqn{n*n}{n \times n} matrix or array with
+#' \code{dim=c(n, n, 2)}
 #'
-#' @param ... other arguments passed to/from other methods
+#' @param gsizes numerical vector of group sizes
+#' @param directed logical, whether the network is directed
+#' @param loops logical, whether the network contains loops (self-ties)
+#' @param size numeric network size, computed from group sizes by default
+#' @param foldit logical, whether mixingm matrix for undirected networks should
+#' be folded
 #'
 #' @return
-#' An object of class "mixingm" extending class "table" (S3).  If \code{full}
-#' is \code{FALSE}, the default, a two-dimensional square table with
-#' cross-classification of network ties. If \code{full} is \code{TRUE}, a three
-#' dimensional table with dimensions "ego", "alter", and "tie".
+#' An object of S3 class "mixingm" extending class "table".
 #'
-#' For undirected network the matrix is folded onto the upper triangle (entries
-#' in lower triangle are 0).
+#' For undirected network and if \code{foldit} is TRUE (default), the matrix is
+#' folded onto the upper triangle (entries in lower triangle are 0).
 #'
 #' @example examples/mixingm.R
 #' @export
-mixingm <- function(object, ...) UseMethod("mixingm")
-
-
-#' @details In the method for "igraph" objects:
-#' \itemize{
-#' \item Be default, when \code{full} is \code{FALSE} the two-dimesional
-#' version is computed.
-#'
-#' \item If \code{vattr} is a character scalar it is interpreted as a name of
-#' the vertex attribute in \code{g}. Otherwise it can be a vector of length
-#' equal to \code{vcount(g)} containing the attribute.
-#'
-#' \item If the \code{full} is \code{TRUE} then \code{loops} determines whether
-#' to take loops into account when calculating the number of dyads in \code{g}.
-#' }
-#'
-#' @param vattr  character scalar or vector of length equal to the size of
-#' \code{g}, vertex attribute for which mixing matrix is to be computed
-#'
-#' @param full logical, should a three-dimensional mixing array be returned
-#' instead of only the contact layer
-#'
-#' @param loops logical, are loops (self edges) admissible in \code{g},
-#' defaults to the presence of loops in \code{g}
-#'
-#' @method mixingm igraph
-#' @rdname mixingm
-#' @export
-mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(object)), ...)
+mixingm <- function(x, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
+                    foldit=TRUE)
 {
-    # get attribute
-    if(is.character(vattr) & length(vattr) == 1)
+  stopifnot(is.array(x))
+  # check for proper dimensionality of 'x'
+  dims <- dim(x)
+  stopifnot( length(dims) %in% 2:3 )
+  stopifnot( dims[1] == dims[2] )
+  if(length(dims) == 3) stopifnot(dims[3] == 2)
+  d3 <- length(dims) == 3
+  # other arguments
+  stopifnot( length(gsizes) == dims[1] )
+  if(!is.null(gsizes)) size <- sum(gsizes)
+  # TODO check if 'x' can be mixing matrix
+  # If undirected, fold onto upper triangle
+  if( !directed && foldit )
+  {
+    if(d3)
     {
-        a <- igraph::get.vertex.attribute(object, vattr)
+      mat <- apply(x, 3, fold, direction="upper")
     } else
     {
-        stopifnot( length(vattr) == vcount(object) )
-        a <- vattr
+      mat <- fold(x, direction="upper")
     }
-    # contact layer based on edgelist
-    el <- igraph::get.edgelist(object, names=FALSE)
-    u <- sort(unique(a))
-    ego <- factor(a[ el[,1] ], levels=u)
-    alter <- factor(a[ el[,2] ], levels=u)
-    con <- table(ego=ego, alter=alter)
-    # fold for undirected
-    if(!igraph::is.directed(object))
-        con <- fold(con, ...)
-    # return contact layer if not full
-    if(!full)
-    {
-      rval <- con
-      attr(rval, "size") <- vcount(object)
-      attr(rval, "group.sizes") <- table(a, dnn=NULL)
-      attr(rval, "directed") <- is.directed(object)
-      class(rval) <- c("mixingm", "table")
-      return(rval)
-    }
-    # ego-alter margin
-    sums <- table(a)
-    o <- outer(sums, sums, "*")
-    if(igraph::is.directed(object))
-    {
-        mar <- o
-        if(!loops)
-        {
-            diag(mar) <- diag(o) - sums
-        }
-    } else {
-            mar <- o
-            mar[ lower.tri(mar) ] <- 0
-        if(loops)
-        {
-            diag(mar) <- (diag(o) + sums) / 2
-        } else {
-            diag(mar) <- (diag(o) - sums) / 2
-        }
-    }
-    # build the result
-    rval <- array(NA, dim=c(length(u), length(u), 2))
-    dimnames(rval) <- list(ego=u, alter=u, tie=c(FALSE, TRUE))
-    rval[,,2] <- con
-    rval[,,1] <- mar - con
-    attr(rval, "size") <- vcount(object)
-    attr(rval, "group.sizes") <- table(a, dnn=NULL)
-    attr(rval, "directed") <- is.directed(object)
-    class(rval) <- c("mixingm", "table")
-    rval
+  }
+  r <- as.table(mat)
+  structure( r,
+            dimnames=dimnames(r),
+            directed=directed,
+            loops=loops,
+            gsizes=gsizes,
+            size=size,
+            class=c("mixingm", "table")
+            )
 }
+
 
 #' @param x object of class "mixingm"
 #'
@@ -128,7 +78,7 @@ print.mixingm <- function(x, ...)
   cat("Mixing matrix\n")
   cat("Is directed:", attr(x, "directed"), "\n")
   cat("Network size:", attr(x, "size"), "\n")
-  tab <- attr(x, "group.sizes")
+  tab <- attr(x, "gsizes")
   cat("Group sizes:\n")
   print(tab)
   print(z)
