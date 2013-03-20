@@ -87,7 +87,8 @@ plot(x, y, type="o",
 }
 \seealso{
   Other segregation.measures: \code{\link{coleman}},
-  \code{\link{coleman.igraph}}, \code{\link{ei}},
+  \code{\link{coleman.igraph}},
+  \code{\link{coleman.mixingm}}, \code{\link{ei}},
   \code{\link{freeman}}, \code{\link{gamix}},
   \code{\link{moody}}, \code{\link{smi}}, \code{\link{ssi}}
 }

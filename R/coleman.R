@@ -21,35 +21,22 @@
 #' @family segregation measures
 coleman <- function(object, ...) UseMethod("coleman")
 
-#' @details Method for "igraph"
-#' @param vattr character, vertex attribute
-#' @method coleman igraph
+
+
+
+
+
+
+#' @details
+#' \code{object} can be a mixing matrix as returned by \code{\link{mixingm}} or
+#' \code{\link{as.mixingm}}.
+#'
+#' @method coleman mixingm
 #' @export
 #' @rdname coleman
-coleman.igraph <- function(object, vattr, ...)
-{
-  stopifnot(inherits(object, "igraph"))
-  stopifnot(is.directed(object))
-  m <- as.mixingm(object, vattr, full=TRUE)
-  # group out-degrees
-  degsums <- rowSums(m[,,2])
-  # group sizes
-  gsizes <- table(igraph::get.vertex.attribute(object, vattr))
-  # expected number of within-group ties for each group
-  ewg <- degsums * (gsizes - 1) / (vcount(object) - 1)
-  # rval
-  r <- (diag(m[,,2]) - ewg) / (degsums - ewg)
-  i <- diag(m[,,2]) <= ewg
-  repl <- (diag(m[,,2]) - ewg) / ewg
-  r[i] <- repl[i]
-  structure(as.numeric(r), names=names(gsizes))
-}
-
-# method for mixing matrices
-# needs contact-layer and group sizes, so complete 3d mixing matrix
-# TODO probably not tables
 coleman.mixingm <- function(object, ...)
 {
+  # only for directed networks
   stopifnot(attr(object, "directed"))
   # take contact layer
   if( length(dim(object)) != 2 )
@@ -69,3 +56,19 @@ coleman.mixingm <- function(object, ...)
   r[i] <- repl[i]
   structure(as.numeric(r), names=names(gsizes))
 }
+
+
+
+#' @details
+#' \code{object} can be of class "igraph"
+#' @param vattr character, vertex attribute
+#' @method coleman igraph
+#' @export
+#' @rdname coleman
+coleman.igraph <- function(object, vattr, ...)
+{
+  stopifnot(is.directed(object))
+  object <- as.mixingm(object, vattr, full=TRUE)
+  coleman(object, ...)
+}
+

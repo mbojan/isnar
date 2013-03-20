@@ -80,7 +80,8 @@ legend( "topleft", legend=c("Men", "Women"), pch=c(0,1), col=1)
   \code{\link{assort.default}},
   \code{\link{assort.igraph}},
   \code{\link{assort.mixingm}}, \code{\link{coleman}},
-  \code{\link{coleman.igraph}}, \code{\link{ei}},
+  \code{\link{coleman.igraph}},
+  \code{\link{coleman.mixingm}}, \code{\link{ei}},
   \code{\link{freeman}}, \code{\link{gamix}},
   \code{\link{moody}}, \code{\link{smi}}
 }

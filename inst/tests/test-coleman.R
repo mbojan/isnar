@@ -1,11 +1,15 @@
 context("Coleman homophily index")
 
-test_that("Coleman index works for Hnatiuk data", {
-          library(igraph)
-          g <- graph( c(0,1, 1,2, 2,3, 3,4, 4,5, 5,6, 6,7, 7,8, 8,9, 9,0 ) + 1, directed=TRUE)
-          V(g)$a <- c(1,1, 2,2, 3,3,3,3,3,3)
-          coleman(g, "a")
-} )
+test_that("Coleman index works for directed ring network",
+          {
+            library(igraph)
+            s <- rep(1:6, each=2)
+            g <- graph( s[ c(2:length(s), 1) ], directed=TRUE)
+            V(g)$color <- rep( seq(1, vcount(g)/2), each=2)
+            res <- coleman(g, vattr="color")
+            eres <- structure(rep(0.375, 3), names=1:3)
+            expect_equal( res, eres)
+          } )
 
 test_that("Coleman index gives correct results for his example data",
           {

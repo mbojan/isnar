@@ -30,7 +30,8 @@ ei(Wnet, "gender")
   \code{\link{assort.default}},
   \code{\link{assort.igraph}},
   \code{\link{assort.mixingm}}, \code{\link{coleman}},
-  \code{\link{coleman.igraph}}, \code{\link{freeman}},
+  \code{\link{coleman.igraph}},
+  \code{\link{coleman.mixingm}}, \code{\link{freeman}},
   \code{\link{gamix}}, \code{\link{moody}},
   \code{\link{smi}}, \code{\link{ssi}}
 }

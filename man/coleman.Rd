@@ -1,9 +1,12 @@
 \name{coleman}
 \alias{coleman}
 \alias{coleman.igraph}
+\alias{coleman.mixingm}
 \title{Coleman's homophily index}
 \usage{
   coleman(object, ...)
+
+  \method{coleman}{mixingm} (object, ...)
 
   \method{coleman}{igraph} (object, vattr, ...)
 }
@@ -24,7 +27,10 @@
   Coleman's homophily index computes homophily scores for
   each group defined by a vertex attribute.
 
-  Method for "igraph"
+  \code{object} can be a mixing matrix as returned by
+  \code{\link{mixingm}} or \code{\link{as.mixingm}}.
+
+  \code{object} can be of class "igraph"
 }
 \examples{
 data(Wnet)
