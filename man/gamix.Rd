@@ -43,7 +43,8 @@ gamix(EFnet, "type")
   \code{\link{assort.mixingm}}, \code{\link{coleman}},
   \code{\link{coleman.igraph}},
   \code{\link{coleman.mixingm}}, \code{\link{ei}},
-  \code{\link{freeman}}, \code{\link{moody}},
+  \code{\link{freeman}}, \code{\link{freeman.igraph}},
+  \code{\link{freeman.mixingm}}, \code{\link{moody}},
   \code{\link{smi}}, \code{\link{ssi}}
 }
 

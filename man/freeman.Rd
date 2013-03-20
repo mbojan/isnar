@@ -1,48 +1,54 @@
 \name{freeman}
 \alias{freeman}
+\alias{freeman.igraph}
+\alias{freeman.mixingm}
 \title{Generalized Freeman's segregation index}
 \usage{
-  freeman(g, vattr, dis = NULL, more = FALSE)
+  freeman(object, ...)
+
+  \method{freeman}{mixingm} (object,
+    dis = attr(object, "gsizes"), more = FALSE, ...)
+
+  \method{freeman}{igraph} (object, vattr, dis = NULL, ...)
 }
 \arguments{
-  \item{g}{object of class "igraph" representing the
-  network}
+  \item{object}{R object, see Details for available
+  methods}
 
-  \item{vattr}{name of vertex attribute in \code{g}}
+  \item{...}{other arguments passed to/from other methods}
 
   \item{dis}{numeric, optional true distribution of types,
   see Details}
 
   \item{more}{logical, should some more output be returned}
+
+  \item{vattr}{character scalar or any vector of length
+  equal to \code{vcount(object)}, name of the vertex
+  attribute in \code{object} designating the groups or a
+  vector with the attribute itself}
 }
 \value{
   The value of the Freeman's index.
 
-  If \code{more} is \code{TRUE} some intermediate results
-  returned in a list.
+  If \code{more} is \code{TRUE}, some intermediate results
+  are returned in a list.
 }
 \description{
-  Calculate generalized Freeman's segregation index for
-  undirected netoworks with arbitrary number of groups.
+  Calculate Freeman's segregation index for undirected
+  netoworks with arbitrary number of groups.
 }
 \details{
   Freeman's segregation index (Freeman, 1978) is designed
-  to capture the extent to which the defined types of
+  to capture the extent to which the defined groups of
   vertices tend to have more edges with vertices from the
-  same type than with other types (segregation).  Formally,
-  the index compares the number of edges in the specified
-  graph that connect vertices of different type to the
-  number of ``inter-type'' edges that would be expected
-  under pure random graph. High values indicate that there
-  one would expect much more inter-type edges if they are
-  to be created without considering the type of vertices,
-  suggesting high segregation. Low values indicate that
-  lower segregation. Especially, the index is 0 for the
-  full graph (all possible edges are present).
+  same group than with other groups.  Formally, the index
+  compares the observed number of between-group ties with
+  the number of between-group ties that would be expected
+  if ties would be created randomly.
 
-  The index has some discontinuity as there are graph and
-  type configurations that are characterized by the higher
-  number of inter-type edges that is expected under a
+  The index has some discontinuity as there are network and
+  group configurations that are characterized by the higher
+  number of between-group ties that is expected under a
   random graph. The index is truncates these situations and
   takes a value of 0.
 
@@ -52,8 +58,6 @@
   the expected number of inter-type edges under pure random
   graph is calculated.
 
-  About the function itself:
-
   The function internally calculates the frequency of types
   of vertices in the supplied attributer \code{vattr}.
   However, it is possible to override this by specifying
@@ -62,6 +66,10 @@
   or a numeric vector with frequencies of types of
   vertices. This may be especially usefull when dealing
   with large graphs with larger number of isolates.
+
+  Method for mixing matrices
+
+  Method for "igraph"s
 }
 \examples{
 ## White's data from Freeman's article
