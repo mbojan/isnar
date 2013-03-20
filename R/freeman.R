@@ -55,6 +55,7 @@ freeman <- function(object, ...) UseMethod("freeman")
 #' @param more logical, should some more output be returned
 #'
 #' @method freeman mixingm
+#' @export
 #' @rdname freeman
 freeman.mixingm <- function(object, dis=attr(object, "gsizes"), more=FALSE, ...)
 {
@@ -92,6 +93,7 @@ freeman.mixingm <- function(object, dis=attr(object, "gsizes"), more=FALSE, ...)
 #' designating the groups or a vector with the attribute itself
 #'
 #' @method freeman igraph
+#' @export
 #' @rdname freeman
 freeman.igraph <- function(object, vattr, dis=NULL, ...)
 {
