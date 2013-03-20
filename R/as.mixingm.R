@@ -69,6 +69,7 @@ as.mixingm.table <- function(object, full=FALSE, gsizes=NULL, directed=TRUE,
   stopifnot(ndim %in% 2:3)
   if(ndim == 3)
   {
+    # calculate groups sizes
     as_mm_table3d(object, directed=directed, loops=loops)
   } else
   {
@@ -96,7 +97,7 @@ as_mm_table3d <- function(object, directed, loops)
   {
     gsizes <- 0.5 * (1 + sqrt(1 + 8*diag(eamargin)))
   }
-  mixingm(object, directed=directed, size=sum(gsizes), gsizess=gsizes)
+  mixingm(object, directed=directed, size=sum(gsizes), gsizes=gsizes)
 }
 
 
@@ -146,8 +147,7 @@ as_mm_table2d <- function(object, gsizes=NULL, size=NULL, full=FALSE,
   {
     rval <- object
   }
-    structure(rval, size=size, group.sizes=gsizes, directed=directed,
-              class=c("mixingm", "table"))
+  mixingm(rval, directed=directed, gsizes=gsizes, size=size)
 }
 
 
