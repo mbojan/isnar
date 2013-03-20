@@ -56,8 +56,8 @@ coleman.mixingm <- function(object, ...)
     m <- object[,,2]
   else m <- object
   # take group sizes
-  stopifnot(!is.null(attr(object, "group.sizes")))
-  gsizes <- attr(object, "group.sizes")
+  stopifnot(!is.null(attr(object, "gsizes")))
+  gsizes <- attr(object, "gsizes")
   # group outdegrees
   degsums <- rowSums(m)
   # expected number of within-group ties for each group
