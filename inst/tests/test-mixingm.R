@@ -1,10 +1,20 @@
 context("Creating mixing matrices")
 
-test_that("creating 2d undirected mm from matrix sets proper attributes",
+test_that("creating 2d undirected mm sets proper attributes",
           {
             # undirected network (based on Wnet)
             x <- matrix(c(6, 0, 9, 7), 2, 2)
             m <- mixingm(x, directed=FALSE, foldit=FALSE, gsizes=c(5,5))
+            expect_equal(as.numeric(x), as.numeric(m))
+            expect_false(attr(m, "directed"))
+            expect_equal(attr(m, "size"), 10)
+            expect_equal(attr(m, "gsizes"), c(5,5))
+          } )
+
+test_that("creating 3d undirected mm sets proper attributes",
+          {
+            x <- array(c(4, 0, 16, 3, 6, 0, 9, 7), dim=c(2,2,2))
+            m <- mixingm(x, directed=FALSE, fold=FALSE, gsizes=c(5,5))
             expect_equal(as.numeric(x), as.numeric(m))
             expect_false(attr(m, "directed"))
             expect_equal(attr(m, "size"), 10)
