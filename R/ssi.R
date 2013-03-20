@@ -41,16 +41,16 @@ ssi <- function(g, vattr)
     V(gg)$id <- V(g)
     # add edge weights, these are "directed"
     l <- get.adjedgelist(gg, mode="out")
-    ll <- lapply(l, function(x) structure( rep(1/length(x), length(x)), names=x) )
-    ul <- unlist(ll)
-    E(gg)$weight <- ul[ order( as.numeric(names(ul)) ) ]
-    rm(l, ll, ul) # clean-up
+    degs <- degree(gg, mode="out")
+    for(i in seq(1, vcount(gg)))
+      E(gg)[from(i)]$weight <- 1/degs[i]
+    # get vertex attribute
     a <- get.vertex.attribute(gg, vattr)
     l <- unlist(lapply(unique(a), function(val) ssib(g=gg, vattr=vattr, b=val)))
     l[ order(as.numeric(names(l))) ]
 }
 
-
+# computation for nodes vattr=b
 ssib <- function(g, vattr, b)
 {
     # take subgraph of b-nodes
