@@ -199,44 +199,23 @@ as.mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(objec
     if(!igraph::is.directed(object))
         con <- fold(con, ...)
     # return contact layer if not full
+    conmix <- mixingm(con,
+              directed=is.directed(object),
+              gsizes=table(a, dnn=NULL),
+              size=vcount(object)
+              )
     if(!full)
     {
-      rval <- con
-      attr(rval, "size") <- vcount(object)
-      attr(rval, "group.sizes") <- table(a, dnn=NULL)
-      attr(rval, "directed") <- is.directed(object)
-      class(rval) <- c("mixingm", "table")
-      return(rval)
-    }
-    # ego-alter margin
-    sums <- table(a)
-    o <- outer(sums, sums, "*")
-    if(igraph::is.directed(object))
+      return(conmix)
+    } else
     {
-        mar <- o
-        if(!loops)
-        {
-            diag(mar) <- diag(o) - sums
-        }
-    } else {
-            mar <- o
-            mar[ lower.tri(mar) ] <- 0
-        if(loops)
-        {
-            diag(mar) <- (diag(o) + sums) / 2
-        } else {
-            diag(mar) <- (diag(o) - sums) / 2
-        }
+      as.mixingm( conmix,
+                 directed=attr(conmix, "directed"),
+                 gsizes=attr(conmix, "gsizes"),
+                 size=attr(conmix, "size"),
+                 loops=loops,
+                 full=TRUE)
     }
-    # build the result
-    rval <- array(NA, dim=c(length(u), length(u), 2))
-    dimnames(rval) <- list(ego=u, alter=u, tie=c(FALSE, TRUE))
-    rval[,,2] <- con
-    rval[,,1] <- mar - con
-    mixingm(rval,
-            gsizes=table(a, dnn=NULL),
-            size=vcount(object),
-            directed=is.directed(object) )
 }
 
 
