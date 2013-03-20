@@ -11,12 +11,9 @@
 #' between-group denisty, so varie between 0 and infinity. The normalized
 #' version varies between 0 and 1.
 #'
-#' @param g object of class "igraph", the network
+#' @param object R object, see Details for available methods
 #'
-#' @param vattr character, name of the node attribute designating groups
-#'
-#' @param normalize logical, whether normalized values should be returned,
-#' defaults to \code{TRUE}
+#' @param ... other arguments passed to/from other methods
 #'
 #' @return
 #' Numeric vector of length equal to the number of groups in \code{g} according
@@ -29,17 +26,45 @@
 #' @family segregation measures
 #' @export
 #' @example examples/smi.R
-smi <- function(g, vattr, normalize=TRUE)
+smi <- function(object, ...) UseMethod("smi")
+
+
+#' @details
+#' Method for mixing matrices.
+#'
+#' @param normalize logical, whether normalized values should be returned,
+#' defaults to \code{TRUE}
+#'
+#' @method smi mixingm
+#' @export
+#' @rdname smi
+smi.mixingm <- function(object, normalize=TRUE, ...)
 {
-  stopifnot(is.directed(g))
-  # only for two groups for now
-  if( length(unique(get.vertex.attribute(g, vattr))) > 2 )
-      stop("currently 'smi' supports two groups")
-  # mixing matrix
-  mm <- mixingm(object=g, vattr=vattr, full=TRUE)
-  pmm <- prop.table(mm, c(1,2))
+  # only directed networks
+  stopifnot(attr(object, "directed"))
+  stopifnot(length(dim(object)) == 3)
+  if( dim(object)[1] != 2 )
+      stop("currently 'smi' supports only two groups")
+  pmm <- prop.table(object, c(1,2))
   r <- diag( pmm[,,2] ) / pmm[1,2,2]
   if( normalize )
       return( (r - 1) / (r + 1) )
   else return(r)
+}
+
+
+
+#' @details
+#' Method for igraphs
+#'
+#' @param vattr character, name of the node attribute designating groups
+#'
+#' @method smi igraph
+#' @export
+#' @rdname smi
+smi.igraph <- function(object, vattr, ...)
+{
+  stopifnot(is.directed(object))
+  m <- as.mixingm(object, vattr=vattr, full=TRUE)
+  smi(m, ...)
 }

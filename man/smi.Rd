@@ -1,17 +1,26 @@
 \name{smi}
 \alias{smi}
+\alias{smi.igraph}
+\alias{smi.mixingm}
 \title{Segregation Matrix Index}
 \usage{
-  smi(g, vattr, normalize = TRUE)
+  smi(object, ...)
+
+  \method{smi}{mixingm} (object, normalize = TRUE, ...)
+
+  \method{smi}{igraph} (object, vattr, ...)
 }
 \arguments{
-  \item{g}{object of class "igraph", the network}
+  \item{object}{R object, see Details for available
+  methods}
 
-  \item{vattr}{character, name of the node attribute
-  designating groups}
+  \item{...}{other arguments passed to/from other methods}
 
   \item{normalize}{logical, whether normalized values
   should be returned, defaults to \code{TRUE}}
+
+  \item{vattr}{character, name of the node attribute
+  designating groups}
 }
 \value{
   Numeric vector of length equal to the number of groups in
@@ -33,6 +42,10 @@
   density to the between-group denisty, so varie between 0
   and infinity. The normalized version varies between 0 and
   1.
+
+  Method for mixing matrices.
+
+  Method for igraphs
 }
 \examples{
 data(Wnet)

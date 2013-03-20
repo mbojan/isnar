@@ -86,6 +86,7 @@ legend( "topleft", legend=c("Men", "Women"), pch=c(0,1), col=1)
   \code{\link{freeman}}, \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}, \code{\link{gamix}},
   \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}, \code{\link{smi}}
+  \code{\link{orwg.mixingm}}, \code{\link{smi}},
+  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}}
 }
 

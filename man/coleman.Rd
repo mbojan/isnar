@@ -54,6 +54,7 @@ coleman( as.directed(EFnet, "mutual"), "type")
   \code{\link{freeman.mixingm}}, \code{\link{gamix}},
   \code{\link{orwg}}, \code{\link{orwg.igraph}},
   \code{\link{orwg.mixingm}}, \code{\link{smi}},
+  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}},
   \code{\link{ssi}}
 }
 
