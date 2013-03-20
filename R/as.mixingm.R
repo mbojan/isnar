@@ -233,11 +233,10 @@ as.mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(objec
     dimnames(rval) <- list(ego=u, alter=u, tie=c(FALSE, TRUE))
     rval[,,2] <- con
     rval[,,1] <- mar - con
-    attr(rval, "size") <- vcount(object)
-    attr(rval, "group.sizes") <- table(a, dnn=NULL)
-    attr(rval, "directed") <- is.directed(object)
-    class(rval) <- c("mixingm", "table")
-    rval
+    mixingm(rval,
+            gsizes=table(a, dnn=NULL),
+            size=vcount(object),
+            directed=is.directed(object) )
 }
 
 
