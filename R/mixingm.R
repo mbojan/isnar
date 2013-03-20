@@ -12,7 +12,7 @@
 #' version is a so-called "contact layer" of the three-dimensional version.
 #'
 #'
-#' @param x numeric square (say \eqn{n*n}{n \times n} matrix or array with
+#' @param mat numeric square (say \eqn{n \times n}{n*n}) matrix or array with
 #' \code{dim=c(n, n, 2)}
 #'
 #' @param gsizes numerical vector of group sizes
@@ -29,12 +29,12 @@
 #' folded onto the upper triangle (entries in lower triangle are 0).
 #'
 #' @export
-mixingm <- function(x, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
+mixingm <- function(mat, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
                     foldit=TRUE)
 {
-  stopifnot(is.array(x))
-  # check for proper dimensionality of 'x'
-  dims <- dim(x)
+  stopifnot(is.array(mat))
+  # check for proper dimensionality of 'mat'
+  dims <- dim(mat)
   stopifnot( length(dims) %in% 2:3 )
   stopifnot( dims[1] == dims[2] )
   if(length(dims) == 3) stopifnot(dims[3] == 2)
@@ -42,16 +42,16 @@ mixingm <- function(x, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
   # other arguments
   stopifnot( length(gsizes) == dims[1] )
   if(!is.null(gsizes)) size <- sum(gsizes)
-  # TODO check if 'x' can be mixing matrix
+  # TODO check if 'mat' can be mixing matrix
   # If undirected, fold onto upper triangle
   if( !directed && foldit )
   {
     if(d3)
     {
-      mat <- apply(x, 3, fold, direction="upper")
+      mat <- apply(mat, 3, fold, direction="upper")
     } else
     {
-      mat <- fold(x, direction="upper")
+      mat <- fold(mat, direction="upper")
     }
   }
   r <- as.table(mat)
