@@ -64,7 +64,7 @@ assort.mixingm <- function(g, ...)
 assort.igraph <- function(g, vattr, ...)
 {
   # missing matrix
-  g <- mixingm(g, vattr)
+  g <- as.mixingm(g, vattr)
   assort(g, ...)
 }
 
