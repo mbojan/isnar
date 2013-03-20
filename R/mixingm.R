@@ -48,7 +48,9 @@ mixingm <- function(mat, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
   {
     if(d3)
     {
+      dims <- dim(mat)
       mat <- apply(mat, 3, fold, direction="upper")
+      dim(mat) <- dims
     } else
     {
       mat <- fold(mat, direction="upper")
