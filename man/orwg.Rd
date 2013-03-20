@@ -37,8 +37,7 @@
   Method for igraphs
 }
 \examples{
-data(Wnet)
-moody(Wnet, "gender")
+orwg(Wnet, "gender")
 }
 \references{
   Moody, Jim (2001) "Race, school integration, and

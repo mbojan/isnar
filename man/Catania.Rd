@@ -25,7 +25,7 @@ man        black hispanic white other
 data(Catania)
 
 # assortativity
-ep <- sum(Catania \\\%*\\\% Catania)
+ep <- sum(Catania \%*\% Catania)
 ( sum(diag(Catania)) - ep ) / ( 1 - ep )
 }
 \references{
