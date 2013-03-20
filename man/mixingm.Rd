@@ -3,14 +3,14 @@
 \alias{print.mixingm}
 \title{Network mixing matrix}
 \usage{
-  mixingm(x, gsizes = NULL, directed = TRUE, loops = FALSE,
-    size = NULL, foldit = TRUE)
+  mixingm(mat, gsizes = NULL, directed = TRUE,
+    loops = FALSE, size = NULL, foldit = TRUE)
 
   \method{print}{mixingm} (x, ...)
 }
 \arguments{
-  \item{x}{numeric square (say \eqn{n*n}{n \times n} matrix
-  or array with \code{dim=c(n, n, 2)}}
+  \item{mat}{numeric square (say \eqn{n \times n}{n*n})
+  matrix or array with \code{dim=c(n, n, 2)}}
 
   \item{gsizes}{numerical vector of group sizes}
 
