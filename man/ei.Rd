@@ -46,6 +46,8 @@ ei(Wnet, "gender")
   \code{\link{coleman.mixingm}}, \code{\link{freeman}},
   \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}, \code{\link{gamix}},
-  \code{\link{moody}}, \code{\link{smi}}, \code{\link{ssi}}
+  \code{\link{orwg}}, \code{\link{orwg.igraph}},
+  \code{\link{orwg.mixingm}}, \code{\link{smi}},
+  \code{\link{ssi}}
 }
 

@@ -1,26 +1,40 @@
-\name{moody}
-\alias{moody}
-\title{Odds ratio within-group tie existence}
+\name{orwg}
+\alias{orwg}
+\alias{orwg.igraph}
+\alias{orwg.mixingm}
+\title{Odds ratio of existence of within-group ties}
 \usage{
-  moody(g, vattr)
+  orwg(object, ...)
+
+  \method{orwg}{mixingm} (object, ...)
+
+  \method{orwg}{igraph} (object, vattr, ...)
 }
 \arguments{
-  \item{g}{object of class "igraph", the network}
+  \item{object}{R object, see Details for available
+  methods}
 
-  \item{vattr}{character, name of the vertex attribute}
+  \item{...}{other arguments passed to/from other methods}
+
+  \item{vattr}{character scalar or any vector, name of the
+  vertex attribute or the attribute itself (as a vector)}
 }
 \value{
   Numeric value of the measure.
 }
 \description{
   Odds ratio for connected, as opposed to disconnected,
-  dyads depedning whether it is between or within-group,
+  dyads depending whether it is between- or within-group,
   i.e. how much more likely the dyad will be connected if
   it is within-group.
 }
 \details{
   The measure takes values, like all odds ratios, from (0;
   Inf).
+
+  Method for mixing matrices.
+
+  Method for igraphs
 }
 \examples{
 data(Wnet)
