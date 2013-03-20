@@ -63,7 +63,7 @@ as.mixingm <- function(object, ...) UseMethod("as.mixingm")
 #' @rdname as.mixingm
 #' @export
 as.mixingm.table <- function(object, full=FALSE, gsizes=NULL, directed=TRUE,
-                             loops=FALSE, size=NULL)
+                             loops=FALSE, size=NULL, ...)
 {
   ndim <- length(dim(object))
   stopifnot(ndim %in% 2:3)

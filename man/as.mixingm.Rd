@@ -8,7 +8,7 @@
 
   \method{as.mixingm}{table} (object, full = FALSE,
     gsizes = NULL, directed = TRUE, loops = FALSE,
-    size = NULL)
+    size = NULL, ...)
 
   \method{as.mixingm}{igraph} (object, vattr, full = FALSE,
     loops = any(is.loop(object)), ...)
