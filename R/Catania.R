@@ -37,6 +37,6 @@
 #' data(Catania)
 #' 
 #' # assortativity 
-#' ep <- sum(Catania \%*\% Catania)
+#' ep <- sum(Catania %*% Catania)
 #' ( sum(diag(Catania)) - ep ) / ( 1 - ep )
 NULL

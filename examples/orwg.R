@@ -1,2 +1,1 @@
-data(Wnet)
-moody(Wnet, "gender")
+orwg(Wnet, "gender")
