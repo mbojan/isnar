@@ -1,3 +1,6 @@
 Segregation measures could have methods for mixing matrices.
 
 Creating mixing matrices from any two vertex attributes.
+
+R CMD check complains about a call to 'from' in E()[from()]. 'from' is not
+visible as a function.
