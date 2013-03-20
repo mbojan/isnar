@@ -26,6 +26,8 @@
   undirected networks should be folded}
 
   \item{x}{object of class "mixingm"}
+
+  \item{...}{other arguments passed to/from other methods}
 }
 \value{
   An object of S3 class "mixingm" extending class "table".

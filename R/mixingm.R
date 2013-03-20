@@ -68,6 +68,8 @@ mixingm <- function(mat, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
 
 #' @param x object of class "mixingm"
 #'
+#' @param ... other arguments passed to/from other methods
+#'
 #' @method print mixingm
 #' @export
 #' @rdname mixingm
