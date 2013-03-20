@@ -92,7 +92,8 @@ freeman(Wnet, "gender", more=TRUE)
   \code{\link{coleman.igraph}},
   \code{\link{coleman.mixingm}}, \code{\link{ei}},
   \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
-  \code{\link{gamix}}, \code{\link{orwg}},
+  \code{\link{gamix}}, \code{\link{gamix.igraph}},
+  \code{\link{gamix.mixingm}}, \code{\link{orwg}},
   \code{\link{orwg.igraph}}, \code{\link{orwg.mixingm}},
   \code{\link{smi}}, \code{\link{smi.igraph}},
   \code{\link{smi.mixingm}}, \code{\link{ssi}}

@@ -66,6 +66,7 @@ smi( as.directed(Wnet, "mutual"), "gender")
   \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
   \code{\link{freeman}}, \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}, \code{\link{gamix}},
+  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
   \code{\link{orwg}}, \code{\link{orwg.igraph}},
   \code{\link{orwg.mixingm}}, \code{\link{ssi}}
 }

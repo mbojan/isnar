@@ -55,6 +55,7 @@ moody(Wnet, "gender")
   \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
   \code{\link{freeman}}, \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}, \code{\link{gamix}},
+  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
   \code{\link{smi}}, \code{\link{smi.igraph}},
   \code{\link{smi.mixingm}}, \code{\link{ssi}}
 }

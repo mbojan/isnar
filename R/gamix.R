@@ -7,11 +7,9 @@
 #' and 1 for perfect within-group mixing. It takes a value of 0 for
 #' proportionate mixing.
 #'
-#' @param g object of class "igraph", the network
+#' @param object R object, see Details for available methods
 #'
-#' @param vattr character, name of vertex attribute
-#'
-#' @param debug logical, return some intermediate results as attributes to the returned value
+#' @param ... other objects passed to/from other methods
 #'
 #' @return Numerical value of the measure.
 #'
@@ -22,15 +20,50 @@
 #' @export
 #' @family segregation measures
 #' @example examples/gamix.R
-gamix <- function (g, vattr, debug=FALSE)
+gamix <- function(object, ...) UseMethod("gamix")
+
+
+
+
+#' @details
+#' Method for mixing matrices
+#'
+#' @param debug logical, return some intermediate results as attributes to the
+#' returned value
+#'
+#' @method gamix mixingm
+#' @export
+#' @rdname gamix
+gamix.mixingm <- function(object, debug=FALSE, ...)
 {
-    stopifnot(inherits(g, "igraph"))
-    m <- symmetrize(mixingm(g, vattr))
-    p <- sweep(m, 1, rowSums(m), "/")
-    w <- eigen(p)$values
-    rval <- (sum(w) - 1)/(dim(m)[1] - 1)
-    if(debug)
-	    structure(rval, mix=m, mixp=p, e=w)
-    else
-	    rval
+  if( length(dim(object)) == 3 )
+  {
+    m <- symmetrize(object[,,2])
+  } else
+  {
+    m <- symmetrize(object)
+  }
+  p <- sweep(m, 1, rowSums(m), "/")
+  w <- eigen(p)$values
+  rval <- (sum(w) - 1)/(dim(m)[1] - 1)
+  if(debug)
+    structure(rval, mix=m, mixp=p, e=w)
+  else
+    rval
+}
+
+
+
+#' @details
+#' Method for igraphs
+#'
+#' @param vattr character, name of vertex attribute
+#'
+#' @method gamix igraph
+#' @export
+#' @rdname gamix
+gamix.igraph <- function (object, vattr, ...)
+{
+  m <- as.mixingm(object, vattr=vattr)
+  gamix(m, ...)
 }

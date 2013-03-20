@@ -1,16 +1,25 @@
 \name{gamix}
 \alias{gamix}
+\alias{gamix.igraph}
+\alias{gamix.mixingm}
 \title{Gupta-Anderson-May measure of within-group mixing}
 \usage{
-  gamix(g, vattr, debug = FALSE)
+  gamix(object, ...)
+
+  \method{gamix}{mixingm} (object, debug = FALSE, ...)
+
+  \method{gamix}{igraph} (object, vattr, ...)
 }
 \arguments{
-  \item{g}{object of class "igraph", the network}
+  \item{object}{R object, see Details for available
+  methods}
 
-  \item{vattr}{character, name of vertex attribute}
+  \item{...}{other objects passed to/from other methods}
 
   \item{debug}{logical, return some intermediate results as
   attributes to the returned value}
+
+  \item{vattr}{character, name of vertex attribute}
 }
 \value{
   Numerical value of the measure.
@@ -23,6 +32,10 @@
   The measure varies between \code{-1/vcount(g)} for
   dissassortative mixing and 1 for perfect within-group
   mixing. It takes a value of 0 for proportionate mixing.
+
+  Method for mixing matrices
+
+  Method for igraphs
 }
 \examples{
 data(Wnet)
