@@ -9,6 +9,9 @@ elist <- structure(c(1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 10,
 x <- c(2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 
 1, 1, 2, 2, 2, 2, 2, 2, 2, 2)
 
+nams <- paste(rep(LETTERS[1:5], each=6), rep(1:6, 5), sep="")
+
 EFnet <- graph.edgelist(elist, directed=FALSE)
 V(EFnet)$type <- x
-rm(x, elist)
+V(EFnet)$name <- nams
+rm(x, elist, nams)
