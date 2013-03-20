@@ -20,7 +20,7 @@
   \item{...}{other arguments passed to/from other methods}
 
   \item{full}{logical, whether to return full 3-dimensional
-  mixing matrix}
+  mixing matrix, see Details}
 
   \item{gsizes}{numerical vector of group sizes}
 
@@ -33,15 +33,9 @@
   sizes by default}
 
   \item{vattr}{character scalar or vector of length equal
-  to the size of \code{g}, vertex attribute for which
-  mixing matrix is to be computed}
-
-  \item{full}{logical, should a three-dimensional mixing
-  array be returned instead of only the contact layer}
-
-  \item{loops}{logical, are loops (self edges) admissible
-  in \code{g}, defaults to the presence of loops in
-  \code{g}}
+  to the number of nodes in the graph, i.e.,
+  \code{vcount(object)}. Vertex attribute for which mixing
+  matrix is to be computed.}
 }
 \value{
   An object of S3 class "mixingm" extending class "table".
@@ -85,13 +79,14 @@
   two-dimesional version is computed.
 
   \item If \code{vattr} is a character scalar it is
-  interpreted as a name of the vertex attribute in
-  \code{g}. Otherwise it can be a vector of length equal to
-  \code{vcount(g)} containing the attribute.
+  interpreted as a name of the vertex attribute in graph
+  \code{object}. Otherwise it can be a vector of length
+  equal to \code{vcount(object)} containing the attribute.
 
   \item If the \code{full} is \code{TRUE} then \code{loops}
   determines whether to take loops into account when
-  calculating the number of dyads in \code{g}. }
+  calculating the number of dyads in the graph
+  \code{object}. }
 }
 \examples{
 # some directed network

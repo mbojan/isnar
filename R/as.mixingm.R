@@ -53,7 +53,7 @@ as.mixingm <- function(object, ...) UseMethod("as.mixingm")
 #' sets the attributes for network size, group sizes, and directed/undirected
 #' characte of the network based on supplied arguments.
 #'
-#' @param full logical, whether to return full 3-dimensional mixing matrix
+#' @param full logical, whether to return full 3-dimensional mixing matrix, see Details
 #' @param gsizes numerical vector of group sizes
 #' @param directed logical, whether the network is directed
 #' @param loops logical, whether the network contains loops (self-ties)
@@ -164,21 +164,16 @@ as_mm_table2d <- function(object, gsizes=NULL, size=NULL, full=FALSE,
 #' version is computed.
 #'
 #' \item If \code{vattr} is a character scalar it is interpreted as a name of
-#' the vertex attribute in \code{g}. Otherwise it can be a vector of length
-#' equal to \code{vcount(g)} containing the attribute.
+#' the vertex attribute in graph \code{object}. Otherwise it can be a vector of
+#' length equal to \code{vcount(object)} containing the attribute.
 #'
 #' \item If the \code{full} is \code{TRUE} then \code{loops} determines whether
-#' to take loops into account when calculating the number of dyads in \code{g}.
+#' to take loops into account when calculating the number of dyads in the graph \code{object}.
 #' }
 #'
-#' @param vattr  character scalar or vector of length equal to the size of
-#' \code{g}, vertex attribute for which mixing matrix is to be computed
-#'
-#' @param full logical, should a three-dimensional mixing array be returned
-#' instead of only the contact layer
-#'
-#' @param loops logical, are loops (self edges) admissible in \code{g},
-#' defaults to the presence of loops in \code{g}
+#' @param vattr  character scalar or vector of length equal to the number of
+#' nodes in the graph, i.e., \code{vcount(object)}. Vertex attribute for which
+#' mixing matrix is to be computed.
 #'
 #' @method as.mixingm igraph
 #' @rdname as.mixingm
