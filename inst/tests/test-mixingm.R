@@ -30,4 +30,3 @@ test_that("folding 3d matrix for undirected networks works",
             er <- array(c(4, 0, 16, 3, 6, 0, 9, 7), dim=c(2,2,2))
             expect_equal( as.numeric(m), as.numeric(er))
           } )
-
