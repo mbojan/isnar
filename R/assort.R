@@ -63,9 +63,9 @@ assort.mixingm <- function(g, ...)
 #' @rdname assort
 assort.igraph <- function(g, vattr, ...)
 {
-    # missing matrix
-    g <- mixingm(g, vattr)
-    NextMethod("assort", ...)
+  # missing matrix
+  g <- mixingm(g, vattr)
+  assort(g, ...)
 }
 
 #' @details Any other objects passed as \code{g} are coerced to a table and the

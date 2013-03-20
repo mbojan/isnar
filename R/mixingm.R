@@ -40,7 +40,7 @@ mixingm <- function(mat, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
   if(length(dims) == 3) stopifnot(dims[3] == 2)
   d3 <- length(dims) == 3
   # other arguments
-  stopifnot( length(gsizes) == dims[1] )
+  if(!is.null(gsizes)) stopifnot( length(gsizes) == dims[1] )
   if(!is.null(gsizes)) size <- sum(gsizes)
   # TODO check if 'mat' can be mixing matrix
   # If undirected, fold onto upper triangle
