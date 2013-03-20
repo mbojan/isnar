@@ -30,7 +30,7 @@ coleman.igraph <- function(object, vattr, ...)
 {
   stopifnot(inherits(object, "igraph"))
   stopifnot(is.directed(object))
-  m <- mixingm(object, vattr, full=TRUE)
+  m <- as.mixingm(object, vattr, full=TRUE)
   # group out-degrees
   degsums <- rowSums(m[,,2])
   # group sizes
