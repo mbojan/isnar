@@ -51,7 +51,7 @@ test_that("coercing Wnet to 3d mixingm works",
           {
             m <- as.mixingm(Wnet, "gender", full=TRUE)
             # numbers
-            expect_equal( as.numeric(m), c(4, 0, 16, 3, 6, 9, 7) )
+            expect_equal( as.numeric(m), c(4, 0, 16, 3, 6, 0, 9, 7) )
             expect_equal( as.numeric(attr(m, "gsizes")), c(5,5))
             expect_equal( attr(m, "size"), 10 )
           } )
@@ -78,8 +78,8 @@ test_that("coercing a matrix works",
 
 
 test_that("Created mixing matrix is of proper class", {
-          m2 <- mixingm(Wnet, "gender")
-          m3 <- mixingm(Wnet, "gender", full=TRUE)
+          m2 <- as.mixingm(Wnet, "gender")
+          m3 <- as.mixingm(Wnet, "gender", full=TRUE)
           expect_equal( class(m2), c("mixingm", "table"))
           expect_equal( class(m3), c("mixingm", "table"))
 } )
