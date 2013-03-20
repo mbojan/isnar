@@ -82,6 +82,7 @@ legend( "topleft", legend=c("Men", "Women"), pch=c(0,1), col=1)
   \code{\link{assort.mixingm}}, \code{\link{coleman}},
   \code{\link{coleman.igraph}},
   \code{\link{coleman.mixingm}}, \code{\link{ei}},
+  \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
   \code{\link{freeman}}, \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}, \code{\link{gamix}},
   \code{\link{moody}}, \code{\link{smi}}
