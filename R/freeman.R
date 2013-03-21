@@ -64,13 +64,13 @@ freeman.mixingm <- function(object, dis=attr(object, "gsizes"), more=FALSE, ...)
   stopifnot(!is.null(attr(object, "gsizes")))
   # take contact layer
   if( length(dim(object)) == 3 )
-    m <- object[,,2]
-  else m <- object
+    mat <- object[,,2]
+  else mat <- object
   # number of cross-group ties
-  cct <- sum(m) - sum(diag(m))
+  cct <- sum(mat) - sum(diag(mat))
   # group distribution
   btab <- dis
-  n <- sum(dis)
+  n <- sum(mat)
   m <- sum(btab)
   ecct <- (n * (sum(btab)^2 - sum(btab^2))) / (m * (m - 1))
   s <- ecct - cct
