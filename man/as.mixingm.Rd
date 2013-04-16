@@ -11,7 +11,7 @@
     size = NULL, ...)
 
   \method{as.mixingm}{igraph} (object, vattr, full = FALSE,
-    loops = any(is.loop(object)), ...)
+    loops = any(igraph::is.loop(object)), ...)
 }
 \arguments{
   \item{object}{R object, see Details for available

@@ -178,7 +178,7 @@ as_mm_table2d <- function(object, gsizes=NULL, size=NULL, full=FALSE,
 #' @method as.mixingm igraph
 #' @rdname as.mixingm
 #' @export
-as.mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(object)), ...)
+as.mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(igraph::is.loop(object)), ...)
 {
     # get attribute
     if(is.character(vattr) & length(vattr) == 1)
@@ -186,7 +186,7 @@ as.mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(objec
         a <- igraph::get.vertex.attribute(object, vattr)
     } else
     {
-        stopifnot( length(vattr) == vcount(object) )
+        stopifnot( length(vattr) == igraph::vcount(object) )
         a <- vattr
     }
     # contact layer based on edgelist
@@ -200,9 +200,9 @@ as.mixingm.igraph <- function(object, vattr, full=FALSE, loops=any(is.loop(objec
         con <- fold(con, ...)
     # return contact layer if not full
     conmix <- mixingm(con,
-              directed=is.directed(object),
+              directed=igraph::is.directed(object),
               gsizes=table(a, dnn=NULL),
-              size=vcount(object)
+              size=igraph::vcount(object)
               )
     if(!full)
     {
