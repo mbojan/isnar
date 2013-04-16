@@ -35,17 +35,17 @@
 #' @example examples/ssi.R
 ssi <- function(g, vattr)
 {
-    stopifnot( !is.directed(g) )
+    stopifnot( !igraph::is.directed(g) )
     # edge weights are "directed"
-    gg <- as.directed(g, mode="mutual")
+    gg <- igraph::as.directed(g, mode="mutual")
     V(gg)$id <- V(g)
     # add edge weights, these are "directed"
-    l <- get.adjedgelist(gg, mode="out")
-    degs <- degree(gg, mode="out")
-    for(i in seq(1, vcount(gg)))
+    l <- igraph::get.adjedgelist(gg, mode="out")
+    degs <- igraph::degree(gg, mode="out")
+    for(i in seq(1, igraph::vcount(gg)))
       E(gg)[from(i)]$weight <- 1/degs[i]
     # get vertex attribute
-    a <- get.vertex.attribute(gg, vattr)
+    a <- igraph::get.vertex.attribute(gg, vattr)
     l <- unlist(lapply(unique(a), function(val) ssib(g=gg, vattr=vattr, b=val)))
     l[ order(as.numeric(names(l))) ]
 }
@@ -54,12 +54,12 @@ ssi <- function(g, vattr)
 ssib <- function(g, vattr, b)
 {
     # take subgraph of b-nodes
-    ids <- get.vertex.attribute(g, vattr)
-    sub <- induced.subgraph(g, which(ids == b))
+    ids <- igraph::get.vertex.attribute(g, vattr)
+    sub <- igraph::induced.subgraph(g, which(ids == b))
     # get components
-    comps <- decompose.graph(sub)
+    comps <- igraph::decompose.graph(sub)
     # compute eigen-decomposition
-    e <- lapply(comps, function(k) eigen( get.adjacency(k, attr="weight")))
+    e <- lapply(comps, function(k) eigen( igraph::get.adjacency(k, attr="weight")))
     # component SSIs (largest eigenvalue)
     cssi <- sapply(e, function(x) max(as.double(x$values)) )
     # eigenvectors of largest eigenvalue
