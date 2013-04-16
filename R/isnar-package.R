@@ -5,6 +5,7 @@
 #'
 #' Among other things, it includes a lot of things.
 #' 
-#' @name isnar
 #' @docType package
+#' @name isnar
+#' @import igraph
 NULL
