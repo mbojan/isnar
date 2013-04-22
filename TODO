@@ -4,3 +4,6 @@ Creating mixing matrices from any two vertex attributes.
 
 R CMD check complains about a call to 'from' in E()[from()]. 'from' is not
 visible as a function.
+
+Consider computing the expected mixing matrix for assort and gamix using
+poisson GLM.
