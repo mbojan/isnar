@@ -4,11 +4,11 @@
 \alias{ei.mixingm}
 \title{Krackhard and Stern's E-I index}
 \usage{
-  ei(object, ...)
+ei(object, ...)
 
-  \method{ei}{mixingm} (object, ...)
+\method{ei}{mixingm}(object, ...)
 
-  \method{ei}{igraph} (object, vattr, ...)
+\method{ei}{igraph}(object, vattr, ...)
 }
 \arguments{
   \item{object}{R object, see Details for available
@@ -21,35 +21,34 @@
   mixing matrix is to be computed}
 }
 \value{
-  Numerical value of the E-I index.
+Numerical value of the E-I index.
 }
 \description{
-  An index proposed by Krackhard and Stern (1988) to
-  capture relative prevalence of between- and within-group
-  ties. From that perspective it can be interpreted as a
-  measure of network segregation.
+An index proposed by Krackhard and Stern (1988) to capture
+relative prevalence of between- and within-group ties. From
+that perspective it can be interpreted as a measure of
+network segregation.
 }
 \details{
-  Method for mixing matrices
+Method for mixing matrices
 
-  Method for igraphs
+Method for igraphs
 }
 \examples{
 ei(Wnet, "gender")
 }
 \seealso{
-  Other segregation.measures: \code{\link{assort}},
-  \code{\link{assort.default}},
-  \code{\link{assort.igraph}},
-  \code{\link{assort.mixingm}}, \code{\link{coleman}},
-  \code{\link{coleman.igraph}},
-  \code{\link{coleman.mixingm}}, \code{\link{freeman}},
-  \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}, \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
-  \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}, \code{\link{smi}},
-  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}},
-  \code{\link{ssi}}
+Other segregation.measures: \code{\link{assort}},
+\code{\link{assort.default}}, \code{\link{assort.igraph}},
+\code{\link{assort.mixingm}}; \code{\link{coleman}},
+\code{\link{coleman.igraph}},
+\code{\link{coleman.mixingm}}; \code{\link{freeman}},
+\code{\link{freeman.igraph}},
+\code{\link{freeman.mixingm}}; \code{\link{gamix}},
+\code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
+\code{\link{orwg}}, \code{\link{orwg.igraph}},
+\code{\link{orwg.mixingm}}; \code{\link{smi}},
+\code{\link{smi.igraph}}, \code{\link{smi.mixingm}};
+\code{\link{ssi}}
 }
 

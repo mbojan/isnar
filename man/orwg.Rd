@@ -4,11 +4,11 @@
 \alias{orwg.mixingm}
 \title{Odds ratio of existence of within-group ties}
 \usage{
-  orwg(object, ...)
+orwg(object, ...)
 
-  \method{orwg}{mixingm} (object, ...)
+\method{orwg}{mixingm}(object, ...)
 
-  \method{orwg}{igraph} (object, vattr, ...)
+\method{orwg}{igraph}(object, vattr, ...)
 }
 \arguments{
   \item{object}{R object, see Details for available
@@ -20,42 +20,41 @@
   vertex attribute or the attribute itself (as a vector)}
 }
 \value{
-  Numeric value of the measure.
+Numeric value of the measure.
 }
 \description{
-  Odds ratio for connected, as opposed to disconnected,
-  dyads depending whether it is between- or within-group,
-  i.e. how much more likely the dyad will be connected if
-  it is within-group.
+Odds ratio for connected, as opposed to disconnected, dyads
+depending whether it is between- or within-group, i.e. how
+much more likely the dyad will be connected if it is
+within-group.
 }
 \details{
-  The measure takes values, like all odds ratios, from (0;
-  Inf).
+The measure takes values, like all odds ratios, from (0;
+Inf).
 
-  Method for mixing matrices.
+Method for mixing matrices.
 
-  Method for igraphs
+Method for igraphs
 }
 \examples{
 orwg(Wnet, "gender")
 }
 \references{
-  Moody, Jim (2001) "Race, school integration, and
-  friendship segregation in America", American Journal of
-  Sociology, 107(3):679--377
+Moody, Jim (2001) "Race, school integration, and friendship
+segregation in America", American Journal of Sociology,
+107(3):679--377
 }
 \seealso{
-  Other segregation.measures: \code{\link{assort}},
-  \code{\link{assort.default}},
-  \code{\link{assort.igraph}},
-  \code{\link{assort.mixingm}}, \code{\link{coleman}},
-  \code{\link{coleman.igraph}},
-  \code{\link{coleman.mixingm}}, \code{\link{ei}},
-  \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
-  \code{\link{freeman}}, \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}, \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
-  \code{\link{smi}}, \code{\link{smi.igraph}},
-  \code{\link{smi.mixingm}}, \code{\link{ssi}}
+Other segregation.measures: \code{\link{assort}},
+\code{\link{assort.default}}, \code{\link{assort.igraph}},
+\code{\link{assort.mixingm}}; \code{\link{coleman}},
+\code{\link{coleman.igraph}},
+\code{\link{coleman.mixingm}}; \code{\link{ei}},
+\code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
+\code{\link{freeman}}, \code{\link{freeman.igraph}},
+\code{\link{freeman.mixingm}}; \code{\link{gamix}},
+\code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
+\code{\link{smi}}, \code{\link{smi.igraph}},
+\code{\link{smi.mixingm}}; \code{\link{ssi}}
 }
 

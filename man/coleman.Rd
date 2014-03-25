@@ -4,11 +4,11 @@
 \alias{coleman.mixingm}
 \title{Coleman's homophily index}
 \usage{
-  coleman(object, ...)
+coleman(object, ...)
 
-  \method{coleman}{mixingm} (object, ...)
+\method{coleman}{mixingm}(object, ...)
 
-  \method{coleman}{igraph} (object, vattr, ...)
+\method{coleman}{igraph}(object, vattr, ...)
 }
 \arguments{
   \item{object}{R object, see available methods}
@@ -18,19 +18,19 @@
   \item{vattr}{character, vertex attribute}
 }
 \value{
-  Vector of numeric values of the index.
+Vector of numeric values of the index.
 }
 \description{
-  Colemans's homphily index for directed networks.
+Colemans's homphily index for directed networks.
 }
 \details{
-  Coleman's homophily index computes homophily scores for
-  each group defined by a vertex attribute.
+Coleman's homophily index computes homophily scores for
+each group defined by a vertex attribute.
 
-  \code{object} can be a mixing matrix as returned by
-  \code{\link{mixingm}} or \code{\link{as.mixingm}}.
+\code{object} can be a mixing matrix as returned by
+\code{\link{mixingm}} or \code{\link{as.mixingm}}.
 
-  \code{object} can be of class "igraph"
+\code{object} can be of class "igraph"
 }
 \examples{
 data(Wnet)
@@ -40,22 +40,21 @@ data(EFnet)
 coleman( as.directed(EFnet, "mutual"), "type")
 }
 \references{
-  Coleman, J. (1958) "Relational analysis: The study of
-  social organizations with survey methods", Human
-  Organization 17:28--36.
+Coleman, J. (1958) "Relational analysis: The study of
+social organizations with survey methods", Human
+Organization 17:28--36.
 }
 \seealso{
-  Other segregation.measures: \code{\link{assort}},
-  \code{\link{assort.default}},
-  \code{\link{assort.igraph}},
-  \code{\link{assort.mixingm}}, \code{\link{ei}},
-  \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
-  \code{\link{freeman}}, \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}, \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
-  \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}, \code{\link{smi}},
-  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}},
-  \code{\link{ssi}}
+Other segregation.measures: \code{\link{assort}},
+\code{\link{assort.default}}, \code{\link{assort.igraph}},
+\code{\link{assort.mixingm}}; \code{\link{ei}},
+\code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
+\code{\link{freeman}}, \code{\link{freeman.igraph}},
+\code{\link{freeman.mixingm}}; \code{\link{gamix}},
+\code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
+\code{\link{orwg}}, \code{\link{orwg.igraph}},
+\code{\link{orwg.mixingm}}; \code{\link{smi}},
+\code{\link{smi.igraph}}, \code{\link{smi.mixingm}};
+\code{\link{ssi}}
 }
 

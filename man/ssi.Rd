@@ -2,7 +2,7 @@
 \alias{ssi}
 \title{Spectral Segregation Index for Social Networks}
 \usage{
-  ssi(g, vattr)
+ssi(g, vattr)
 }
 \arguments{
   \item{g}{object of class "igraph" representing a network}
@@ -10,32 +10,31 @@
   \item{vattr}{character, name of the vertex attribute}
 }
 \value{
-  Named vector of individual level values of SSI. Names
-  correspond to vertex ids in \code{g}.
+Named vector of individual level values of SSI. Names
+correspond to vertex ids in \code{g}.
 }
 \description{
-  These functions implement Spectral Segregation Index as
-  proposed by Echenique & Fryer (2006). This index is a
-  node-level measure of segregation in a given network.
+These functions implement Spectral Segregation Index as
+proposed by Echenique & Fryer (2006). This index is a
+node-level measure of segregation in a given network.
 }
 \details{
-  For a full description and axiomatization see Echenique &
-  Fryer (2006).
+For a full description and axiomatization see Echenique &
+Fryer (2006).
 
-  The network \code{g} is converted to adjacency matrix and
-  normalized so that all rows sum-up to 1.
+The network \code{g} is converted to adjacency matrix and
+normalized so that all rows sum-up to 1.
 
-  The procedure essentially consists of creating a
-  submatrix, say, \eqn{B} of the adjacency matrix, say
-  \eqn{A}. This submatrix \eqn{B} contains only vertices of
-  the given type. It may be viewed as a type-homogeneous
-  subnetwork of \code{A}. This subnetwork is further
-  decomposed into connected components.  Then, for every
-  component, an eigenvalue decomposition is applied.  The
-  value of the index for the component is simply the
-  largest eigenvalue, and the individual-level indices are
-  obtained by distributing it according to the
-  corresponding eigenvector.
+The procedure essentially consists of creating a submatrix,
+say, \eqn{B} of the adjacency matrix, say \eqn{A}. This
+submatrix \eqn{B} contains only vertices of the given type.
+It may be viewed as a type-homogeneous subnetwork of
+\code{A}. This subnetwork is further decomposed into
+connected components.  Then, for every component, an
+eigenvalue decomposition is applied.  The value of the
+index for the component is simply the largest eigenvalue,
+and the individual-level indices are obtained by
+distributing it according to the corresponding eigenvector.
 }
 \examples{
 ### artificial EF data
@@ -69,22 +68,21 @@ plot( Wnet, layout=layout.fruchterman.reingold,
 legend( "topleft", legend=c("Men", "Women"), pch=c(0,1), col=1)
 }
 \references{
-  Echenique, Federico and Roland G. Fryer, Jr. (2006) A
-  Measure of Segregation Based On Social Interactions
+Echenique, Federico and Roland G. Fryer, Jr. (2006) A
+Measure of Segregation Based On Social Interactions
 }
 \seealso{
-  Other segregation.measures: \code{\link{assort}},
-  \code{\link{assort.default}},
-  \code{\link{assort.igraph}},
-  \code{\link{assort.mixingm}}, \code{\link{coleman}},
-  \code{\link{coleman.igraph}},
-  \code{\link{coleman.mixingm}}, \code{\link{ei}},
-  \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
-  \code{\link{freeman}}, \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}, \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
-  \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}, \code{\link{smi}},
-  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}}
+Other segregation.measures: \code{\link{assort}},
+\code{\link{assort.default}}, \code{\link{assort.igraph}},
+\code{\link{assort.mixingm}}; \code{\link{coleman}},
+\code{\link{coleman.igraph}},
+\code{\link{coleman.mixingm}}; \code{\link{ei}},
+\code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
+\code{\link{freeman}}, \code{\link{freeman.igraph}},
+\code{\link{freeman.mixingm}}; \code{\link{gamix}},
+\code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
+\code{\link{orwg}}, \code{\link{orwg.igraph}},
+\code{\link{orwg.mixingm}}; \code{\link{smi}},
+\code{\link{smi.igraph}}, \code{\link{smi.mixingm}}
 }
 

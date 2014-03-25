@@ -8,18 +8,18 @@ attributes
 \item \code{name}
 }}
 \source{
-  Echenique, Federico and Roland G. Fryer, Jr. (2006) "A
-  Measure of Segregation Based On Social Interactions"
-  Quarterly Journal of Economics CXXII(2):441-485
+Echenique, Federico and Roland G. Fryer, Jr. (2006) "A
+Measure of Segregation Based On Social Interactions"
+Quarterly Journal of Economics CXXII(2):441-485
 }
 \description{
-  Artificial example data from Echenique & Fryer (2006)
-  representing a city with black and white neighbourhoods.
+Artificial example data from Echenique & Fryer (2006)
+representing a city with black and white neighbourhoods.
 }
 \details{
-  This data is taken from Echenique & Fryer (2006, figure
-  III). The data represent a fictional city composed of 30
-  neighborhoods that are either black or white.
+This data is taken from Echenique & Fryer (2006, figure
+III). The data represent a fictional city composed of 30
+neighborhoods that are either black or white.
 }
 \examples{
 data(EFnet)

@@ -14,21 +14,3 @@ Suggests:
     testthat,
     roxygen2,
     mbtools
-Collate:
-    'assort.R'
-    'isnar-package.R'
-    'mixingm.R'
-    'symmetrize.R'
-    'Wnet.R'
-    'fold.R'
-    'EFnet.R'
-    'coleman.R'
-    'freeman.R'
-    'Catania.R'
-    'gamix.R'
-    'ssi.R'
-    'smi.R'
-    'Galesburg2.R'
-    'ei.R'
-    'as.mixingm.R'
-    'orwg.R'

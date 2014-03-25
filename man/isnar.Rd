@@ -4,11 +4,11 @@
 \alias{isnar-package}
 \title{Introduction to Social Network Analysis with R}
 \description{
-  Functions and data accompanying the workshop
-  "Introduction to Social Network Analysis with R" at
-  annual INSNA Sunbelt conferences.
+Functions and data accompanying the workshop "Introduction
+to Social Network Analysis with R" at annual INSNA Sunbelt
+conferences.
 }
 \details{
-  Among other things, it includes a lot of things.
+Among other things, it includes a lot of things.
 }
 

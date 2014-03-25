@@ -2,8 +2,7 @@
 \alias{symmetrize}
 \title{(De)symmetrize square numeric matrix}
 \usage{
-  symmetrize(mat,
-    rule = c("upper", "lower", "div", "intdiv"))
+symmetrize(mat, rule = c("upper", "lower", "div", "intdiv"))
 }
 \arguments{
   \item{mat}{square numeric matrix}
@@ -11,33 +10,33 @@
   \item{rule}{character, direction of copying, see Details}
 }
 \value{
-  A matrix: symmetrized version of \code{mat}.
+A matrix: symmetrized version of \code{mat}.
 }
 \description{
-  (De)symmetrize square binary matrix in various ways.
+(De)symmetrize square binary matrix in various ways.
 }
 \details{
-  Argument \code{mat} is to be a square numeric matrix. The
-  way it is made symmetric, or asymetric, depends on the
-  value of the \code{rule} argument.
+Argument \code{mat} is to be a square numeric matrix. The
+way it is made symmetric, or asymetric, depends on the
+value of the \code{rule} argument.
 
-  If \code{rule} is "upper" or "lower" then \code{mat} is
-  made symmetric by copying, respectively, upper triangle
-  onto lower, or lower onto upper. The value of \code{rule}
-  specifies values of which triangle will stay in the
-  returned value.
+If \code{rule} is "upper" or "lower" then \code{mat} is
+made symmetric by copying, respectively, upper triangle
+onto lower, or lower onto upper. The value of \code{rule}
+specifies values of which triangle will stay in the
+returned value.
 
-  If \code{rule} is "intdiv" then the off-diagonal values
-  are distributed approximately equally between the
-  lower/upper triangles. If \code{r} is the computed
-  result, then \code{r[i,j]} will be equal to \code{(x[i,j]
-  + x[j,i]) \%/\% 2} if \code{r[i,j]} is in the lower
-  triangle. It will be equal to \code{(x[i,j] + x[j,i])
-  \%/\% 2 + 1} if in the upper triangle.
+If \code{rule} is "intdiv" then the off-diagonal values are
+distributed approximately equally between the lower/upper
+triangles. If \code{r} is the computed result, then
+\code{r[i,j]} will be equal to \code{(x[i,j] + x[j,i])
+\%/\% 2} if \code{r[i,j]} is in the lower triangle. It will
+be equal to \code{(x[i,j] + x[j,i]) \%/\% 2 + 1} if in the
+upper triangle.
 
-  If \code{rule} is "div" then the off-diagonal values are
-  distributed equally between the lower/upper triangles: as
-  with "intdiv" but using normal \code{/} division.
+If \code{rule} is "div" then the off-diagonal values are
+distributed equally between the lower/upper triangles: as
+with "intdiv" but using normal \code{/} division.
 }
 \examples{
 m <- matrix(1:16, 4, 4)
@@ -60,6 +59,6 @@ r2
 all.equal(sum(m), sum(r2))
 }
 \seealso{
-  \code{\link{fold}}
+\code{\link{fold}}
 }
 

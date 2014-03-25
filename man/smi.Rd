@@ -4,11 +4,11 @@
 \alias{smi.mixingm}
 \title{Segregation Matrix Index}
 \usage{
-  smi(object, ...)
+smi(object, ...)
 
-  \method{smi}{mixingm} (object, normalize = TRUE, ...)
+\method{smi}{mixingm}(object, normalize = TRUE, ...)
 
-  \method{smi}{igraph} (object, vattr, ...)
+\method{smi}{igraph}(object, vattr, ...)
 }
 \arguments{
   \item{object}{R object, see Details for available
@@ -23,51 +23,50 @@
   designating groups}
 }
 \value{
-  Numeric vector of length equal to the number of groups in
-  \code{g} according to \code{vattr} with the values of SMI
-  for the groups.
+Numeric vector of length equal to the number of groups in
+\code{g} according to \code{vattr} with the values of SMI
+for the groups.
 }
 \description{
-  Segregation Matrix Index due to Freshtman (1997). A
-  measure of network segregation.  Currently (and
-  originally) supports only two groups.
+Segregation Matrix Index due to Freshtman (1997). A measure
+of network segregation.  Currently (and originally)
+supports only two groups.
 }
 \details{
-  The Segregation Matrix Index (SMI) is calculated for
-  every group separately. It compares the density within
-  group to the density of between group ties of nodes
-  belonging to that group.
+The Segregation Matrix Index (SMI) is calculated for every
+group separately. It compares the density within group to
+the density of between group ties of nodes belonging to
+that group.
 
-  Non-normalized version is the ration of the within-group
-  density to the between-group denisty, so varie between 0
-  and infinity. The normalized version varies between 0 and
-  1.
+Non-normalized version is the ration of the within-group
+density to the between-group denisty, so varie between 0
+and infinity. The normalized version varies between 0 and
+1.
 
-  Method for mixing matrices.
+Method for mixing matrices.
 
-  Method for igraphs
+Method for igraphs
 }
 \examples{
 data(Wnet)
 smi( as.directed(Wnet, "mutual"), "gender")
 }
 \references{
-  Freshtman, M. (1997) "Cohesive Group Segregation
-  Detection in a Social Network by the Segregation Matrix
-  Index", Social Networks, 19:193--207
+Freshtman, M. (1997) "Cohesive Group Segregation Detection
+in a Social Network by the Segregation Matrix Index",
+Social Networks, 19:193--207
 }
 \seealso{
-  Other segregation.measures: \code{\link{assort}},
-  \code{\link{assort.default}},
-  \code{\link{assort.igraph}},
-  \code{\link{assort.mixingm}}, \code{\link{coleman}},
-  \code{\link{coleman.igraph}},
-  \code{\link{coleman.mixingm}}, \code{\link{ei}},
-  \code{\link{ei.igraph}}, \code{\link{ei.mixingm}},
-  \code{\link{freeman}}, \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}, \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}},
-  \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}, \code{\link{ssi}}
+Other segregation.measures: \code{\link{assort}},
+\code{\link{assort.default}}, \code{\link{assort.igraph}},
+\code{\link{assort.mixingm}}; \code{\link{coleman}},
+\code{\link{coleman.igraph}},
+\code{\link{coleman.mixingm}}; \code{\link{ei}},
+\code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
+\code{\link{freeman}}, \code{\link{freeman.igraph}},
+\code{\link{freeman.mixingm}}; \code{\link{gamix}},
+\code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
+\code{\link{orwg}}, \code{\link{orwg.igraph}},
+\code{\link{orwg.mixingm}}; \code{\link{ssi}}
 }
 
