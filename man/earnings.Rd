@@ -1,6 +1,6 @@
 \docType{data}
-\name{earnings_data}
-\alias{earnings_data}
+\name{earnings}
+\alias{earnings}
 \title{Subset of Polish General Social Survey data with data on incomes}
 \format{SPSS system file}
 \source{

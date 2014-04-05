@@ -10,6 +10,6 @@
 #' PGSS reference
 
 #' @keywords datasets
-#' @name earnings_data
+#' @name earnings
 #' @docType data
 NULL
