@@ -12,7 +12,7 @@ x <- c(2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1,
 nams <- paste(rep(LETTERS[1:5], each=6), rep(1:6, 5), sep="")
 
 library(igraph)
-EFnet <- graph.edgelist(elist, directed=FALSE)
-V(EFnet)$type <- x
-V(EFnet)$name <- nams
+EFnet <- igraph::graph.edgelist(elist, directed=FALSE)
+igraph::V(EFnet)$type <- x
+igraph::V(EFnet)$name <- nams
 rm(x, elist, nams)

@@ -11,5 +11,5 @@ v <- structure(list(intergraph_id = 1:10, name = c("Mother", "Sister",
 "name", "gender"), row.names = c(NA, -10L), class = "data.frame")
 
 library(igraph)
-Wnet <- graph.data.frame(e, directed=FALSE, vert=v)
+Wnet <- igraph::graph.data.frame(e, directed=FALSE, vert=v)
 rm(e, v)
