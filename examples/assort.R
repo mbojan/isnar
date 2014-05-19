@@ -1,9 +1,5 @@
-data(Wnet)
 assort(Wnet, "gender")
-
-data(EFnet)
 assort(EFnet, "type")
-
 
 # value of 'assort' for full networks of different sizes
 f <- function(n)

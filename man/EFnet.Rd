@@ -22,7 +22,6 @@ represent a fictional city composed of 30 neighborhoods that are either
 black or white.
 }
 \examples{
-data(EFnet)
 
 set.seed(2992)
 plot(EFnet, layout=layout.fruchterman.reingold,

@@ -34,8 +34,8 @@ The Segregation Matrix Index (SMI) is calculated for every group separately.
 It compares the density within group to the density of between group ties of
 nodes belonging to that group.
 
-Non-normalized version is the ration of the within-group density to the
-between-group denisty, so varie between 0 and infinity. The normalized
+Non-normalized version is the ratio of the within-group density to the
+between-group density, so vary between 0 and infinity. The normalized
 version varies between 0 and 1.
 
 Method for mixing matrices.

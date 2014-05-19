@@ -52,12 +52,8 @@ Any other objects passed as \code{g} are coerced to a table and the
 table method is called.
 }
 \examples{
-data(Wnet)
 assort(Wnet, "gender")
-
-data(EFnet)
 assort(EFnet, "type")
-
 
 # value of 'assort' for full networks of different sizes
 f <- function(n)

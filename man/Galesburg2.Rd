@@ -23,7 +23,6 @@ connected with friendship or discussion links. Vertex attribute "adoption"
 specifies time of first prescription of the new drug.
 }
 \examples{
-data(Galesburg2)
 plot(Galesburg2, edge.arrow.size=.3)
 }
 \references{

@@ -1,4 +1,3 @@
-data(EFnet)
 
 set.seed(2992)
 plot(EFnet, layout=layout.fruchterman.reingold,

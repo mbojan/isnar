@@ -34,11 +34,9 @@ defined by a vertex attribute.
 \code{object} can be of class "igraph"
 }
 \examples{
-data(Wnet)
 coleman(as.directed(Wnet, "mutual"), "gender")
 
-data(EFnet)
-coleman( as.directed(EFnet, "mutual"), "type")
+coleman(as.directed(EFnet, "mutual"), "type")
 }
 \references{
 Coleman, J. (1958) "Relational analysis: The study of social organizations
