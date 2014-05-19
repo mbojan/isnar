@@ -3,7 +3,7 @@ Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 Author: Michal Bojanowski
 Version: 0.0-1
 License: GPL-3
-Title: Companion package to Introduction to Social Network Analysis with R
+Title: Introduction to Social Network Analysis with R
 Description: Functions and datasets accompanying the workshop "Introduction to
     Social Network Analysis with R" on annual INSNA Sunbelt conferences.
 LazyLoad: yes
