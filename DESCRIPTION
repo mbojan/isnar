@@ -12,8 +12,7 @@ Depends:
     igraph (>= 0.6-0)
 Suggests:
     testthat,
-    roxygen2,
-    mbtools
+    roxygen2
 Collate:
     'assort.R'
     'isnar-package.R'
