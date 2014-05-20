@@ -1,0 +1,35 @@
+#' Classroom network
+#'
+#' Classroom network (directed multigraph) based on a study by (Polish)
+#' Educational Research Institute. Relations come from sociometric questions
+#' (loose translation from Polish):
+#' \enumerate{
+#' \item With whom would you like to play with?
+#' \item With whom would you share a secret?
+#' \item Imagine you are to work in groups during class. With whom would you
+#' like to work in a group?
+#' \item With whom would you rather not play?
+#' }
+#' Node attributes include gender, IQ score (Raven's test), socioeconomic
+#' position of parents.
+#'
+#' @docType data
+#' @name IBE121
+#'
+#' @format
+#' Object of class igraph with a directed multigraph (possible multiple edges
+#' within the same pair of vertices) of size 26.
+#' Edge attributes:
+#' \describe{
+#' \item[]
+#' }
+#'
+#'
+#' @source
+#' Educational Research Institute
+#'
+#' @references
+#'
+#' @example examples/IBE121.R
+#'
+NULL
