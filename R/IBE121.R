@@ -29,7 +29,5 @@
 #' Educational Research Institute
 #'
 #' @references
-#'
-#' @example examples/IBE121.R
-#'
+#' Educational Research Institute
 NULL
