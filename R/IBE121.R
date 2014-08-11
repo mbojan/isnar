@@ -21,7 +21,7 @@
 #' within the same pair of vertices) of size 26.
 #' Edge attributes:
 #' \describe{
-#' \item[]
+#' \item{female}{gender}
 #' }
 #'
 #'
