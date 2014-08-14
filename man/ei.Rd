@@ -39,8 +39,8 @@ ei(Wnet, "gender")
 Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
   \code{\link{assort.igraph}}, \code{\link{assort.matrix}};
-  \code{\link{coleman}}, \code{\link{coleman.igraph}},
-  \code{\link{coleman.mixingm}}; \code{\link{freeman}},
+  \code{\link{coleman}}, \code{\link{coleman.array}},
+  \code{\link{coleman.igraph}}; \code{\link{freeman}},
   \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}; \code{\link{gamix}},
   \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};

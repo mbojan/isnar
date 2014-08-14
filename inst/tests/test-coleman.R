@@ -16,7 +16,7 @@ test_that("Coleman index gives correct results for his example data",
             # coleman's matrix
             mat <- matrix(c(45, 20, 15, 20), 2, 2)
             # rebuild mixing matrix given group sizes
-            mmat <- as.mixingm(mat, full=TRUE, directed=TRUE, gsizes=c(60, 40))
+            mmat <- full_mm(mat, directed=TRUE, gsizes=c(60, 40))
             r <- coleman(mmat)
             # NOTE In Colemans paper (1958) he uses approximation in computing
             # expected number of ties within group 'i'. The function is exact.

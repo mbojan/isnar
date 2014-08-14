@@ -10,7 +10,7 @@
 #' Coleman's homophily index computes homophily scores for each group
 #' defined by a vertex attribute.
 #'
-#' @return Vector of numeric values of the index.
+#' @return Vector of numeric values of the index for each group
 #'
 #' @references
 #' Coleman, J. (1958) "Relational analysis: The study of social organizations
@@ -28,22 +28,35 @@ coleman <- function(object, ...) UseMethod("coleman")
 
 
 #' @details
-#' \code{object} can be a mixing matrix as returned by \code{\link{mixingm}} or
-#' \code{\link{as.mixingm}}.
+#' \code{object} can be a mixing matrix:
+#' \enumerate{
+#' \item{either only the contact layer (square matrix), which requires
+#' supplying the \code{gsizes} argument with the sizes of the groups}
+#' \item{full mixing matrix as a three dimensional array}
+#' }
+#'
+#' @param gsizes numeric vector of group sizes
+#'
+#' @param loops logical, whether loops are allowed
 #'
 #' @method coleman mixingm
 #' @export
 #' @rdname coleman
-coleman.mixingm <- function(object, gsizes=NULL, ...)
+coleman.array <- function(object, gsizes=NULL, loops=FALSE, ...)
 {
-  # take contact layer
-  if( length(dim(object)) != 2 )
+  dims <- dim(object)
+  # only contact layer
+  if( length(dims) == 2 )
+  {
+    stopifnot( !is.null(gsizes) )
+    m <- object
+  } else
+  {
+    stopifnot( length(dims) == 3 )
+    gsizes <- group_sizes(object, directed=TRUE, loops=loops)
     m <- object[,,2]
-  else m <- object
+  }
   # take group sizes
-  stopifnot(!is.null(attr(object, "gsizes")))
-  gsizes <- attr(object, "gsizes")
-  # group outdegrees
   degsums <- rowSums(m)
   # expected number of within-group ties for each group
   ewg <- degsums * (gsizes - 1) / (sum(gsizes) - 1)
@@ -66,7 +79,7 @@ coleman.mixingm <- function(object, gsizes=NULL, ...)
 coleman.igraph <- function(object, vattr, ...)
 {
   stopifnot(is.directed(object))
-  object <- as.mixingm(object, vattr, full=TRUE)
+  object <- mixingm(object, vattr, full=TRUE)
   coleman(object, ...)
 }
 

@@ -77,8 +77,8 @@ Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 }
 \seealso{
 Other segregation.measures: \code{\link{coleman}},
-  \code{\link{coleman.igraph}},
-  \code{\link{coleman.mixingm}}; \code{\link{ei}},
+  \code{\link{coleman.array}},
+  \code{\link{coleman.igraph}}; \code{\link{ei}},
   \code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
   \code{\link{freeman}}, \code{\link{freeman.igraph}},
   \code{\link{freeman.mixingm}}; \code{\link{gamix}},
