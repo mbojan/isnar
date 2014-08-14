@@ -77,9 +77,8 @@ Methods & Research} \bold{6}(4):411--429
 \seealso{
 Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
-  \code{\link{assort.igraph}},
-  \code{\link{assort.mixingm}}; \code{\link{coleman}},
-  \code{\link{coleman.igraph}},
+  \code{\link{assort.igraph}}, \code{\link{assort.matrix}};
+  \code{\link{coleman}}, \code{\link{coleman.igraph}},
   \code{\link{coleman.mixingm}}; \code{\link{ei}},
   \code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
   \code{\link{gamix}}, \code{\link{gamix.igraph}},

@@ -34,10 +34,8 @@ coleman <- function(object, ...) UseMethod("coleman")
 #' @method coleman mixingm
 #' @export
 #' @rdname coleman
-coleman.mixingm <- function(object, ...)
+coleman.mixingm <- function(object, gsizes=NULL, ...)
 {
-  # only for directed networks
-  stopifnot(attr(object, "directed"))
   # take contact layer
   if( length(dim(object)) != 2 )
     m <- object[,,2]

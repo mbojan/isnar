@@ -3,7 +3,7 @@
 \alias{assort}
 \alias{assort.default}
 \alias{assort.igraph}
-\alias{assort.mixingm}
+\alias{assort.matrix}
 \title{Assortativity Coefficient}
 \usage{
 assort(g, ...)

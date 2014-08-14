@@ -40,11 +40,10 @@ assort <- function(g, ...) UseMethod("assort")
 #' @method assort mixingm
 #' @export
 #' @rdname assort
-assort.mixingm <- function(g, ...)
+assort.matrix <- function(g, ...)
 {
-  if( length(dim(g)) != 2 )
-    m <- g[,,2]
-  else m <- g
+  stopifnot( ncol(g) == nrow(g) )
+  m <- g
   m <- symmetrize(m, "div")
   p <- m / sum(m)
   s <- sum(colSums(p) * rowSums(p))
@@ -64,7 +63,7 @@ assort.mixingm <- function(g, ...)
 assort.igraph <- function(g, vattr, ...)
 {
   # missing matrix
-  g <- as.mixingm(g, vattr)
+  g <- mixingm(g, vattr)
   assort(g, ...)
 }
 
@@ -76,6 +75,6 @@ assort.igraph <- function(g, vattr, ...)
 #' @rdname assort
 assort.default <- function(g, ...)
 {
-  m <- as.mixingm(g)
+  m <- as.table(g)
   assort.mixingm(m, ...)
 }
