@@ -70,64 +70,28 @@ mixingm.igraph <- function(g, rattr, cattr=rattr, full=FALSE,
 }
 
 
-
-
-
-
-
-
-
-
-#============================================================================ 
-# old code
-# 
-# mixingm <- function(mat, gsizes=NULL, directed=TRUE, loops=FALSE, size=NULL,
-#                     foldit=TRUE)
-# {
-#   stopifnot(is.array(mat))
-#   # check for proper dimensionality of 'mat'
-#   dims <- dim(mat)
-#   stopifnot( length(dims) %in% 2:3 )
-#   stopifnot( dims[1] == dims[2] )
-#   if(length(dims) == 3) stopifnot(dims[3] == 2)
-#   d3 <- length(dims) == 3
-#   # other arguments
-#   if(!is.null(gsizes)) stopifnot( length(gsizes) == dims[1] )
-#   if(!is.null(gsizes)) size <- sum(gsizes)
-#   # TODO check if 'mat' can be mixing matrix
-#   # If undirected, fold onto upper triangle
-#   if( !directed && foldit )
-#   {
-#     if(d3)
-#     {
-#       dims <- dim(mat)
-#       mat <- apply(mat, 3, fold, direction="upper")
-#       dim(mat) <- dims
-#     } else
-#     {
-#       mat <- fold(mat, direction="upper")
-#     }
-#   }
-#   r <- as.table(mat)
-#   structure( r,
-#             dimnames=dimnames(r),
-#             directed=directed,
-#             loops=loops,
-#             gsizes=gsizes,
-#             size=size,
-#             class=c("mixingm", "table")
-#             )
-# }
-# 
-# 
-# print.mixingm <- function(x, ...)
-# {
-#   z <- structure(as.numeric(x), dim=dim(x), dimnames=dimnames(x))
-#   cat("Mixing matrix\n")
-#   cat("Is directed:", attr(x, "directed"), "\n")
-#   cat("Network size:", attr(x, "size"), "\n")
-#   tab <- attr(x, "gsizes")
-#   cat("Group sizes:\n")
-#   print(tab)
-#   print(z)
-# }
+# Does it look like a valid mm
+valid_mm <- function(m, square=TRUE, verbose=FALSE)
+  # square = should m be square
+{
+  rval <- NULL
+  if( !is.array(m) )
+  {
+    rval <- "'m' is not an array"
+    stop(rval)
+  }
+  dims <- dim(m)
+  if( !(length(dims) %in% 2:3) )
+    rval <- c(rval, paste0("'m' should have 2 or 3 dimensions, has ", length(dims)))
+  if( length(dims) == 3 && dims[3] != 2 )
+    rval <- c(rval, paste0("third dimension should have two values, has ", dims[3]))
+  if(square)
+  {
+    if( dims[1] != dims[2] )
+      rval <- c(rval, paste0("dimensions 1 and 2 should be equal, are ", dims[1],
+                             " and ", dims[2]) )
+  }
+  if(is.null(rval)) return(TRUE)
+  if(verbose) return(rval)
+  else return(FALSE)
+}
