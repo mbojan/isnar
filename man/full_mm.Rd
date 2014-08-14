@@ -28,8 +28,8 @@ alter. Then \code{cl} does not have to be square. In such cases
 their values on both attributes. See Examples.}
 }
 \value{
-An array with \code{dim} attribute equal to
-\code{c( nrow(cl), ncol(cl), 2 )}
+\code{full_mm} returns a full three-dimenstional mixing matrix as an array
+with \code{dim} attribute equal to \code{c( nrow(cl), ncol(cl), 2 )}.
 }
 \description{
 Given contact layer of the mixing matrix compute a full 3-dimensional mixing

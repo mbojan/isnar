@@ -103,6 +103,7 @@ print.mixingm <- function(x, ...)
 mixingm2 <- function(g, ...) UseMethod("mixingm2")
 
 mixingm2.igraph <- function(g, rattr, cattr=rattr, full=FALSE,
+                            directed = is.directed(g),
                             loops=any(is.loop(g)), ...)
 {
   # get attributes
@@ -127,5 +128,11 @@ mixingm2.igraph <- function(g, rattr, cattr=rattr, full=FALSE,
   ego <- factor( ra[ el[,1] ], levels=sort(unique(ra)))
   alter <- factor(ca[ el[,2] ], levels=sort(unique(ca)))
   con <- table(ego=ego, alter=alter)
-  con
+  if(full)
+  {
+    return(full_mm(con, gsizes=table(ra, ca), directed=directed, loops=loops))
+  } else
+  {
+    return(con)
+  }
 }

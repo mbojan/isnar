@@ -23,17 +23,21 @@
 #' their values on both attributes. See Examples.
 #'
 #' @return
-#' An array with \code{dim} attribute equal to
-#' \code{c( nrow(cl), ncol(cl), 2 )}
+#' \code{full_mm} returns a full three-dimenstional mixing matrix as an array
+#' with \code{dim} attribute equal to \code{c( nrow(cl), ncol(cl), 2 )}.
 #'
 #' @export
 #'
 #' @example examples/full_mm.R
 
 full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
-  # gsizes: vector or crosstab of attributes used
 {
-  size <- sum(gsizes)        # network size
+  # if 3d and dims ok, return cl
+  if( length(dim(cl)) == 3 )
+  {
+    stopifnot(dim(cl)[3] == 2)
+    return(cl)
+  }
   ## Compute ego-alter margin
   gsizes <- as.table(gsizes)
   ndims <- length(dim(gsizes))
@@ -50,27 +54,26 @@ full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
   # Adjust 'o' according to 'loops' and 'directed'
   if(directed)
   {
-      mar <- o
-      if(!loops)
-      {
-          diag(mar) <- diag(o) - gs
-      }
+    mar <- o
+    if(!loops)
+    {
+        diag(mar) <- diag(o) - gs
+    }
   } else {
-          mar <- o
-          mar[ lower.tri(mar) ] <- 0
-      if(loops)
-      {
-          diag(mar) <- (diag(o) + gs) / 2
-      } else {
-          diag(mar) <- (diag(o) - gs) / 2
-      }
+    mar <- o
+    mar[ lower.tri(mar) ] <- 0
+    if(loops)
+    {
+        diag(mar) <- (diag(o) + gs) / 2
+    } else {
+        diag(mar) <- (diag(o) - gs) / 2
+    }
   }
   # collapse if different groups
   if( ndims == 2 )
   {
-    a1 <- apply(mar, 1, function(r) tapply(r, dtab[,1], sum))
-    mar <- apply(a1, 1, function(k) tapply(k, dtab[,2], sum))
-    mar <- t(mar)
+    a1 <- t(apply(mar, 1, function(r) tapply(r, dtab[,1], sum)))
+    mar <- apply(a1, 2, function(k) tapply(k, dtab[,2], sum))
   }
   rval <- array(NA, dim=c( dim(cl), 2 )) 
   rval[,,1] <- mar - cl
@@ -85,4 +88,3 @@ full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
   }
   rval
 }
-
