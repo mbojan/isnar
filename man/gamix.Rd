@@ -48,7 +48,7 @@ implications for the pattern of spread of HIV", AIDS 3:807--817
 \seealso{
 Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
-  \code{\link{assort.igraph}}, \code{\link{assort.matrix}};
+  \code{\link{assort.igraph}}, \code{\link{assort.table}};
   \code{\link{coleman}}, \code{\link{coleman.array}},
   \code{\link{coleman.igraph}}; \code{\link{ei}},
   \code{\link{ei.array}}, \code{\link{ei.igraph}};

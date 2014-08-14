@@ -3,12 +3,12 @@
 \alias{assort}
 \alias{assort.default}
 \alias{assort.igraph}
-\alias{assort.matrix}
+\alias{assort.table}
 \title{Assortativity Coefficient}
 \usage{
 assort(g, ...)
 
-\method{assort}{matrix}(g, ...)
+\method{assort}{table}(g, ...)
 
 \method{assort}{igraph}(g, vattr, ...)
 
@@ -38,12 +38,12 @@ The minimum can be negative, but not less than -1, and depends on the
 relative number of ties of nodes in different groups. If the network
 conforms to "proportionate mixing", the coefficient is 0.
 
-If 'g' is a table it is treated as a mixing matrix. Two-dimensional
+If \code{g} is a table it is treated as a mixing matrix. Two-dimensional
 table is interpreted as a contact layer. Three-dimensional table is
-interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ijt]} cross-classyfying
-all dyads, in which 'i' and 'j' correspond to group membership of ego and
-alter respectively. Layers t=1 and t=2 are assumed to be contact and
-noncontact layers respectively.
+interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
+all dyads, in which 'g' and 'h' correspond to group membership of ego and
+alter respectively. Layers y=1 and y=2 are assumed to be non-contact and
+contact layers respectively.
 
 If \code{g} is an object of class "igraph" the measure is
 calculated for the vertex attribute specified with \code{vattr}.

@@ -2,7 +2,7 @@
 
 S3method(assort,default)
 S3method(assort,igraph)
-S3method(assort,matrix)
+S3method(assort,table)
 S3method(coleman,array)
 S3method(coleman,igraph)
 S3method(ei,array)

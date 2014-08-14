@@ -30,20 +30,26 @@ assort <- function(g, ...) UseMethod("assort")
 
 
 
-#' @details If 'g' is a table it is treated as a mixing matrix. Two-dimensional
+#' @details If \code{g} is a table it is treated as a mixing matrix. Two-dimensional
 #' table is interpreted as a contact layer. Three-dimensional table is
-#' interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ijt]} cross-classyfying
-#' all dyads, in which 'i' and 'j' correspond to group membership of ego and
-#' alter respectively. Layers t=1 and t=2 are assumed to be contact and
-#' noncontact layers respectively.
+#' interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
+#' all dyads, in which 'g' and 'h' correspond to group membership of ego and
+#' alter respectively. Layers y=1 and y=2 are assumed to be non-contact and
+#' contact layers respectively.
 #'
-#' @method assort matrix
+#' @method assort table
 #' @export
 #' @rdname assort
-assort.matrix <- function(g, ...)
+assort.table <- function(g, ...)
 {
-  stopifnot( ncol(g) == nrow(g) )
-  m <- g
+  stopifnot( valid_mm(g) )
+  if( length(dim(g)) == 3 )
+  {
+    m <- g[,,2]
+  } else
+  {
+    m <- g
+  }
   m <- symmetrize(m, "div")
   p <- m / sum(m)
   s <- sum(colSums(p) * rowSums(p))
@@ -76,5 +82,5 @@ assort.igraph <- function(g, vattr, ...)
 assort.default <- function(g, ...)
 {
   m <- as.table(g)
-  assort.matrix(m, ...)
+  assort.table(m, ...)
 }

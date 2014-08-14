@@ -53,7 +53,7 @@ with survey methods", Human Organization 17:28--36.
 \seealso{
 Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
-  \code{\link{assort.igraph}}, \code{\link{assort.matrix}};
+  \code{\link{assort.igraph}}, \code{\link{assort.table}};
   \code{\link{ei}}, \code{\link{ei.array}},
   \code{\link{ei.igraph}}; \code{\link{freeman}},
   \code{\link{freeman.array}},
