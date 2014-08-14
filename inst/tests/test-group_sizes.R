@@ -1,3 +1,5 @@
+library(isnar)
+
 context("Proper group sizes are computed")
 
 
