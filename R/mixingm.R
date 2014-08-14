@@ -29,7 +29,7 @@
 #' folded onto the upper triangle (entries in lower triangle are 0).
 #'
 #' @export
-mixingm <- function(g, ...) UseMethod("mixingm2")
+mixingm <- function(g, ...) UseMethod("mixingm")
 
 #' @method mixingm igraph
 #' @export

@@ -75,12 +75,12 @@ Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.igraph}}, \code{\link{assort.matrix}};
   \code{\link{coleman}}, \code{\link{coleman.array}},
   \code{\link{coleman.igraph}}; \code{\link{ei}},
-  \code{\link{ei.igraph}}, \code{\link{ei.mixingm}};
-  \code{\link{freeman}}, \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}; \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
-  \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}; \code{\link{smi}},
-  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}}
+  \code{\link{ei.array}}, \code{\link{ei.igraph}};
+  \code{\link{freeman}}, \code{\link{freeman.array}},
+  \code{\link{freeman.igraph}}; \code{\link{gamix}},
+  \code{\link{gamix.array}}, \code{\link{gamix.igraph}};
+  \code{\link{orwg}}, \code{\link{orwg.array}},
+  \code{\link{orwg.igraph}}; \code{\link{smi}},
+  \code{\link{smi.array}}, \code{\link{smi.igraph}}
 }
 

@@ -31,10 +31,10 @@ gamix <- function(object, ...) UseMethod("gamix")
 #' @param debug logical, return some intermediate results as attributes to the
 #' returned value
 #'
-#' @method gamix mixingm
+#' @method gamix array
 #' @export
 #' @rdname gamix
-gamix.mixingm <- function(object, debug=FALSE, ...)
+gamix.array <- function(object, debug=FALSE, ...)
 {
   if( length(dim(object)) == 3 )
   {
@@ -64,6 +64,6 @@ gamix.mixingm <- function(object, debug=FALSE, ...)
 #' @rdname gamix
 gamix.igraph <- function (object, vattr, ...)
 {
-  m <- as.mixingm(object, vattr=vattr)
+  m <- mixingm(object, vattr=vattr)
   gamix(m, ...)
 }

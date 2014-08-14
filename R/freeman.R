@@ -50,26 +50,31 @@ freeman <- function(object, ...) UseMethod("freeman")
 #' @details
 #' Method for mixing matrices
 #'
-#' @param dis numeric, optional true distribution of types, see Details
+#' @param gsizes numeric, optional true distribution of types, see Details
 #'
 #' @param more logical, should some more output be returned
 #'
-#' @method freeman mixingm
+#' @method freeman array
 #' @export
 #' @rdname freeman
-freeman.mixingm <- function(object, dis=attr(object, "gsizes"), more=FALSE, ...)
+freeman.array <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)
 {
-  stopifnot(!attr(object, "directed"))
-  # need group sizes
-  stopifnot(!is.null(attr(object, "gsizes")))
-  # take contact layer
-  if( length(dim(object)) == 3 )
+  dims <- dim(object)
+  # need group sizes if only contact layer
+  if( length(dims) == 2 )
+  {
+    stopifnot(!is.null(gsizes))
+    mat <- object
+  } else
+  {
+    stopifnot(length(dims)==3)
+    gsizes <- group_sizes(object, directed=FALSE, loops=loops)
     mat <- object[,,2]
-  else mat <- object
+  }
   # number of cross-group ties
   cct <- sum(mat) - sum(diag(mat))
   # group distribution
-  btab <- dis
+  btab <- gsizes
   n <- sum(mat)
   m <- sum(btab)
   ecct <- (n * (sum(btab)^2 - sum(btab^2))) / (m * (m - 1))
@@ -95,10 +100,9 @@ freeman.mixingm <- function(object, dis=attr(object, "gsizes"), more=FALSE, ...)
 #' @method freeman igraph
 #' @export
 #' @rdname freeman
-freeman.igraph <- function(object, vattr, dis=NULL, ...)
+freeman.igraph <- function(object, vattr, gsizes=NULL, loops=any(is.loop(object)), ...)
 {
     stopifnot(!is.directed(object))
-    m <- as.mixingm(object, vattr, full=TRUE)
-    if(is.null(dis)) dis <- attr(m, "gsizes")
-    freeman(m, dis=dis, ...)
+    m <- mixingm(object, vattr, full=TRUE, loops=loops)
+    freeman(m, ...)
 }

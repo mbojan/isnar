@@ -7,7 +7,7 @@
 \usage{
 coleman(object, ...)
 
-\method{coleman}{mixingm}(object, gsizes = NULL, loops = FALSE, ...)
+\method{coleman}{array}(object, gsizes = NULL, loops = FALSE, ...)
 
 \method{coleman}{igraph}(object, vattr, ...)
 }
@@ -54,14 +54,14 @@ with survey methods", Human Organization 17:28--36.
 Other segregation.measures: \code{\link{assort}},
   \code{\link{assort.default}},
   \code{\link{assort.igraph}}, \code{\link{assort.matrix}};
-  \code{\link{ei}}, \code{\link{ei.igraph}},
-  \code{\link{ei.mixingm}}; \code{\link{freeman}},
-  \code{\link{freeman.igraph}},
-  \code{\link{freeman.mixingm}}; \code{\link{gamix}},
-  \code{\link{gamix.igraph}}, \code{\link{gamix.mixingm}};
-  \code{\link{orwg}}, \code{\link{orwg.igraph}},
-  \code{\link{orwg.mixingm}}; \code{\link{smi}},
-  \code{\link{smi.igraph}}, \code{\link{smi.mixingm}};
+  \code{\link{ei}}, \code{\link{ei.array}},
+  \code{\link{ei.igraph}}; \code{\link{freeman}},
+  \code{\link{freeman.array}},
+  \code{\link{freeman.igraph}}; \code{\link{gamix}},
+  \code{\link{gamix.array}}, \code{\link{gamix.igraph}};
+  \code{\link{orwg}}, \code{\link{orwg.array}},
+  \code{\link{orwg.igraph}}; \code{\link{smi}},
+  \code{\link{smi.array}}, \code{\link{smi.igraph}};
   \code{\link{ssi}}
 }
 

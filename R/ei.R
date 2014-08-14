@@ -17,10 +17,11 @@ ei <- function(object, ...) UseMethod("ei")
 
 #' @details
 #' Method for mixing matrices
-#' @method ei mixingm
+#' @method ei array
 #' @rdname ei
 #' @export
-ei.mixingm <- function(object, ...)
+
+ei.array <- function(object, ...)
 {
   # extract contact layer
   if(length(dim(object)) == 3)
@@ -42,8 +43,9 @@ ei.mixingm <- function(object, ...)
 #' @method ei igraph
 #' @rdname ei
 #' @export
-ei.igraph <- function(object, vattr, ...)
+ei.igraph <- function(object, vattr, directed=is.directed(object),
+                      loops=any(is.loop(object)), ...)
 {
-  m <- as.mixingm(object, vattr=vattr)
+  m <- mixingm(object, rattr=vattr, directed=directed, loops=loops)
   ei(m, ...)
 }

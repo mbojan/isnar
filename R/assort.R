@@ -37,7 +37,7 @@ assort <- function(g, ...) UseMethod("assort")
 #' alter respectively. Layers t=1 and t=2 are assumed to be contact and
 #' noncontact layers respectively.
 #'
-#' @method assort mixingm
+#' @method assort matrix
 #' @export
 #' @rdname assort
 assort.matrix <- function(g, ...)
@@ -76,5 +76,5 @@ assort.igraph <- function(g, vattr, ...)
 assort.default <- function(g, ...)
 {
   m <- as.table(g)
-  assort.mixingm(m, ...)
+  assort.matrix(m, ...)
 }

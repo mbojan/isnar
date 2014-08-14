@@ -39,7 +39,7 @@ coleman <- function(object, ...) UseMethod("coleman")
 #'
 #' @param loops logical, whether loops are allowed
 #'
-#' @method coleman mixingm
+#' @method coleman array
 #' @export
 #' @rdname coleman
 coleman.array <- function(object, gsizes=NULL, loops=FALSE, ...)

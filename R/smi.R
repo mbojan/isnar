@@ -35,10 +35,10 @@ smi <- function(object, ...) UseMethod("smi")
 #' @param normalize logical, whether normalized values should be returned,
 #' defaults to \code{TRUE}
 #'
-#' @method smi mixingm
+#' @method smi array
 #' @export
 #' @rdname smi
-smi.mixingm <- function(object, normalize=TRUE, ...)
+smi.array <- function(object, normalize=TRUE, ...)
 {
   # only directed networks
   stopifnot(attr(object, "directed"))
@@ -65,6 +65,6 @@ smi.mixingm <- function(object, normalize=TRUE, ...)
 smi.igraph <- function(object, vattr, ...)
 {
   stopifnot(is.directed(object))
-  m <- as.mixingm(object, vattr=vattr, full=TRUE)
+  m <- mixingm(object, vattr=vattr, full=TRUE)
   smi(m, ...)
 }
