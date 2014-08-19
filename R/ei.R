@@ -15,13 +15,16 @@
 #' @family segregation measures
 ei <- function(object, ...) UseMethod("ei")
 
+
+
+
+
 #' @details
-#' Method for mixing matrices
-#' @method ei array
+#' If \code{object} is a table, it is assumed to be a mixing matrix.
+#' @method ei table
 #' @rdname ei
 #' @export
-
-ei.array <- function(object, ...)
+ei.table <- function(object, ...)
 {
   # extract contact layer
   if(length(dim(object)) == 3)
@@ -40,6 +43,10 @@ ei.array <- function(object, ...)
 #' @param vattr character scalar or vector of length equal to the size of
 #' \code{object}, vertex attribute for which mixing matrix is to be computed
 #'
+#' @param directed logical whether the network is directed
+#'
+#' @param loops logical, whether loops are allowed
+#'
 #' @method ei igraph
 #' @rdname ei
 #' @export
@@ -48,4 +55,20 @@ ei.igraph <- function(object, vattr, directed=is.directed(object),
 {
   m <- mixingm(object, rattr=vattr, directed=directed, loops=loops)
   ei(m, ...)
+}
+
+
+
+
+
+
+#' @details
+#' Default method tries to coerce \code{object} to table.
+#'
+#' @method ei default
+#' @export
+#' @rdname ei
+ei.default <- function(object, ...)
+{
+  ei.table( as.table(object), ...)
 }

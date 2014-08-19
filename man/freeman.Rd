@@ -82,12 +82,13 @@ Other segregation.measures: \code{\link{assort}},
   \code{\link{coleman}}, \code{\link{coleman.default}},
   \code{\link{coleman.igraph}},
   \code{\link{coleman.table}}; \code{\link{ei}},
-  \code{\link{ei.array}}, \code{\link{ei.igraph}};
-  \code{\link{gamix}}, \code{\link{gamix.array}},
-  \code{\link{gamix.igraph}}; \code{\link{orwg}},
-  \code{\link{orwg.array}}, \code{\link{orwg.igraph}};
-  \code{\link{smi}}, \code{\link{smi.array}},
-  \code{\link{smi.igraph}}; \code{\link{ssi}}
+  \code{\link{ei.default}}, \code{\link{ei.igraph}},
+  \code{\link{ei.table}}; \code{\link{gamix}},
+  \code{\link{gamix.array}}, \code{\link{gamix.igraph}};
+  \code{\link{orwg}}, \code{\link{orwg.array}},
+  \code{\link{orwg.igraph}}; \code{\link{smi}},
+  \code{\link{smi.array}}, \code{\link{smi.igraph}};
+  \code{\link{ssi}}
 }
 \keyword{graphs}
 
