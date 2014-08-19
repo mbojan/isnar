@@ -72,8 +72,9 @@ full_mm <- function(cl, gsizes, directed=TRUE, loops=FALSE)
   # collapse if different groups
   if( ndims == 2 )
   {
-    a1 <- t(apply(mar, 1, function(r) tapply(r, dtab[,1], sum)))
-    mar <- apply(a1, 2, function(k) tapply(k, dtab[,2], sum))
+    a1 <- apply(mar, 1, function(r) tapply(r, dtab[,1], sum))
+    mar <- apply(a1, 1, function(k) tapply(k, dtab[,2], sum))
+    mar <- t(mar)
   }
   rval <- array(NA, dim=c( dim(cl), 2 )) 
   rval[,,1] <- mar - cl

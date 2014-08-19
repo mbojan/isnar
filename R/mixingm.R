@@ -28,6 +28,8 @@
 #' For undirected network and if \code{foldit} is TRUE (default), the matrix is
 #' folded onto the upper triangle (entries in lower triangle are 0).
 #'
+#' @example examples/mixingm.R
+#'
 #' @export
 mixingm <- function(g, ...) UseMethod("mixingm")
 
