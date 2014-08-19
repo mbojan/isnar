@@ -17,9 +17,11 @@ test_that("Coleman index gives correct results for his example data",
             mat <- matrix(c(45, 20, 15, 20), 2, 2)
             # rebuild mixing matrix given group sizes
             mmat <- full_mm(mat, directed=TRUE, gsizes=c(60, 40))
-            r <- coleman(mmat)
+            r <- coleman(mmat) # full mixing matrix
+            r2 <- coleman(mat, gsizes=c(60, 40)) # contact layer + gsizes
             # NOTE In Colemans paper (1958) he uses approximation in computing
             # expected number of ties within group 'i'. The function is exact.
             # Original results were: boys=0.375 and girls=0.167
             expect_equal(r, c(0.38125, 0.175))
+            expect_equal(r2, c(0.38125, 0.175))
           } )

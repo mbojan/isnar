@@ -17,7 +17,7 @@ assort(g, ...)
 \arguments{
 \item{g}{R object, see available methods}
 
-\item{...}{other arguments to/from other methods, currently ignored}
+\item{...}{other arguments to/from other methods}
 
 \item{vattr}{character, name of the vertex attribute for which the measure
 is to be calculated}
@@ -38,17 +38,18 @@ The minimum can be negative, but not less than -1, and depends on the
 relative number of ties of nodes in different groups. If the network
 conforms to "proportionate mixing", the coefficient is 0.
 
-If \code{g} is a table it is treated as a mixing matrix. Two-dimensional
-table is interpreted as a contact layer. Three-dimensional table is
-interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
-all dyads, in which 'g' and 'h' correspond to group membership of ego and
-alter respectively. Layers y=1 and y=2 are assumed to be non-contact and
-contact layers respectively.
+If \code{g} is a table it is treated as a mixing matrix.
+Two-dimensional table is interpreted as a contact layer. Three-dimensional
+table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+cross-classyfying all dyads, in which 'g' and 'h' correspond to group
+membership of ego and alter respectively. Layers y=1 and y=2 are assumed to
+be non-contact and contact layers respectively. In the 3-d case only
+\code{g[,,2]} is used.
 
 If \code{g} is an object of class "igraph" the measure is
 calculated for the vertex attribute specified with \code{vattr}.
 
-Any other objects passed as \code{g} are coerced to a table and the
+For any other classes, object \code{g} are coerced to a table and the
 table method is called.
 }
 \examples{
@@ -77,8 +78,9 @@ Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 }
 \seealso{
 Other segregation.measures: \code{\link{coleman}},
-  \code{\link{coleman.array}},
-  \code{\link{coleman.igraph}}; \code{\link{ei}},
+  \code{\link{coleman.default}},
+  \code{\link{coleman.igraph}},
+  \code{\link{coleman.table}}; \code{\link{ei}},
   \code{\link{ei.array}}, \code{\link{ei.igraph}};
   \code{\link{freeman}}, \code{\link{freeman.array}},
   \code{\link{freeman.igraph}}; \code{\link{gamix}},

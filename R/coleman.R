@@ -2,9 +2,9 @@
 #'
 #' Colemans's homphily index for directed networks.
 #'
-#' @param object R object, see available methods
+#' @param object R object, see Details for available methods
 #'
-#' @param ... other arguments
+#' @param ... other arguments passed to/from methods
 #'
 #' @details
 #' Coleman's homophily index computes homophily scores for each group
@@ -28,21 +28,18 @@ coleman <- function(object, ...) UseMethod("coleman")
 
 
 #' @details
-#' \code{object} can be a mixing matrix:
-#' \enumerate{
-#' \item{either only the contact layer (square matrix), which requires
-#' supplying the \code{gsizes} argument with the sizes of the groups}
-#' \item{full mixing matrix as a three dimensional array}
-#' }
+#' If \code{object} is a table it is interpreted as a mixing matrix. If it is
+#' only the contact layer (2-dimensional), then vector of group sizes need to
+#' be supplied via \code{gsizes}.
 #'
 #' @param gsizes numeric vector of group sizes
 #'
 #' @param loops logical, whether loops are allowed
 #'
-#' @method coleman array
+#' @method coleman table
 #' @export
 #' @rdname coleman
-coleman.array <- function(object, gsizes=NULL, loops=FALSE, ...)
+coleman.table <- function(object, gsizes=NULL, loops=FALSE, ...)
 {
   dims <- dim(object)
   # only contact layer
@@ -83,3 +80,15 @@ coleman.igraph <- function(object, vattr, ...)
   coleman(object, ...)
 }
 
+
+
+#' @details
+#' Default method tries to coerce \code{object} to table and use other methods.
+#' @method coleman default
+#' @export
+#' @rdname coleman
+coleman.default <- function(object, ...)
+{
+  m <- as.table(object)
+  coleman(m, ...)
+}

@@ -13,7 +13,7 @@
 #'
 #' @param g R object, see available methods
 #'
-#' @param ... other arguments to/from other methods, currently ignored
+#' @param ... other arguments to/from other methods
 #'
 #' @return Numeric value of the index.
 #' @export
@@ -30,12 +30,13 @@ assort <- function(g, ...) UseMethod("assort")
 
 
 
-#' @details If \code{g} is a table it is treated as a mixing matrix. Two-dimensional
-#' table is interpreted as a contact layer. Three-dimensional table is
-#' interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]} cross-classyfying
-#' all dyads, in which 'g' and 'h' correspond to group membership of ego and
-#' alter respectively. Layers y=1 and y=2 are assumed to be non-contact and
-#' contact layers respectively.
+#' @details If \code{g} is a table it is treated as a mixing matrix.
+#' Two-dimensional table is interpreted as a contact layer. Three-dimensional
+#' table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
+#' cross-classyfying all dyads, in which 'g' and 'h' correspond to group
+#' membership of ego and alter respectively. Layers y=1 and y=2 are assumed to
+#' be non-contact and contact layers respectively. In the 3-d case only
+#' \code{g[,,2]} is used.
 #'
 #' @method assort table
 #' @export
@@ -57,6 +58,8 @@ assort.table <- function(g, ...)
   rval
 }
 
+
+
 #' @details If \code{g} is an object of class "igraph" the measure is
 #' calculated for the vertex attribute specified with \code{vattr}.
 #'
@@ -73,7 +76,10 @@ assort.igraph <- function(g, vattr, ...)
   assort(g, ...)
 }
 
-#' @details Any other objects passed as \code{g} are coerced to a table and the
+
+
+
+#' @details For any other classes, object \code{g} are coerced to a table and the
 #' table method is called.
 #'
 #' @method assort default
