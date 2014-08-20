@@ -65,7 +65,7 @@ Other segregation.measures: \code{\link{assort}},
   \code{\link{gamix.table}}; \code{\link{orwg}},
   \code{\link{orwg.default}}, \code{\link{orwg.igraph}},
   \code{\link{orwg.table}}; \code{\link{smi}},
-  \code{\link{smi.array}}, \code{\link{smi.igraph}};
-  \code{\link{ssi}}
+  \code{\link{smi.default}}, \code{\link{smi.igraph}},
+  \code{\link{smi.table}}; \code{\link{ssi}}
 }
 

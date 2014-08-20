@@ -52,7 +52,7 @@ orwg.table <- function(object, ...)
 #' @rdname orwg
 orwg.igraph <- function(object, vattr, ...)
 {
-  m <- mixingm(object, vattr=vattr, full=TRUE)
+  m <- mixingm(object, rattr=vattr, full=TRUE)
   orwg(m, ...)
 }
 

@@ -35,13 +35,12 @@ smi <- function(object, ...) UseMethod("smi")
 #' @param normalize logical, whether normalized values should be returned,
 #' defaults to \code{TRUE}
 #'
-#' @method smi array
+#' @method smi table
 #' @export
 #' @rdname smi
-smi.array <- function(object, normalize=TRUE, ...)
+smi.table <- function(object, normalize=TRUE, ...)
 {
   # only directed networks
-  stopifnot(attr(object, "directed"))
   stopifnot(length(dim(object)) == 3)
   if( dim(object)[1] != 2 )
       stop("currently 'smi' supports only two groups")
@@ -65,6 +64,19 @@ smi.array <- function(object, normalize=TRUE, ...)
 smi.igraph <- function(object, vattr, ...)
 {
   stopifnot(is.directed(object))
-  m <- mixingm(object, vattr=vattr, full=TRUE)
+  m <- mixingm(object, rattr=vattr, full=TRUE)
   smi(m, ...)
+}
+
+
+
+
+
+
+#' @method smi default
+#' @export
+#' @rdname smi
+smi.default <- function(object, ...)
+{
+  smi.table(as.table(object), ...)
 }
