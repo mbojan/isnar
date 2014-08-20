@@ -25,10 +25,10 @@ orwg <- function(object, ...) UseMethod("orwg")
 #' @details
 #' Method for mixing matrices.
 #'
-#' @method orwg array
+#' @method orwg table
 #' @export
 #' @rdname orwg
-orwg.array <- function(object, ...)
+orwg.table <- function(object, ...)
 {
   # needs full mixing matrix
   stopifnot(length(dim(object)) == 3)
@@ -54,4 +54,15 @@ orwg.igraph <- function(object, vattr, ...)
 {
   m <- mixingm(object, vattr=vattr, full=TRUE)
   orwg(m, ...)
+}
+
+
+
+
+#' @method orwg default
+#' @export
+#' @rdname orwg
+orwg.default <- function(object, ...)
+{
+  orwg.table( as.table(object), ... )
 }

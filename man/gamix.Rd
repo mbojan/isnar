@@ -60,8 +60,9 @@ Other segregation.measures: \code{\link{assort}},
   \code{\link{freeman.default}},
   \code{\link{freeman.igraph}},
   \code{\link{freeman.table}}; \code{\link{orwg}},
-  \code{\link{orwg.array}}, \code{\link{orwg.igraph}};
-  \code{\link{smi}}, \code{\link{smi.array}},
-  \code{\link{smi.igraph}}; \code{\link{ssi}}
+  \code{\link{orwg.default}}, \code{\link{orwg.igraph}},
+  \code{\link{orwg.table}}; \code{\link{smi}},
+  \code{\link{smi.array}}, \code{\link{smi.igraph}};
+  \code{\link{ssi}}
 }
 
