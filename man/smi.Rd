@@ -59,8 +59,9 @@ Other segregation.measures: \code{\link{assort}},
   \code{\link{coleman.table}}; \code{\link{ei}},
   \code{\link{ei.default}}, \code{\link{ei.igraph}},
   \code{\link{ei.table}}; \code{\link{freeman}},
-  \code{\link{freeman.array}},
-  \code{\link{freeman.igraph}}; \code{\link{gamix}},
+  \code{\link{freeman.default}},
+  \code{\link{freeman.igraph}},
+  \code{\link{freeman.table}}; \code{\link{gamix}},
   \code{\link{gamix.array}}, \code{\link{gamix.igraph}};
   \code{\link{orwg}}, \code{\link{orwg.array}},
   \code{\link{orwg.igraph}}; \code{\link{ssi}}

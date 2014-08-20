@@ -54,10 +54,12 @@ freeman <- function(object, ...) UseMethod("freeman")
 #'
 #' @param more logical, should some more output be returned
 #'
+#' @param loops logical, whether loops are allowed
+#'
 #' @method freeman array
 #' @export
 #' @rdname freeman
-freeman.array <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)
+freeman.table <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)
 {
   dims <- dim(object)
   # need group sizes if only contact layer
@@ -105,4 +107,15 @@ freeman.igraph <- function(object, vattr, gsizes=NULL, loops=any(is.loop(object)
     stopifnot(!is.directed(object))
     m <- mixingm(object, vattr, full=TRUE, loops=loops)
     freeman(m, ...)
+}
+
+
+
+
+#' @method freeman default
+#' @export
+#' @rdname freeman
+freeman.default <- function(object, ...)
+{
+  freeman.table( as.table(object), ... )
 }
