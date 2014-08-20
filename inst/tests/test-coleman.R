@@ -22,6 +22,6 @@ test_that("Coleman index gives correct results for his example data",
             # NOTE In Colemans paper (1958) he uses approximation in computing
             # expected number of ties within group 'i'. The function is exact.
             # Original results were: boys=0.375 and girls=0.167
-            expect_equal(r, c(0.38125, 0.175))
-            expect_equal(r2, c(0.38125, 0.175))
+            expect_equivalent(r, c(0.38125, 0.175))
+            expect_equivalent(r2, c(0.38125, 0.175))
           } )
