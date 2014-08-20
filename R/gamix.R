@@ -64,7 +64,7 @@ gamix.table <- function(object, debug=FALSE, ...)
 #' @rdname gamix
 gamix.igraph <- function (object, vattr, ...)
 {
-  m <- mixingm(object, vattr=vattr)
+  m <- mixingm(object, rattr=vattr)
   gamix(m, ...)
 }
 
