@@ -8,7 +8,7 @@
 \usage{
 freeman(object, ...)
 
-\method{freeman}{array}(object, gsizes = NULL, more = FALSE,
+\method{freeman}{table}(object, gsizes = NULL, more = FALSE,
   loops = FALSE, ...)
 
 \method{freeman}{igraph}(object, vattr, gsizes = NULL,
@@ -89,11 +89,11 @@ Other segregation.measures: \code{\link{assort}},
   \code{\link{coleman.table}}; \code{\link{ei}},
   \code{\link{ei.default}}, \code{\link{ei.igraph}},
   \code{\link{ei.table}}; \code{\link{gamix}},
-  \code{\link{gamix.array}}, \code{\link{gamix.igraph}};
-  \code{\link{orwg}}, \code{\link{orwg.array}},
-  \code{\link{orwg.igraph}}; \code{\link{smi}},
-  \code{\link{smi.array}}, \code{\link{smi.igraph}};
-  \code{\link{ssi}}
+  \code{\link{gamix.default}}, \code{\link{gamix.igraph}},
+  \code{\link{gamix.table}}; \code{\link{orwg}},
+  \code{\link{orwg.array}}, \code{\link{orwg.igraph}};
+  \code{\link{smi}}, \code{\link{smi.array}},
+  \code{\link{smi.igraph}}; \code{\link{ssi}}
 }
 \keyword{graphs}
 

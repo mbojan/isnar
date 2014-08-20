@@ -11,19 +11,13 @@
 #' reciever, and whether the dyad is connected or not. The two-dimensional
 #' version is a so-called "contact layer" of the three-dimensional version.
 #'
+#' @param object R object, see Details for available methods
 #'
-#' @param mat numeric square (say \eqn{n \times n}{n*n}) matrix or array with
-#' \code{dim=c(n, n, 2)}
-#'
-#' @param gsizes numerical vector of group sizes
-#' @param directed logical, whether the network is directed
-#' @param loops logical, whether the network contains loops (self-ties)
-#' @param size numeric network size, computed from group sizes by default
-#' @param foldit logical, whether mixingm matrix for undirected networks should
-#' be folded
+#' @param ... other arguments passed to/from other methods
 #'
 #' @return
-#' An object of S3 class "mixingm" extending class "table".
+#' Depending on \code{full} argument a two- or three-dimensional array
+#' crossclassifying connected or all dyads in \code{object}.
 #'
 #' For undirected network and if \code{foldit} is TRUE (default), the matrix is
 #' folded onto the upper triangle (entries in lower triangle are 0).
@@ -31,34 +25,70 @@
 #' @example examples/mixingm.R
 #'
 #' @export
-mixingm <- function(g, ...) UseMethod("mixingm")
+mixingm <- function(object, ...) UseMethod("mixingm")
 
+
+
+
+
+
+#' @details
+#' If \code{object} is of class "igraph," mixing matrix is created for the
+#' network in \code{object} based on vertex attributes supplied in arguments
+#' \code{rattr} and optionally \code{cattr}.
+#'
+#' If only \code{rattr} is specified (or, equivalently, \code{rattr} and
+#' \code{cattr} are identical), the result will be a mixing matrix \eqn{G
+#' \times G} if \code{full} is \code{FALSE} or \eqn{G \times G \times 2}{GxGx2}
+#' if \code{full} is \code{TRUE}. Where \eqn{G} is the number of categories of
+#' vertex attribute specified by \code{rattr}.
+#'
+#' If \code{rattr} and \code{cattr} can be used to specify different vertex
+#' attributes for tie sender and tie receiver.
+#'
+#' @param rattr name of the vertex attribute or an attribute itself as a
+#' vector. If \code{cattr} is not NULL, \code{rattr} is used for rows of the
+#' resulting mixing matrix.
+#'
+#' @param cattr name of the vertex attribute or an attribute itself as a
+#' vector. If supplied, used for columns in the mixing matrix.
+#'
+#' @param full logical, whether two- or three-dimensional mixing matrix
+#' should be returned.
+#'
+#' @param directed logical, whether the network is directed. By default,
+#' directedness of the network is determined with
+#' \code{\link[igraph]{is.directed}}.
+#'
+#' @param loops logical, whether loops are allowed. By default it is TRUE
+#' whenever there is at least one loop in \code{object}.
+#'
 #' @method mixingm igraph
 #' @export
 #' @rdname mixingm
-mixingm.igraph <- function(g, rattr, cattr=rattr, full=FALSE,
-                            directed = is.directed(g),
-                            loops=any(is.loop(g)), ...)
+mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
+                            directed = is.directed(object),
+                            loops=any(is.loop(object)), ...)
 {
   # get attributes
   if( is.character(rattr) && length(rattr)==1 )
   {
-    ra <- igraph::get.vertex.attribute(g, rattr)
+    ra <- igraph::get.vertex.attribute(object, rattr)
   } else
   {
-    stopifnot( length(rattr) == vcount(g))
+    stopifnot( length(rattr) == vcount(object))
     ra <- rattr
   }
   if( is.character(cattr) && length(cattr)==1 )
   {
-    ca <- igraph::get.vertex.attribute(g, cattr)
+    ca <- igraph::get.vertex.attribute(object, cattr)
   } else
   {
-    stopifnot( length(cattr) == vcount(g))
+    stopifnot( length(cattr) == vcount(object))
     ca <- cattr
   }
   # compute contact layer based on edge list
-  el <- igraph::get.edgelist(g, names=FALSE)
+  el <- igraph::get.edgelist(object, names=FALSE)
   ego <- factor( ra[ el[,1] ], levels=sort(unique(ra)))
   alter <- factor(ca[ el[,2] ], levels=sort(unique(ca)))
   con <- table(ego=ego, alter=alter)

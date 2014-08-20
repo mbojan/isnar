@@ -56,7 +56,7 @@ freeman <- function(object, ...) UseMethod("freeman")
 #'
 #' @param loops logical, whether loops are allowed
 #'
-#' @method freeman array
+#' @method freeman table
 #' @export
 #' @rdname freeman
 freeman.table <- function(object, gsizes=NULL, more=FALSE, loops=FALSE, ...)

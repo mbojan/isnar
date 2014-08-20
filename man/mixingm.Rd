@@ -4,28 +4,36 @@
 \alias{mixingm.igraph}
 \title{Network mixing matrix}
 \usage{
-mixingm(g, ...)
+mixingm(object, ...)
 
-\method{mixingm}{igraph}(g, rattr, cattr = rattr, full = FALSE,
-  directed = is.directed(g), loops = any(is.loop(g)), ...)
+\method{mixingm}{igraph}(object, rattr, cattr = rattr, full = FALSE,
+  directed = is.directed(object), loops = any(is.loop(object)), ...)
 }
 \arguments{
-\item{mat}{numeric square (say \eqn{n \times n}{n*n}) matrix or array with
-\code{dim=c(n, n, 2)}}
+\item{object}{R object, see Details for available methods}
 
-\item{gsizes}{numerical vector of group sizes}
+\item{...}{other arguments passed to/from other methods}
 
-\item{directed}{logical, whether the network is directed}
+\item{rattr}{name of the vertex attribute or an attribute itself as a
+vector. If \code{cattr} is not NULL, \code{rattr} is used for rows of the
+resulting mixing matrix.}
 
-\item{loops}{logical, whether the network contains loops (self-ties)}
+\item{cattr}{name of the vertex attribute or an attribute itself as a
+vector. If supplied, used for columns in the mixing matrix.}
 
-\item{size}{numeric network size, computed from group sizes by default}
+\item{full}{logical, whether two- or three-dimensional mixing matrix
+should be returned.}
 
-\item{foldit}{logical, whether mixingm matrix for undirected networks should
-be folded}
+\item{directed}{logical, whether the network is directed. By default,
+directedness of the network is determined with
+\code{\link[igraph]{is.directed}}.}
+
+\item{loops}{logical, whether loops are allowed. By default it is TRUE
+whenever there is at least one loop in \code{object}.}
 }
 \value{
-An object of S3 class "mixingm" extending class "table".
+Depending on \code{full} argument a two- or three-dimensional array
+crossclassifying connected or all dyads in \code{object}.
 
 For undirected network and if \code{foldit} is TRUE (default), the matrix is
 folded onto the upper triangle (entries in lower triangle are 0).
@@ -41,6 +49,19 @@ three-dimensional array that cross-classifies \emph{all} network
 \emph{dyads} depending on the values of the attribute for tie sender, tie
 reciever, and whether the dyad is connected or not. The two-dimensional
 version is a so-called "contact layer" of the three-dimensional version.
+
+If \code{object} is of class "igraph," mixing matrix is created for the
+network in \code{object} based on vertex attributes supplied in arguments
+\code{rattr} and optionally \code{cattr}.
+
+If only \code{rattr} is specified (or, equivalently, \code{rattr} and
+\code{cattr} are identical), the result will be a mixing matrix \eqn{G
+\times G} if \code{full} is \code{FALSE} or \eqn{G \times G \times 2}{GxGx2}
+if \code{full} is \code{TRUE}. Where \eqn{G} is the number of categories of
+vertex attribute specified by \code{rattr}.
+
+If \code{rattr} and \code{cattr} can be used to specify different vertex
+attributes for tie sender and tie receiver.
 }
 \examples{
 # some directed network
