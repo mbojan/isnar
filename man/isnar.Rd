@@ -5,10 +5,25 @@
 \alias{isnar-package}
 \title{Introduction to Social Network Analysis with R}
 \description{
-Functions and data accompanying the workshop "Introduction to Social Network
-Analysis with R" at annual INSNA Sunbelt conferences.
+Functions and data accompanying my workshop "Introduction to Social Network
+Analysis with R".
 }
-\details{
-Among other things, it includes a lot of things.
+\section{Terminological disclaimer}{
+
+
+This package is about analyzing social networks. Social Network Analysis
+(SNA) uses mathematical graph theory to represent its ideas. Nevertheless,
+for, among other things, historical reasons SNA developed its own
+terminology of networks that functions somewhat in parallel to
+graph-theoretical terms. To clarify, these are the synonyms for strict
+mathematical terms corresponding to graphs:
+\describe{
+\item{graph}{a collection of vertices and lines connecting them. Sometimes
+called "network"}
+\item{vertex}{sometimes called "node"}
+\item{line, edge, arc}{sometimes called a (directed/undirected) "tie". Edge
+starting point can be called a "tie sender" or "ego". Edge endpoint can be
+called "tie receiver" or "alter"}
+}
 }
 
