@@ -42,13 +42,28 @@ folded onto the upper triangle (entries in lower triangle are 0).
 Creating network mixing matrices.
 }
 \details{
-Mixing matrix is, traditionaly, a two-dimensional cross-classification of
-network ties depeding on the values of given vertex attribute of tie sender
-(or "ego") and tie receiver (or "alter"). A full mixing matrix is a
-three-dimensional array that cross-classifies \emph{all} network
-\emph{dyads} depending on the values of the attribute for tie sender, tie
-reciever, and whether the dyad is connected or not. The two-dimensional
-version is a so-called "contact layer" of the three-dimensional version.
+Network mixing matrix is, traditionally, a two-dimensional
+cross-classification of edges depending on the values of a specified vertex
+attribute for tie sender and tie receiver. It is an important tool
+for assessing network homophily or segregation.
+
+Let \eqn{G} be the number of distinct values of the vertex attribute in
+question.  We may say that we have \eqn{G} mutually exclusive groups in the
+network.  The mixing matrix is a \eqn{G \times G}{GxG} matrix such that
+\eqn{m_{ij}}{m[ij]} is the number of ties send by vertices in group \eqn{i}
+to vertices in group \eqn{j}. The diagonal of that matrix is of special
+interest as, say, \eqn{m_{ii}}{m[ii]} is the number of ties \emph{within}
+group \eqn{i}.
+
+A full mixing matrix is a three-dimensional array that cross-classifies
+\emph{all} network \emph{dyads} depending on:
+\enumerate{
+\item{the value of the vertex attribute for tie sender}
+\item{the value of the vertex attribute for tie receiver}
+\item{the status of the dyad, i.e. whether it is connected or not}
+}
+The two-dimensional version is a so-called "contact layer"
+of the three-dimensional version.
 
 If \code{object} is of class "igraph," mixing matrix is created for the
 network in \code{object} based on vertex attributes supplied in arguments
