@@ -11,12 +11,14 @@
 #' relative number of ties of nodes in different groups. If the network
 #' conforms to "proportionate mixing", the coefficient is 0.
 #'
-#' @param g R object, see available methods
+#' @param object R object, see available methods
 #'
 #' @param ... other arguments to/from other methods
 #'
 #' @return Numeric value of the index.
-#' @export
+#'
+#' @seealso 
+#' Mixing matrices: \code{\link{mixingm}}
 #'
 #' @references
 #' Newman, M. J. and Girvan, M. (2002) "Mixing patterns and community structure
@@ -25,12 +27,14 @@
 #' Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 #'
 #' @example examples/assort.R
+#' @export
 #' @family segregation measures
-assort <- function(g, ...) UseMethod("assort")
+assort <- function(object, ...) UseMethod("assort")
 
 
 
-#' @details If \code{g} is a table it is treated as a mixing matrix.
+#' @details
+#' If \code{object} is a table it is treated as a mixing matrix.
 #' Two-dimensional table is interpreted as a contact layer. Three-dimensional
 #' table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
 #' cross-classyfying all dyads, in which 'g' and 'h' correspond to group
@@ -41,15 +45,15 @@ assort <- function(g, ...) UseMethod("assort")
 #' @method assort table
 #' @export
 #' @rdname assort
-assort.table <- function(g, ...)
+assort.table <- function(object, ...)
 {
-  stopifnot( valid_mm(g) )
-  if( length(dim(g)) == 3 )
+  stopifnot( valid_mm(object) )
+  if( length(dim(object)) == 3 )
   {
-    m <- g[,,2]
+    m <- object[,,2]
   } else
   {
-    m <- g
+    m <- object
   }
   m <- symmetrize(m, "div")
   p <- m / sum(m)
@@ -69,11 +73,11 @@ assort.table <- function(g, ...)
 #' @method assort igraph
 #' @export
 #' @rdname assort
-assort.igraph <- function(g, vattr, ...)
+assort.igraph <- function(object, vattr, ...)
 {
   # missing matrix
-  g <- mixingm(g, vattr)
-  assort(g, ...)
+  object <- mixingm(object, vattr)
+  assort(object, ...)
 }
 
 
@@ -85,8 +89,8 @@ assort.igraph <- function(g, vattr, ...)
 #' @method assort default
 #' @export
 #' @rdname assort
-assort.default <- function(g, ...)
+assort.default <- function(object, ...)
 {
-  m <- as.table(g)
+  m <- as.table(object)
   assort.table(m, ...)
 }

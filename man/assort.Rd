@@ -6,16 +6,16 @@
 \alias{assort.table}
 \title{Assortativity Coefficient}
 \usage{
-assort(g, ...)
+assort(object, ...)
 
-\method{assort}{table}(g, ...)
+\method{assort}{table}(object, ...)
 
-\method{assort}{igraph}(g, vattr, ...)
+\method{assort}{igraph}(object, vattr, ...)
 
-\method{assort}{default}(g, ...)
+\method{assort}{default}(object, ...)
 }
 \arguments{
-\item{g}{R object, see available methods}
+\item{object}{R object, see available methods}
 
 \item{...}{other arguments to/from other methods}
 
@@ -38,7 +38,7 @@ The minimum can be negative, but not less than -1, and depends on the
 relative number of ties of nodes in different groups. If the network
 conforms to "proportionate mixing", the coefficient is 0.
 
-If \code{g} is a table it is treated as a mixing matrix.
+If \code{object} is a table it is treated as a mixing matrix.
 Two-dimensional table is interpreted as a contact layer. Three-dimensional
 table is interpreted as a full mixing matrix \eqn{m_{ghy}}{m[ghy]}
 cross-classyfying all dyads, in which 'g' and 'h' correspond to group
@@ -77,6 +77,8 @@ in networks", arXiv:cond-mat/0210146v1
 Newman, M. J. (2003) "Mixing patterns in networks" arXiv:cond-mat/0209450v2
 }
 \seealso{
+Mixing matrices: \code{\link{mixingm}}
+
 Other segregation.measures: \code{\link{coleman}},
   \code{\link{coleman.default}},
   \code{\link{coleman.igraph}},
