@@ -1,5 +1,7 @@
 # Introduction to SNA with R
 
+[![Build Status](https://travis-ci.org/mbojan/isnar.png?branch=master)](https://travis-ci.org/mbojan/isnar)
+
 Functions and datasets accopmanying the workshop I teach.
 
 ## Installation
