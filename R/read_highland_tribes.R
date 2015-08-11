@@ -1,0 +1,35 @@
+#' Read Highland Tribes
+#'
+#' Hage & Harary (1983) use the Gahuku-Gama system of the Eastern Central
+#' Highlands of New Guinea, described by Read (1954), to illustrate a
+#' clusterable signed graph. Read's ethnography portrayed an alliance structure
+#' among three tribal groups containing balance as a special case; among
+#' Gahuku-Gama the enemy of an enemy can be either a friend or an enemy.
+#'
+#' @format Igraph object with undirected network with 16 vertices.
+#' Vertices have original names of the tribes (vertex attribute \code{name}).
+#' Edge attributes
+#' \describe{
+#' \item{positive}{logical, whether a tie is positive or negative}
+#' }
+#'
+#' @source UCINET IV datasets retrieved from Pajek data collection
+#' \url{http://vlado.fmf.uni-lj.si/pub/networks/data/ucinet/ucidata.htm#gama}
+#'
+#' @references
+#'
+#' Hage P. and Harary F. (1983). Structural models in anthropology. Cambridge:
+#' Cambridge University Press. (See p 56-60).
+#'
+#' Read K. (1954). Cultures of the central highlands, New Guinea. Southwestern
+#' Journal of Anthropology, 10, 1-43.
+#'
+#' @examples
+#' library(igraph)
+#' plot(read_highland_tribes, 
+#'  vertex.color=ifelse(E(read_highland_tribes)$positive, "black", "red"),
+#'  layout=layout.fruchterman.reingold(delete.edges(read_highland_tribes, 
+#'    E(read_highland_tribes)[!positive])),
+#'  edge.curved=0.1)
+#'
+"read_highland_tribes"
