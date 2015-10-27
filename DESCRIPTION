@@ -8,7 +8,7 @@ Description: Functions and datasets accompanying the workshop "Introduction to
     Social Network Analysis with R" on annual INSNA Sunbelt conferences.
 LazyLoad: yes
 LazyData: yes
-Depends:
+Imports:
     igraph (>= 0.6-0)
 Suggests:
     testthat,
