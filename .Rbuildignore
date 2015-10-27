@@ -1,5 +1,5 @@
 TODO
-examples/
+examples
 .travis.yml
 Makefile
 ^.*\.Rproj$
