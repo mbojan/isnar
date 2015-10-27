@@ -20,4 +20,3 @@ test_that("Folding to lower triangle works", {
           r <- matrix( c(1,2,0,1), 2, 2)
           expect_equal( fold(m, "lower"), r )
 } )
-

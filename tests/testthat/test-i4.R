@@ -10,4 +10,3 @@ m <- isnar::mixingm(g, "k3", full=TRUE)
 test_that("all entries non-negative", {
   expect_true( all( m >= 0 ) )
 } )
-
