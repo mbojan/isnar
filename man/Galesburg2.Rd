@@ -24,7 +24,9 @@ connected with friendship or discussion links. Vertex attribute "adoption"
 specifies time of first prescription of the new drug.
 }
 \examples{
-plot(Galesburg2, edge.arrow.size=.3)
+if(require(igraph, quietly = TRUE)) {
+  plot(Galesburg2, edge.arrow.size=.3)
+}
 }
 \references{
 Coleman, J.S., E. Katz, H. Menzel (1966) "Medical Innovation. A Diffusion

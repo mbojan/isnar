@@ -1,4 +1,4 @@
 library(testthat)
 library(isnar)
 
-test_package("isnar")
+test_check("isnar")

@@ -47,8 +47,10 @@ Method for mixing matrices.
 Method for igraphs
 }
 \examples{
-data(Wnet)
-smi( as.directed(Wnet, "mutual"), "gender")
+if(require(igraph, quietly = TRUE)) {
+  data(Wnet)
+  smi( as.directed(Wnet, "mutual"), "gender")
+}
 }
 \references{
 Freshtman, M. (1997) "Cohesive Group Segregation Detection in a Social

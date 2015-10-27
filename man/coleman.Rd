@@ -45,9 +45,10 @@ be supplied via \code{gsizes}.
 Default method tries to coerce \code{object} to table and use other methods.
 }
 \examples{
-coleman(as.directed(Wnet, "mutual"), "gender")
-
-coleman(as.directed(EFnet, "mutual"), "type")
+if( require(igraph, quietly = TRUE)) {
+  coleman(as.directed(Wnet, "mutual"), "gender")
+  coleman(as.directed(EFnet, "mutual"), "type")
+}
 }
 \references{
 Coleman, J. (1958) "Relational analysis: The study of social organizations

@@ -36,6 +36,8 @@ eigenvalue, and the individual-level indices are obtained by distributing it
 according to the corresponding eigenvector.
 }
 \examples{
+if( require(igraph, quietly = TRUE)) {
+
 ### artificial EF data
 x <- ssi(EFnet, "type")
 x
@@ -65,6 +67,8 @@ plot( Wnet, layout=layout.fruchterman.reingold,
     vertex.shape=c("circle", "csquare")[a],
     vertex.label.color="black")
 legend( "topleft", legend=c("Men", "Women"), pch=c(0,1), col=1)
+
+}
 }
 \references{
 Echenique, Federico and Roland G. Fryer, Jr. (2006) A Measure of Segregation

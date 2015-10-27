@@ -31,7 +31,6 @@ plot(read_highland_tribes,
  layout=layout.fruchterman.reingold(delete.edges(read_highland_tribes,
    E(read_highland_tribes)[!positive])),
  edge.curved=0.1)
- invisible()
 }
 }
 \references{
