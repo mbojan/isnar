@@ -2,3 +2,5 @@ TODO
 examples/
 .travis.yml
 Makefile
+^.*\.Rproj$
+^\.Rproj\.user$
