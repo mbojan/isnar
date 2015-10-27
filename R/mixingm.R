@@ -107,6 +107,7 @@ mixingm.igraph <- function(object, rattr, cattr=rattr, full=FALSE,
   ego <- factor( ra[ el[,1] ], levels=sort(unique(ra)))
   alter <- factor(ca[ el[,2] ], levels=sort(unique(ca)))
   con <- table(ego=ego, alter=alter)
+  if(!directed) con <- fold(con, "upper")
   if(full)
   {
     return(full_mm(con, gsizes=table(ra, ca), directed=directed, loops=loops))
