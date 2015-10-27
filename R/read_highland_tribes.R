@@ -25,11 +25,12 @@
 #' Journal of Anthropology, 10, 1-43.
 #'
 #' @examples
-#' library(igraph)
+#' if( require(igraph, quietly=TRUE) ) {
 #' plot(read_highland_tribes, 
 #'  vertex.color=ifelse(E(read_highland_tribes)$positive, "black", "red"),
 #'  layout=layout.fruchterman.reingold(delete.edges(read_highland_tribes, 
 #'    E(read_highland_tribes)[!positive])),
 #'  edge.curved=0.1)
+#' }
 #'
 "read_highland_tribes"

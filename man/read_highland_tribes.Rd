@@ -25,12 +25,14 @@ among three tribal groups containing balance as a special case; among
 Gahuku-Gama the enemy of an enemy can be either a friend or an enemy.
 }
 \examples{
-library(igraph)
+if( require(igraph, quietly=TRUE) ) {
 plot(read_highland_tribes,
  vertex.color=ifelse(E(read_highland_tribes)$positive, "black", "red"),
  layout=layout.fruchterman.reingold(delete.edges(read_highland_tribes,
    E(read_highland_tribes)[!positive])),
  edge.curved=0.1)
+ invisible()
+}
 }
 \references{
 Hage P. and Harary F. (1983). Structural models in anthropology. Cambridge:
