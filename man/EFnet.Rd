@@ -23,12 +23,13 @@ represent a fictional city composed of 30 neighborhoods that are either
 black or white.
 }
 \examples{
-
-set.seed(2992)
-plot(EFnet, layout=layout.fruchterman.reingold,
-    vertex.color=V(EFnet)$type+1, vertex.label.family="",
-    sub="Source: Echenique & Fryer (2006)",
-    main="Neighborhood racial segregation\\n in a fictional city" )
+if( require(igraph, quietly = TRUE) ) {
+  set.seed(2992)
+  plot(EFnet, layout=layout.fruchterman.reingold,
+       vertex.color=V(EFnet)$type+1, vertex.label.family="",
+       sub="Source: Echenique & Fryer (2006)",
+       main="Neighborhood racial segregation\\n in a fictional city" )
+}
 }
 \keyword{datasets}
 
