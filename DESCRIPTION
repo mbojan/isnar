@@ -1,13 +1,10 @@
 Package: isnar
-Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
-Author: Michal Bojanowski
+Authors@R: person( "Michal", "Bojanowski", email="michal2992@gmail.com", role="cre")
 Version: 0.0-1
 License: GPL-3
 Title: Introduction to Social Network Analysis with R
 Description: Functions and datasets accompanying the workshop "Introduction to
     Social Network Analysis with R" on annual INSNA Sunbelt conferences.
-LazyLoad: yes
-LazyData: yes
 Depends: R (>= 2.10)
 Imports:
     igraph (>= 0.6-0)
@@ -15,3 +12,5 @@ Suggests:
     testthat,
     roxygen2
 RoxygenNote: 6.0.1
+LazyLoad: yes
+LazyData: yes
