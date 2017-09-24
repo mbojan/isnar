@@ -1,6 +1,7 @@
 TODO
 examples
-.travis.yml
+^\.travis\.yml$
 Makefile
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^appveyor\.yml$
