@@ -1,13 +1,13 @@
 #' Pairwise tie redundancy
-#'
-#' Measuring relative redundancy of ties in neighborhoods.
+#' 
+#' @description Measuring relative redundancy of ties in neighborhoods.
 #' 
 #' @rdname pairwise_redundancy
 #'
 #' @param g igraph with vertex names
 #' @param v vertex sequence of nodes to analyzed (as egos)
 #' 
-#' @details Function [pr_invdistance()] calculates for each ego in `v` an
+#' @description  Function [pr_invdistance()] calculates for each ego in `v` an
 #'   inverse geodesic distance between alters `v1` and `v2` having all ego-alter
 #'   ties removed.
 #'   
@@ -47,7 +47,7 @@ pr_invdistance1 <- function(g, v) {
 
 #' @rdname pairwise_redundancy
 #'
-#' @details Function [pr_sharedp()] calculates the number of shared partners of
+#' @description Function [pr_sharedp()] calculates the number of shared partners of
 #'   nodes `v1` and `v2` having all ties of `ego` removed.
 
 #' \code{pr_sharedp} calculates number of shared partners of \code{v1} and
@@ -83,9 +83,7 @@ pr_sharedp1 <- function(g, v) {
 
 #' @rdname pairwise_redundancy
 #' 
-#' @details
-#'
-#' Function [pairwise_redundancy()] computes a combination of the to measures.
+#' @description Function [pairwise_redundancy()] computes a combination of the to measures.
 #'
 #' @return
 #' Every function returns a data frame with columns \code{ego}, \code{v1},
@@ -111,20 +109,3 @@ pairwise_redundancy <- function(g, v=igraph::V(g)) {
       pr_redundancy = ifelse(invdis == 1, sharedp + 1, invdis)
     )
 }
-
-
-
-
-
-
-
-# Inverse geodesic distance ----------------------------
-
-
-
-
-
-
-
-# shared partners --------------------------------------
-

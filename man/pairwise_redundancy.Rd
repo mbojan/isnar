@@ -37,8 +37,7 @@ depends on function and it is:
 }
 \description{
 Measuring relative redundancy of ties in neighborhoods.
-}
-\details{
+
 Function \code{\link[=pr_invdistance]{pr_invdistance()}} calculates for each ego in \code{v} an
 inverse geodesic distance between alters \code{v1} and \code{v2} having all ego-alter
 ties removed.
