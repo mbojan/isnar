@@ -17,6 +17,7 @@ test_that("it works silently", {
 
 
 
+
 context("Testing pr_sharedp()")
 
 test_that("it works silently", {
@@ -36,6 +37,9 @@ test_that("it works silently", {
   expect_silent(
     r <- pairwise_redundancy(playnet)
   )
+  table(r$pr_redundancy)
+  r %>%
+    dplyr::filter(ego == "1024")
 })
 
 
