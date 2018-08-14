@@ -9,12 +9,12 @@
 Own calculation based on \href{https://saos-test.icm.edu.pl}{SAOS}
 }
 \description{
-Two-mode network with classes representing judges and judgments from one of 
+Two-mode network with classes representing judges and judgments from one of
 the Polish regional courts. Relation indicates which judges were involved in
 each case.
 }
 \details{
 Node attributes include judges' gender and code of division. Attribute 'type'
-indicates classes of nodes, in accordance with igraph representation of 
+indicates classes of nodes, in accordance with igraph representation of
 bipartite networks, \code{TRUE} for judges and \code{FALSE} for judgments.
 }

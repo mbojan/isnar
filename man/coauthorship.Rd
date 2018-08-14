@@ -9,8 +9,8 @@
 Own calculation
 }
 \description{
-Coauthorship network of scientists from University of Warsaw and their 
-externa co-workers. Relation indicates pairs of people who has authored 
+Coauthorship network of scientists from University of Warsaw and their
+externa co-workers. Relation indicates pairs of people who has authored
 at least one publication together.
 }
 \details{

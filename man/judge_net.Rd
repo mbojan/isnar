@@ -9,7 +9,7 @@
 Own calculation based on \href{https://saos-test.icm.edu.pl}{SAOS}
 }
 \description{
-Network of judges from one of the Polish regional courts. Relation indicates 
+Network of judges from one of the Polish regional courts. Relation indicates
 which judges have ruled in at least one case together. This network is
 a projection from bipartite network \code{\link{judge_net_bp}}.
 }

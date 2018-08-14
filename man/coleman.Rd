@@ -60,3 +60,4 @@ Other segregation measures: \code{\link{assort}},
   \code{\link{gamix}}, \code{\link{orwg}},
   \code{\link{smi}}, \code{\link{ssi}}
 }
+\concept{segregation measures}

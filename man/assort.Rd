@@ -88,3 +88,4 @@ Other segregation measures: \code{\link{coleman}},
   \code{\link{gamix}}, \code{\link{orwg}},
   \code{\link{smi}}, \code{\link{ssi}}
 }
+\concept{segregation measures}

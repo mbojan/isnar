@@ -25,7 +25,7 @@ Consequently, it must hold that \code{length(gsizes) == nrow(cl) == ncol(cl)}.
 
 In more general case we can use different node attributes for ego and
 alter. Then \code{cl} does not have to be square. In such cases
-\code{gsizes} should be a cross-tabulation of nodes according to 
+\code{gsizes} should be a cross-tabulation of nodes according to
 their values on both attributes. See Examples.}
 }
 \value{
