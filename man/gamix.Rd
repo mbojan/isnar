@@ -55,3 +55,4 @@ Other segregation measures: \code{\link{assort}},
   \code{\link{freeman}}, \code{\link{orwg}},
   \code{\link{smi}}, \code{\link{ssi}}
 }
+\concept{segregation measures}
