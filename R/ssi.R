@@ -42,7 +42,7 @@ ssi <- function(g, vattr)
     # add edge weights, these are "directed"
     degs <- igraph::degree(gg, mode="out")
     for(i in seq(1, igraph::vcount(gg)))
-      E(gg)[from(i)]$weight <- 1/degs[i]
+      E(gg)[.from(i)]$weight <- 1/degs[i]
     # get vertex attribute
     a <- igraph::get.vertex.attribute(gg, vattr)
     l <- unlist(lapply(unique(a), function(val) ssib(g=gg, vattr=vattr, b=val)))
@@ -71,4 +71,9 @@ ssib <- function(g, vattr, b)
             rval
         } ) )
     issi = issi[ order(as.numeric(names(issi))) ]
+}
+
+
+if(getRversion() >= "2.15.1") {
+  utils::globalVariables(".from", package="isnar")
 }
