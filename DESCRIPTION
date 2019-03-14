@@ -11,7 +11,7 @@ Imports:
 Suggests:
     testthat,
     roxygen2
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 LazyLoad: yes
 LazyData: yes
 Encoding: UTF-8
