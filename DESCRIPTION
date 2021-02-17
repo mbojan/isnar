@@ -12,7 +12,7 @@ Description: Functions and datasets accompanying the workshop "Introduction to
     Social Network Analysis with R" on annual INSNA Sunbelt conferences.
 Depends: R (>= 2.10)
 Imports:
-    igraph (>= 0.6-0)
+    igraph (>= 0.6-0), mouter
 Suggests:
     testthat,
     roxygen2
@@ -20,3 +20,4 @@ RoxygenNote: 6.1.1
 LazyLoad: yes
 LazyData: yes
 Encoding: UTF-8
+Remotes: mbojan/mouter
