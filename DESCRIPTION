@@ -1,7 +1,12 @@
 Package: isnar
-Authors@R: person( "Michal", "Bojanowski", email="michal2992@gmail.com", role="cre")
+Authors@R: 
+    person(given = "Michal",
+           family = "Bojanowski",
+           role = c("aut", "cre"),
+           email = "michal2992@gmail.com",
+           comment = c(ORCID = "0000-0001-7503-852X"))
 Version: 1.0-0
-License: MIT + file LICENSE
+License: GPL-2
 Title: Introduction to Social Network Analysis with R
 Description: Functions and datasets accompanying the workshop "Introduction to
     Social Network Analysis with R" on annual INSNA Sunbelt conferences.
